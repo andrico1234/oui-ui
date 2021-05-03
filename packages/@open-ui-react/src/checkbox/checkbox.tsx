@@ -24,6 +24,12 @@ const useStyles = createUseStyles({
   legend: {},
   icon: {
     cursor: 'pointer',
+    width: '1.5em',
+    height: '1.5em',
+    '&:focus': {
+      outline: '1px solid -webkit-focus-ring-color',
+      outlineOffset: '2px',
+    },
   },
   label: {
     userSelect: 'none',
