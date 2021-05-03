@@ -11,12 +11,12 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsdx watch",
-    "start:example": "cd ./example && yarn start",
-    "build": "tsdx build",
+    "start": "tsdx watch --tsconfig ./tsconfig.tsdx.json",
+    "start:example": "next dev",
+    "build": "tsdx build --tsconfig ./tsconfig.tsdx.json",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepare": "tsdx build --tsconfig ./tsconfig.tsdx.json",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
@@ -37,7 +37,7 @@
     "trailingComma": "es5"
   },
   "name": "open-ui-react",
-  "author": "adnrico",
+  "author": "andrico",
   "module": "dist/open-ui-react.esm.js",
   "size-limit": [
     {
@@ -51,6 +51,7 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.13.16",
+    "@babel/plugin-syntax-jsx": "^7.12.13",
     "@size-limit/preset-small-lib": "^4.10.2",
     "@storybook/addon-essentials": "^6.2.9",
     "@storybook/addon-info": "^5.3.21",
@@ -62,9 +63,11 @@
     "@types/react-dom": "^17.0.3",
     "babel-loader": "^8.2.2",
     "husky": "^6.0.0",
+    "next": "^10.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
+    "react-jss": "^10.6.0",
     "size-limit": "^4.10.2",
     "tsdx": "^0.14.1",
     "tslib": "^2.2.0",

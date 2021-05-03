@@ -1,24 +1,21 @@
 import React, {
   HTMLAttributes,
-  useMemo,
   KeyboardEvent,
   useCallback,
   useRef,
-  useLayoutEffect,
   useEffect,
 } from 'react';
-import { createCheckboxMachine } from './checkboxMachine';
-import { useMachine } from '@xstate/react';
+
 import camelCase from 'camelcase';
 import { createUseStyles } from 'react-jss';
 import { KEYS } from '../constants';
 import {
   GroupContextProvider,
   useGroupContext,
-  CheckboxContext,
   useCheckboxContext,
   CheckboxContextProvider,
 } from './checkboxContext';
+import { useIsomorphicEffect } from '../hooks/useIsomorphicEffect';
 
 const useStyles = createUseStyles({
   group: {
@@ -166,7 +163,7 @@ function Icon(props: IconProps) {
   const { name } = current.context;
   const id = camelCase(name);
 
-  useLayoutEffect(() => {
+  useIsomorphicEffect(() => {
     addCheckbox(inputRef.current!);
   }, []);
 
