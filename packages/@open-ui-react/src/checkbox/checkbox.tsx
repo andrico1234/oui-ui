@@ -13,10 +13,11 @@ import camelCase from 'camelcase';
 import { createUseStyles } from 'react-jss';
 import { KEYS } from '../constants';
 import {
-  RefContextProvider,
-  useRefContext,
+  GroupContextProvider,
+  useGroupContext,
   CheckboxContext,
   useCheckboxContext,
+  CheckboxContextProvider,
 } from './checkboxContext';
 
 const useStyles = createUseStyles({
@@ -42,6 +43,7 @@ const useStyles = createUseStyles({
  * - Changing the icons of the checkbox via SVGs
  * - Disable animations automatically
  * - Check on several browsers
+ * - focus visible: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
  */
 
 interface GroupProps extends HTMLAttributes<HTMLFieldSetElement> {
@@ -69,9 +71,9 @@ type LabelProps = HTMLAttributes<HTMLLabelElement>;
  */
 export function CheckboxGroup(props: GroupProps) {
   return (
-    <RefContextProvider>
+    <GroupContextProvider>
       <InnerCheckboxGroup {...props} />
-    </RefContextProvider>
+    </GroupContextProvider>
   );
 }
 
@@ -79,7 +81,7 @@ function InnerCheckboxGroup(props: GroupProps) {
   const { children, className, ...rest } = props;
   const classes = useStyles();
   const groupRef = useRef<HTMLFieldSetElement | null>(null);
-  const { checkboxes } = useRefContext();
+  const { checkboxes } = useGroupContext();
 
   const handleKeyDown = (e: KeyboardEvent<HTMLFieldSetElement>) => {
     const checkboxGroup = groupRef.current;
@@ -142,29 +144,26 @@ function Title(props: TitleProps) {
 function Option(props: OptionProps) {
   const { name, children, className: defaultClassName, ...rest } = props;
   const classes = useStyles();
-  const checkboxMachine = useMemo(() => {
-    return createCheckboxMachine(name);
-  }, [name]);
 
-  const [current, send] = useMachine(checkboxMachine);
   const className = `${classes.option} ${defaultClassName}`;
 
   return (
-    <CheckboxContext.Provider value={{ current, send }}>
+    <CheckboxContextProvider name={name}>
       <div className={className} {...rest}>
         {children}
       </div>
-    </CheckboxContext.Provider>
+    </CheckboxContextProvider>
   );
 }
 
 function Icon(props: IconProps) {
   const { onChange: nativeOnChanged, disabled, ...rest } = props;
   const { current, send } = useCheckboxContext();
-  const { addCheckbox } = useRefContext();
-  const { name } = current.context;
+  const { addCheckbox } = useGroupContext();
   const inputRef = useRef<HTMLInputElement>(null);
   const classes = useStyles();
+
+  const { name } = current.context;
   const id = camelCase(name);
 
   useLayoutEffect(() => {
@@ -189,8 +188,7 @@ function Icon(props: IconProps) {
 
       if (code === KEYS.Enter || code === KEYS.Space) {
         e.preventDefault();
-        // @ts-ignore
-        target.focus();
+        inputRef.current!.focus();
 
         if (checked) {
           return send('UNSELECT');
@@ -208,10 +206,10 @@ function Icon(props: IconProps) {
       type="checkbox"
       id={id}
       ref={inputRef}
-      disabled={current.matches('disabled')}
+      disabled={current.matches('enabled.disabled')}
       className={classes.icon}
       onKeyDown={handleKeyDown}
-      checked={current.matches('enabled.selected')}
+      checked={current.matches('selected.selected')}
       onChange={e => {
         const { checked } = e.target;
 

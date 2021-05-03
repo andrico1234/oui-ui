@@ -6,13 +6,17 @@ export interface Context {
 
 export interface StateSchema {
   states: {
-    disabled: {};
     enabled: {
+      states: {
+        disabled: {};
+        enabled: {};
+      };
+    };
+    selected: {
       states: {
         selected: {};
         unselected: {};
         indeterminate: {};
-        hist: {};
       };
     };
   };
@@ -40,20 +44,29 @@ export const createCheckboxMachine = (name: string) =>
   Machine<Context, StateSchema, Event>({
     id: 'checkbox',
     initial: 'enabled',
+    type: 'parallel',
     context: {
       name,
     },
     states: {
-      disabled: {
-        on: {
-          ENABLE: 'enabled.hist',
+      enabled: {
+        initial: 'enabled',
+        states: {
+          disabled: {
+            on: {
+              ENABLE: 'enabled',
+            },
+          },
+          enabled: {
+            on: {
+              DISABLE: 'disabled',
+            },
+          },
         },
       },
-      enabled: {
+
+      selected: {
         initial: 'unselected',
-        on: {
-          DISABLE: 'disabled',
-        },
         states: {
           selected: {
             on: {
@@ -69,10 +82,6 @@ export const createCheckboxMachine = (name: string) =>
             on: {
               UNSELECT: 'unselected',
             },
-          },
-          hist: {
-            type: 'history',
-            history: 'shallow',
           },
         },
       },

@@ -1,5 +1,18 @@
-import React, { createContext, useContext, useState } from 'react';
-import { CheckboxInterpreter, CheckboxState } from './checkboxMachine';
+import { useMachine } from '@xstate/react';
+import React, { createContext, useContext, useMemo, useState } from 'react';
+import {
+  CheckboxInterpreter,
+  CheckboxState,
+  createCheckboxMachine,
+} from './checkboxMachine';
+
+/**
+ * Checkbox Context
+ */
+interface Props {
+  children: React.ReactNode;
+  name: string;
+}
 
 type CheckboxContextValue =
   | {
@@ -16,6 +29,27 @@ export function useCheckboxContext() {
   return context;
 }
 
+export function CheckboxContextProvider(props: Props) {
+  const { children, name } = props;
+
+  console.log('name', name);
+
+  const checkboxMachine = useMemo(() => {
+    return createCheckboxMachine(name);
+  }, [name]);
+
+  const [current, send] = useMachine(checkboxMachine);
+
+  return (
+    <CheckboxContext.Provider value={{ current, send }}>
+      {children}
+    </CheckboxContext.Provider>
+  );
+}
+
+/**
+ * Group Context
+ */
 interface GroupContext {
   checkboxes: HTMLInputElement[];
   addCheckbox: (checkbox: HTMLInputElement) => void;
@@ -26,10 +60,10 @@ const defaultGroupContext = {
   addCheckbox: () => null,
 };
 
-const RefContext = createContext<GroupContext>(defaultGroupContext);
+const GroupContext = createContext<GroupContext>(defaultGroupContext);
 
-export function useRefContext() {
-  const context = useContext(RefContext)!;
+export function useGroupContext() {
+  const context = useContext(GroupContext)!;
 
   return context;
 }
@@ -38,7 +72,7 @@ interface GroupContextProps {
   children: React.ReactChild;
 }
 
-export function RefContextProvider(props: GroupContextProps) {
+export function GroupContextProvider(props: GroupContextProps) {
   const { children } = props;
   const [checkboxes, setCheckboxes] = useState<HTMLInputElement[]>([]);
 
@@ -49,8 +83,8 @@ export function RefContextProvider(props: GroupContextProps) {
   };
 
   return (
-    <RefContext.Provider value={{ checkboxes, addCheckbox }}>
+    <GroupContext.Provider value={{ checkboxes, addCheckbox }}>
       {children}
-    </RefContext.Provider>
+    </GroupContext.Provider>
   );
 }
