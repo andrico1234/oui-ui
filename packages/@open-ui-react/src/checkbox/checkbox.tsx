@@ -20,24 +20,30 @@ import { useIsomorphicEffect } from '../hooks/useIsomorphicEffect';
 const useStyles = createUseStyles({
   group: {
     border: 0,
+    padding: 0,
   },
   legend: {},
   icon: {
     cursor: 'pointer',
-    width: '1.5em',
-    height: '1.5em',
+    width: '1.3em',
+    height: '1.3em',
     '&:focus': {
-      outline: '1px solid -webkit-focus-ring-color',
+      outline: '2px solid -webkit-focus-ring-color',
       outlineOffset: '2px',
     },
   },
   label: {
     userSelect: 'none',
     cursor: 'pointer',
+    fontSize: '1.2em',
+    padding: '0 0.25em',
   },
   option: {
+    display: 'flex',
     width: 'fit-content',
     cursor: 'pointer',
+    padding: '0.25em 0',
+    alignItems: 'center',
   },
 });
 
@@ -46,7 +52,6 @@ const useStyles = createUseStyles({
  * - Changing the icons of the checkbox via SVGs
  * - Disable animations automatically
  * - Check on several browsers
- * - focus visible: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
  */
 
 interface GroupProps extends HTMLAttributes<HTMLFieldSetElement> {
