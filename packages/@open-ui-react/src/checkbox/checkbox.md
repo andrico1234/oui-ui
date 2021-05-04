@@ -9,7 +9,7 @@ Implemented attributes
 - [ ] indeterminate
 - [ ] defaultChecked
 - [ ] value
-- [ ] autoFocus
+- [x] autoFocus
 - [x] disabled
 - [ ] form
 - [x] name
@@ -21,9 +21,9 @@ Implemented events
 - [ ] input
 
 Keyboard
-- [ ] document focus
-- [ ] autofocus
-- [ ] target of click, tap, or keyboard inputs
+- [x] document focus
+- [x] autofocus
+- [x] target of click, tap, or keyboard inputs
 
 ## Simple Example
 

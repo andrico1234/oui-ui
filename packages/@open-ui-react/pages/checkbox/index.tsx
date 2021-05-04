@@ -14,7 +14,7 @@ function CheckboxPage() {
         </CheckboxGroup.Option>
 
         <CheckboxGroup.Option name="two">
-          <CheckboxGroup.Icon />
+          <CheckboxGroup.Icon autoFocus />
           <CheckboxGroup.Label />
         </CheckboxGroup.Option>
 

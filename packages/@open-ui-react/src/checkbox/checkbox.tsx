@@ -31,6 +31,9 @@ const useStyles = createUseStyles({
       outline: '2px solid -webkit-focus-ring-color',
       outlineOffset: '2px',
     },
+    '&[disabled], &[disabled] ~ label': {
+      cursor: 'default',
+    },
   },
   label: {
     userSelect: 'none',
@@ -41,7 +44,6 @@ const useStyles = createUseStyles({
   option: {
     display: 'flex',
     width: 'fit-content',
-    cursor: 'pointer',
     padding: '0.25em 0',
     alignItems: 'center',
   },
@@ -67,9 +69,10 @@ interface TitleProps extends HTMLAttributes<HTMLLegendElement> {
   title: string;
 }
 
-type IconProps = HTMLAttributes<HTMLInputElement> & {
-  disabled?: boolean;
-};
+type IconProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
 
 type LabelProps = HTMLAttributes<HTMLLabelElement>;
 
@@ -112,6 +115,7 @@ function InnerCheckboxGroup(props: GroupProps) {
       e.preventDefault();
       e.stopPropagation();
       const isLastIndex = currentIndex + 1 >= checkboxes.length;
+
       if (isLastIndex) return;
 
       return checkboxes[currentIndex + 1].focus();
@@ -165,7 +169,7 @@ function Option(props: OptionProps) {
 }
 
 function Icon(props: IconProps) {
-  const { onChange: nativeOnChanged, disabled, ...rest } = props;
+  const { onChange: nativeOnChanged, disabled, autoFocus, ...rest } = props;
   const { current, send } = useCheckboxContext();
   const { addCheckbox } = useGroupContext();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -176,7 +180,11 @@ function Icon(props: IconProps) {
 
   useIsomorphicEffect(() => {
     addCheckbox(inputRef.current!);
-  }, []);
+
+    if (autoFocus) {
+      inputRef.current!.focus();
+    }
+  }, [inputRef]);
 
   useEffect(() => {
     if (disabled) {

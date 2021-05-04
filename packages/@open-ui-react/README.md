@@ -2,15 +2,15 @@
 
 OpenUI is the set of in-progress specifications for accessible and usable native web components.
 
-OpenUI React lets you use these specifications in ready-to-use components. The behaviour of each component will correspond to the specification outlined [here](https://open-ui.org/).
+OpenUI React lets you use these specifications in ready-to-use JavaScript components. The behaviour of each component will correspond to the specification outlined [here](https://open-ui.org/).
 
-This component library sets all of the necessary defaults to ensure that your UI is both usable and accessible. The API of this form library is also designed to map as close to the expected native behaviour as possible, as a result this component library would be made redundant as the OpenUI specs get baked into browsers.
+This component library sets all of the necessary defaults to ensure that your UI is both usable and accessible. The API of this library is also designed to map as close to the OpenUI's proposed behaviour as possible. As a result, when the OpenUI specifications make it to the browsers, this component library would be made mostly redundant.
 
-This means that aside from sane default styling, the styling of the components is left up to you, the developer.
+While this library employs sane styling and behaviour, the visuals are left to be implemented in user land.
 
-OpenUI React is still a work in progress
-OpenUI React can also be a way to gain feedback on how components are used in the wild
+OpenUI React was made to bring the OpenUI specific behaviour to the browser now. It's also a way to evaluate usage and understand how the components are being used in the wild.
 
+It's very much a work in progress, so all feedback and contributions will be welcome.
 
 Why do I want to make OpenUI React?
 

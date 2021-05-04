@@ -4,9 +4,9 @@
     "packages/*"
   ],
   "scripts": {
-    "react:storybook": "yarn workspace react storybook",
-    "react:start": "yarn workspace react start",
-    "react:example": "yarn workspace react start:example"
+    "react:storybook": "yarn workspace @openui/react storybook",
+    "react:start": "yarn workspace @openui/react start",
+    "react:example": "yarn workspace @openui/react start:example"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.22.0",
