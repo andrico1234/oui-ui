@@ -205,18 +205,12 @@ function Icon(props: IconProps) {
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLInputElement>) => {
-      const { target, code } = e;
-
-      // @ts-ignore
-      const checked = target.checked as boolean;
+      const { code } = e;
 
       if (code === KEYS.Enter || code === KEYS.Space) {
         e.preventDefault();
         inputRef.current!.focus();
 
-        if (checked) {
-          return send('UNCHECK');
-        }
         return send('CHECK');
       }
 
@@ -230,21 +224,16 @@ function Icon(props: IconProps) {
       type="checkbox"
       id={id}
       ref={inputRef}
-      disabled={current.matches('enabled.disabled')}
+      disabled={current.matches('active.disabled')}
       className={classes.icon}
       onKeyDown={handleKeyDown}
-      checked={current.matches('selected.selected')}
+      checked={current.matches('check.checked')}
       onChange={e => {
-        const { checked } = e.target;
-
         if (clientOnChange) {
           clientOnChange(e);
         }
 
-        if (checked) {
-          return send('CHECK');
-        }
-        return send('UNCHECK');
+        return send('CHECK');
       }}
       {...rest}
     />

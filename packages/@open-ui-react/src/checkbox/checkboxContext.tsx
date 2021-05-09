@@ -30,11 +30,11 @@ export function useCheckboxContext() {
 }
 
 export function CheckboxContextProvider(props: Props) {
-  const { children, name } = props;
+  const { children, name, defaultChecked, disabled } = props;
 
   const checkboxMachine = useMemo(() => {
-    return createCheckboxMachine(name);
-  }, [name]);
+    return createCheckboxMachine({ name, defaultChecked, disabled });
+  }, [name, defaultChecked, disabled]);
 
   const [current, send] = useMachine(checkboxMachine);
 

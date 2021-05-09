@@ -7,16 +7,18 @@ export interface Context {
 
 export interface StateSchema {
   states: {
-    disabled: {};
     active: {
       states: {
-        check: {
-          states: {
-            checked: {};
-            unchecked: {};
-            indeterminate: {};
-          };
-        };
+        disabled: {};
+        enabled: {};
+      };
+    };
+
+    check: {
+      states: {
+        checked: {};
+        unchecked: {};
+        indeterminate: {};
       };
     };
   };
@@ -31,9 +33,6 @@ export type Event =
     }
   | {
       type: 'CHECK';
-    }
-  | {
-      type: 'UNCHECK';
     };
 
 export type CheckboxState = State<Context, Event, StateSchema>;
@@ -45,39 +44,40 @@ export const createCheckboxMachine = (props: CheckboxProps) => {
 
   return Machine<Context, StateSchema, Event>({
     id: 'checkbox',
-    initial: disabled ? 'disabled' : 'active',
     type: 'parallel',
     context: {
       name,
     },
     states: {
-      disabled: {
-        on: {
-          ENABLE: 'active',
-        },
-      },
       active: {
-        type: 'parallel',
-        on: {
-          DISABLE: 'disable',
-        },
+        initial: disabled ? 'disabled' : 'enabled',
         states: {
-          check: {
-            initial: defaultChecked ? 'checked' : 'unchecked',
-            states: {
-              checked: {
-                on: {
-                  CHECK: 'unchecked',
-                },
-              },
-              unchecked: {
-                on: {
-                  CHECK: 'checked',
-                },
-              },
-              indeterminate: {},
+          disabled: {
+            on: {
+              ENABLE: 'enabled',
             },
           },
+          enabled: {
+            on: {
+              DISABLE: 'disabled',
+            },
+          },
+        },
+      },
+      check: {
+        initial: defaultChecked ? 'checked' : 'unchecked',
+        states: {
+          checked: {
+            on: {
+              CHECK: { target: 'unchecked', in: '#checkbox.active.enabled' },
+            },
+          },
+          unchecked: {
+            on: {
+              CHECK: { target: 'checked', in: '#checkbox.active.enabled' },
+            },
+          },
+          indeterminate: {},
         },
       },
     },
