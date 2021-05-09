@@ -1,14 +1,14 @@
 # OpenUI React
 
-OpenUI is the set of in-progress specifications for accessible and usable native web components.
+This UI library aims to take the research made by the core [OpenUI](https://open-ui.org/) team, and create React components that are both accessible and usable by default.
 
-OpenUI React lets you use these specifications in ready-to-use JavaScript components. The behaviour of each component will correspond to the specification outlined [here](https://open-ui.org/).
+The OpenUI is a group of industry experts that are building a set of in-progress specifications for native web components that are usable and accessible. This in turn will allow web developers to style and extend their browser's built-in UI controls, instead of repeatedly reinventing them. 
 
-This component library sets all of the necessary defaults to ensure that your UI is both usable and accessible. The API of this library is also designed to map as close to the OpenUI's proposed behaviour as possible. As a result, when the OpenUI specifications make it to the browsers, this component library would be made mostly redundant.
+This component library sets all of the necessary defaults to ensure your UI is both usable and accessible. The API of this library is also designed to map as close to the OpenUI's proposed behaviour as possible. As a result, when the OpenUI specifications make it to the browsers, this component library would be made mostly redundant.
 
-While this library employs sane styling and behaviour, the visuals are left to be implemented in user land.
+While this library employs sane styling and behaviour, the appearance is left to be implemented in user land.
 
-OpenUI React was made to bring the OpenUI specific behaviour to the browser now. It's also a way to evaluate usage and understand how the components are being used in the wild.
+OpenUI React is made to bring the OpenUI specification to the browser, now. It's also a way to evaluate usage and understand how the components are being used in the wild.
 
 It's very much a work in progress, so all feedback and contributions will be welcome.
 
