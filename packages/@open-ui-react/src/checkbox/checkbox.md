@@ -5,20 +5,26 @@
 The Checkbox component aims to align closely with the API outlined in the [OpenUI's proposal](https://open-ui.org/components/checkbox).
 
 Implemented attributes
+Uncontrolled
 - [ ] checked
 - [ ] indeterminate
-- [ ] defaultChecked
-- [ ] value
+  
+Controlled
+- [x] defaultChecked
 - [x] autoFocus
 - [x] disabled
-- [ ] form
 - [x] name
+
+- [ ] form
 - [ ] required
 - [ ] readonly
 
 Implemented events
-- [ ] change
+- [x] change
 - [ ] input
+
+Appearance
+- [ ] Icons
 
 Keyboard
 - [x] document focus

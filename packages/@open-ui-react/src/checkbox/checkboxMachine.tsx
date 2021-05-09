@@ -1,4 +1,5 @@
 import { Interpreter, Machine, State } from 'xstate';
+import { CheckboxProps } from './checkbox';
 
 export interface Context {
   name: string;
@@ -6,17 +7,16 @@ export interface Context {
 
 export interface StateSchema {
   states: {
-    enabled: {
+    disabled: {};
+    active: {
       states: {
-        disabled: {};
-        enabled: {};
-      };
-    };
-    selected: {
-      states: {
-        selected: {};
-        unselected: {};
-        indeterminate: {};
+        check: {
+          states: {
+            checked: {};
+            unchecked: {};
+            indeterminate: {};
+          };
+        };
       };
     };
   };
@@ -30,60 +30,56 @@ export type Event =
       type: 'DISABLE';
     }
   | {
-      type: 'SELECT';
+      type: 'CHECK';
     }
   | {
-      type: 'UNSELECT';
+      type: 'UNCHECK';
     };
 
 export type CheckboxState = State<Context, Event, StateSchema>;
 
 export type CheckboxInterpreter = Interpreter<Context, StateSchema, Event>;
 
-export const createCheckboxMachine = (name: string) =>
-  Machine<Context, StateSchema, Event>({
+export const createCheckboxMachine = (props: CheckboxProps) => {
+  const { name, defaultChecked, disabled } = props;
+
+  return Machine<Context, StateSchema, Event>({
     id: 'checkbox',
-    initial: 'enabled',
+    initial: disabled ? 'disabled' : 'active',
     type: 'parallel',
     context: {
       name,
     },
     states: {
-      enabled: {
-        initial: 'enabled',
-        states: {
-          disabled: {
-            on: {
-              ENABLE: 'enabled',
-            },
-          },
-          enabled: {
-            on: {
-              DISABLE: 'disabled',
-            },
-          },
+      disabled: {
+        on: {
+          ENABLE: 'active',
         },
       },
-
-      selected: {
-        initial: 'unselected',
+      active: {
+        type: 'parallel',
+        on: {
+          DISABLE: 'disable',
+        },
         states: {
-          selected: {
-            on: {
-              UNSELECT: 'unselected',
-            },
-          },
-          unselected: {
-            on: {
-              SELECT: 'selected',
-            },
-          },
-          indeterminate: {
-            on: {
-              UNSELECT: 'unselected',
+          check: {
+            initial: defaultChecked ? 'checked' : 'unchecked',
+            states: {
+              checked: {
+                on: {
+                  CHECK: 'unchecked',
+                },
+              },
+              unchecked: {
+                on: {
+                  CHECK: 'checked',
+                },
+              },
+              indeterminate: {},
             },
           },
         },
       },
     },
   });
+};

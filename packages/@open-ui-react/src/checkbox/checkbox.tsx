@@ -52,18 +52,25 @@ const useStyles = createUseStyles({
 /**
  * Todo
  * - Changing the icons of the checkbox via SVGs
- * - Disable animations automatically
- * - Check on several browsers
  */
 
 interface GroupProps extends HTMLAttributes<HTMLFieldSetElement> {
   children: React.ReactNode;
 }
 
-interface OptionProps extends HTMLAttributes<HTMLDivElement> {
+export interface CheckboxProps {
   name: string;
-  children: React.ReactNode;
+  defaultChecked?: boolean;
+  autoFocus?: boolean;
+  disabled?: boolean;
+  required?: boolean;
+  onChange?: (e: any) => void;
 }
+
+type OptionProps = HTMLAttributes<HTMLDivElement> &
+  CheckboxProps & {
+    children: React.ReactNode;
+  };
 
 interface TitleProps extends HTMLAttributes<HTMLLegendElement> {
   title: string;
@@ -96,6 +103,7 @@ function InnerCheckboxGroup(props: GroupProps) {
 
   const handleKeyDown = (e: KeyboardEvent<HTMLFieldSetElement>) => {
     const checkboxGroup = groupRef.current;
+
     if (!checkboxGroup) return;
 
     const filteredCheckboxes = checkboxes.filter(
@@ -169,7 +177,7 @@ function Option(props: OptionProps) {
 }
 
 function Icon(props: IconProps) {
-  const { onChange: nativeOnChanged, disabled, autoFocus, ...rest } = props;
+  const { onChange: clientOnChange, disabled, autoFocus, ...rest } = props;
   const { current, send } = useCheckboxContext();
   const { addCheckbox } = useGroupContext();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -207,9 +215,9 @@ function Icon(props: IconProps) {
         inputRef.current!.focus();
 
         if (checked) {
-          return send('UNSELECT');
+          return send('UNCHECK');
         }
-        return send('SELECT');
+        return send('CHECK');
       }
 
       return;
@@ -229,14 +237,14 @@ function Icon(props: IconProps) {
       onChange={e => {
         const { checked } = e.target;
 
-        if (nativeOnChanged) {
-          nativeOnChanged(e);
+        if (clientOnChange) {
+          clientOnChange(e);
         }
 
         if (checked) {
-          return send('SELECT');
+          return send('CHECK');
         }
-        return send('UNSELECT');
+        return send('UNCHECK');
       }}
       {...rest}
     />

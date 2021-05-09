@@ -1,5 +1,6 @@
 import { useMachine } from '@xstate/react';
 import React, { createContext, useContext, useMemo, useState } from 'react';
+import { CheckboxProps } from './checkbox';
 import {
   CheckboxInterpreter,
   CheckboxState,
@@ -9,9 +10,8 @@ import {
 /**
  * Checkbox Context
  */
-interface Props {
+interface Props extends CheckboxProps {
   children: React.ReactNode;
-  name: string;
 }
 
 type CheckboxContextValue =
