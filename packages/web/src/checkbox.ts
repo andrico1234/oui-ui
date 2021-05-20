@@ -6,10 +6,10 @@ checkboxTemplate.innerHTML = `
        width: 24px;
       }
     </style>
-    <slot></slot>
+    <h1>Hey there</h1>
   `;
 
-class Checkbox extends HTMLInputElement {
+export class Checkbox extends HTMLElement {
   get disabled() {
     return this.hasAttribute('disabled');
   }
@@ -25,6 +25,8 @@ class Checkbox extends HTMLInputElement {
 
   constructor() {
     super();
+
+    console.log('hiiio');
 
     this.attachShadow({ mode: 'open' });
     this.shadowRoot?.appendChild(checkboxTemplate.content.cloneNode(true));
@@ -57,6 +59,6 @@ class Checkbox extends HTMLInputElement {
   }
 }
 
-window.customElements.define('ou-checkbox', Checkbox);
+console.log('boo');
 
-export default Checkbox;
+window.customElements.define('ou-checkbox', Checkbox);
