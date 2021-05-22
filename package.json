@@ -15,7 +15,8 @@
         "react:start": "yarn workspace @openui/react start",
         "react:example": "yarn workspace @openui/react start:example",
         "start": "echo 'run the develop script' && exit 1",
-        "test": "echo 'run the test scripts' && exit 1"
+        "test": "echo 'run the test scripts' && exit 1",
+        "prepare": "husky install"
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^4.22.0",

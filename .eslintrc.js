@@ -21,5 +21,7 @@ module.exports = {
     rules: {
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         'react/prop-types': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off', // temp
+        '@typescript-eslint/ban-types': 'off', // temp
     },
 }

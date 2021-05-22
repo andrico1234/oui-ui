@@ -4,6 +4,7 @@ import React, {
   useCallback,
   useRef,
   useEffect,
+  SyntheticEvent,
 } from 'react';
 
 import camelCase from 'camelcase';
@@ -64,7 +65,7 @@ export interface CheckboxProps {
   autoFocus?: boolean;
   disabled?: boolean;
   required?: boolean;
-  onChange?: (e: any) => void;
+  onChange?: (e: SyntheticEvent<HTMLInputElement>) => void;
 }
 
 type OptionProps = HTMLAttributes<HTMLDivElement> &
@@ -108,11 +109,11 @@ function InnerCheckboxGroup(props: GroupProps) {
     if (!checkboxGroup) return;
 
     const filteredCheckboxes = checkboxes.filter(
-      (checkbox) => !checkbox.disabled
+      checkbox => !checkbox.disabled
     );
 
     const activeCheckbox = filteredCheckboxes.find(
-      (checkbox) => checkbox === document.activeElement
+      checkbox => checkbox === document.activeElement
     );
 
     if (!activeCheckbox) return;
@@ -234,7 +235,7 @@ function Icon(props: IconProps) {
       className={classes.icon}
       onKeyDown={handleKeyDown}
       checked={current.matches('check.checked')}
-      onChange={(e) => {
+      onChange={e => {
         if (clientOnChange) {
           clientOnChange(e);
         }
