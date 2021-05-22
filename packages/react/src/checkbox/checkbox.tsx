@@ -109,11 +109,11 @@ function InnerCheckboxGroup(props: GroupProps) {
     if (!checkboxGroup) return;
 
     const filteredCheckboxes = checkboxes.filter(
-      checkbox => !checkbox.disabled
+      (checkbox) => !checkbox.disabled
     );
 
     const activeCheckbox = filteredCheckboxes.find(
-      checkbox => checkbox === document.activeElement
+      (checkbox) => checkbox === document.activeElement
     );
 
     if (!activeCheckbox) return;
@@ -235,7 +235,7 @@ function Icon(props: IconProps) {
       className={classes.icon}
       onKeyDown={handleKeyDown}
       checked={current.matches('check.checked')}
-      onChange={e => {
+      onChange={(e) => {
         if (clientOnChange) {
           clientOnChange(e);
         }
