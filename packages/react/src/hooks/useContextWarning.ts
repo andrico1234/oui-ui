@@ -7,5 +7,5 @@ export function useContextWarning(val: unknown, parentName: string) {
         `It looks like your component is not wrapped in ${parentName} component`
       );
     }
-  }, []);
+  }, [val, parentName]);
 }

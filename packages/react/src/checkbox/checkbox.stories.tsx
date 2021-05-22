@@ -18,7 +18,7 @@ interface Props {
   disabled: boolean;
 }
 
-const Template: Story<Props> = props => {
+const Template: Story<Props> = (props) => {
   return (
     <CheckboxGroup>
       <CheckboxGroup.Title title="Test Checkbox" />

@@ -6,10 +6,12 @@ The Checkbox component aims to align closely with the API outlined in the [OpenU
 
 Implemented attributes
 Uncontrolled
+
 - [ ] checked
 - [ ] indeterminate
-  
+
 Controlled
+
 - [x] defaultChecked
 - [x] autoFocus
 - [x] disabled
@@ -20,13 +22,16 @@ Controlled
 - [ ] readonly
 
 Implemented events
+
 - [x] change
 - [ ] input
 
 Appearance
+
 - [ ] Icons
 
 Keyboard
+
 - [x] document focus
 - [x] autofocus
 - [x] target of click, tap, or keyboard inputs
@@ -55,7 +60,6 @@ function CheckboxInputs() {
         <CheckboxGroup.Label />
       </CheckboxGroup.Option>
     </CheckboxGroup>
-  ) 
+  );
 }
 ```
-

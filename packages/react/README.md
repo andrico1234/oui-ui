@@ -2,7 +2,7 @@
 
 This UI library aims to take the research made by the core [OpenUI](https://open-ui.org/) team, and create React components that are both accessible and usable by default.
 
-The OpenUI is a group of industry experts that are building a set of in-progress specifications for native web components that are usable and accessible. This in turn will allow web developers to style and extend their browser's built-in UI controls, instead of repeatedly reinventing them. 
+The OpenUI is a group of industry experts that are building a set of in-progress specifications for native web components that are usable and accessible. This in turn will allow web developers to style and extend their browser's built-in UI controls, instead of repeatedly reinventing them.
 
 This component library sets all of the necessary defaults to ensure your UI is both usable and accessible. The API of this library is also designed to map as close to the OpenUI's proposed behaviour as possible. As a result, when the OpenUI specifications make it to the browsers, this component library would be made mostly redundant.
 
@@ -21,7 +21,6 @@ An additional avenue to help spread awareness of the OpenUI mission, people lear
 One thing that could be useful is to create the web components, that the React components use internally.
 
 Note, this library my also work best as a web-components library, so it's language agnostic.
-
 
 ## Getting Started
 

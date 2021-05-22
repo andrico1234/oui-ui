@@ -1,4 +1,5 @@
 const checkboxTemplate = document.createElement('template');
+
 checkboxTemplate.innerHTML = `
     <style>
       :host {

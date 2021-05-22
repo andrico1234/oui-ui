@@ -75,7 +75,7 @@ export function GroupContextProvider(props: GroupContextProps) {
   const [checkboxes, setCheckboxes] = useState<HTMLInputElement[]>([]);
 
   const addCheckbox = (ref: HTMLInputElement) => {
-    setCheckboxes(existingCheckboxes => {
+    setCheckboxes((existingCheckboxes) => {
       return [...existingCheckboxes, ref];
     });
   };

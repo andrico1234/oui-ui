@@ -100,6 +100,7 @@ function InnerCheckboxGroup(props: GroupProps) {
   const classes = useStyles();
   const groupRef = useRef<HTMLFieldSetElement | null>(null);
   const { checkboxes } = useGroupContext();
+  const hi = '';
 
   const handleKeyDown = (e: KeyboardEvent<HTMLFieldSetElement>) => {
     const checkboxGroup = groupRef.current;
@@ -107,11 +108,11 @@ function InnerCheckboxGroup(props: GroupProps) {
     if (!checkboxGroup) return;
 
     const filteredCheckboxes = checkboxes.filter(
-      checkbox => !checkbox.disabled
+      (checkbox) => !checkbox.disabled
     );
 
     const activeCheckbox = filteredCheckboxes.find(
-      checkbox => checkbox === document.activeElement
+      (checkbox) => checkbox === document.activeElement
     );
 
     if (!activeCheckbox) return;
@@ -137,6 +138,11 @@ function InnerCheckboxGroup(props: GroupProps) {
       return checkboxes[currentIndex - 1].focus();
     }
   };
+
+  useEffect(() => {
+    console.log(groupRef);
+    console.log(hi);
+  });
 
   return (
     <fieldset
@@ -228,7 +234,7 @@ function Icon(props: IconProps) {
       className={classes.icon}
       onKeyDown={handleKeyDown}
       checked={current.matches('check.checked')}
-      onChange={e => {
+      onChange={(e) => {
         if (clientOnChange) {
           clientOnChange(e);
         }

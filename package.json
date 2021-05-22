@@ -1,19 +1,30 @@
 {
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
-  "scripts": {
-    "react:storybook": "yarn workspace @openui/react storybook",
-    "react:start": "yarn workspace @openui/react start",
-    "react:example": "yarn workspace @openui/react start:example"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
-    "@typescript-eslint/parser": "^4.22.0",
-    "eslint": "~7.25.0",
-    "eslint-plugin-jsx-a11y": "6.4.1",
-    "eslint-plugin-react": "^7.23.2",
-    "eslint-plugin-react-hooks": "^4.2.0"
-  }
+    "private": true,
+    "workspaces": [
+        "packages/*"
+    ],
+    "scripts": {
+        "build": "echo 'This will be used to build the doc site' && exit 1",
+        "custom-elements-manifest": "echo 'This will build the custom elements manifest' && exit 1",
+        "debug": "echo 'run the web-test-runner' && exit 1",
+        "lint": "run-p lint:*",
+        "lint:eslint": "yarn eslint --fix .",
+        "lint:prettier": "npx prettier --write packages/**",
+        "release": "echo 'run the release script' && exit 1",
+        "react:storybook": "yarn workspace @openui/react storybook",
+        "react:start": "yarn workspace @openui/react start",
+        "react:example": "yarn workspace @openui/react start:example",
+        "start": "echo 'run the develop script' && exit 1",
+        "test": "echo 'run the test scripts' && exit 1"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^4.22.0",
+        "@typescript-eslint/parser": "^4.22.0",
+        "eslint": "~7.25.0",
+        "eslint-plugin-jsx-a11y": "6.4.1",
+        "eslint-plugin-react": "^7.23.2",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "npm-run-all": "^4.1.5",
+        "prettier": "2.3.0"
+    }
 }

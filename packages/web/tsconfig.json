@@ -3,10 +3,7 @@
     "target": "es2017",
     "module": "es2015",
     "moduleResolution": "node",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2017", "dom"],
     "declaration": true,
     "outDir": "./lib",
     "baseUrl": ".",
@@ -21,7 +18,5 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true
   },
-  "include": [
-    "src/**/*.ts"
-  ]
+  "include": ["src/**/*.ts"]
 }
