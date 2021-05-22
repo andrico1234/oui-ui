@@ -14,7 +14,7 @@
         "react:storybook": "yarn workspace @openui/react storybook",
         "react:start": "yarn workspace @openui/react start",
         "react:example": "yarn workspace @openui/react start:example",
-        "start": "echo 'run the develop script' && exit 1",
+        "start": "cd ./docs && yarn start",
         "test": "echo 'run the test scripts' && exit 1",
         "prepare": "husky install"
     },
