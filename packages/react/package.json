@@ -14,12 +14,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsdx watch --tsconfig ./tsconfig.tsdx.json",
     "start:example": "next dev",
-    "build": "tsdx build --tsconfig ./tsconfig.tsdx.json",
-    "test": "tsdx test --passWithNoTests",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build --tsconfig ./tsconfig.tsdx.json",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",

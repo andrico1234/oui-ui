@@ -19,7 +19,9 @@ Each component will be its own package
 
 ## Building
 
-Uses @rocket to handle building the static site.
+Uses docusaurus to handle building the static site.
+Uses incremental builds to manage typescript monorepo:
+[LogRocket tutorial](https://blog.logrocket.com/boost-your-productivity-with-typescript-project-references/)
 
 ## Developing
 

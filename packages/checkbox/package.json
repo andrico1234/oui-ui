@@ -31,8 +31,8 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "web",
-  "author": "adnrico",
+  "name": "checkbox",
+  "author": "andrico",
   "module": "dist/web.esm.js",
   "size-limit": [
     {

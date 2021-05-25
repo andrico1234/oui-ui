@@ -7,6 +7,7 @@
         "build": "echo 'This will be used to build the doc site' && exit 1",
         "custom-elements-manifest": "echo 'This will build the custom elements manifest' && exit 1",
         "debug": "echo 'run the web-test-runner' && exit 1",
+        "develop": "tsc -b ./tsconfig.packages.json --watch",
         "lint": "run-p lint:*",
         "lint:eslint": "yarn eslint --fix .",
         "lint:prettier": "npx prettier --write packages/**",
