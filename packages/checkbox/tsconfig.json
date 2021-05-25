@@ -4,9 +4,4 @@
     "src/**/*.ts"
   ],
   "files": [],
-  "references": [
-    {
-      "path": "../../"
-    }
-  ]
 }

@@ -28,9 +28,9 @@
       "checkbox": [
         "packages/checkbox/src"
       ],
-      // "react": [
-      //   "packages/react/src"
-      // ],
+      "react": [
+        "packages/react/src"
+      ],
     },
   },
   "exclude": [
