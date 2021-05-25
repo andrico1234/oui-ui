@@ -11,20 +11,11 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsdx watch",
     "build": "rm -rf ./lib && tsc",
-    "test": "tsdx test",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
   "peerDependencies": {},
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
-  },
   "prettier": {
     "printWidth": 80,
     "semi": true,
