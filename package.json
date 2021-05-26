@@ -7,7 +7,7 @@
         "build": "cd ./docs && yarn build",
         "bundle": "tsc -b ./tsconfig.packages.json",
         "custom-elements-manifest": "echo 'This will build the custom elements manifest' && exit 1",
-        "debug": "echo 'run the web-test-runner' && exit 1",
+        "debug": "web-test-runner --watch packages/**/*.test.js --node-resolve",
         "develop": "tsc -b ./tsconfig.packages.json --watch",
         "lint": "run-p lint:*",
         "lint:eslint": "yarn eslint --fix .",
@@ -18,10 +18,11 @@
         "publish": "yarn bundle && np",
         "serve": "yarn build && cd ./docs && yarn serve",
         "start": "cd ./docs && yarn start",
-        "test": "echo 'run the test scripts' && exit 1",
+        "test": "web-test-runner packages/**/*.test.js --node-resolve",
         "prepare": "husky install"
     },
     "devDependencies": {
+        "@open-wc/testing": "^2.5.33",
         "@typescript-eslint/eslint-plugin": "^4.22.0",
         "@typescript-eslint/parser": "^4.22.0",
         "@web/test-runner": "^0.13.5",
