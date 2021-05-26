@@ -1,18 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "src",
-    "types"
-  ],
+  "exclude": ["node_modules"],
+  "include": ["src", "types"],
   "compilerOptions": {
     "module": "esnext",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     // "target": "es5",
     "outDir": "./lib",
     "importHelpers": true,
@@ -25,5 +17,5 @@
     "noEmit": true,
     // "target": "es5",
     "isolatedModules": true
-  },
+  }
 }

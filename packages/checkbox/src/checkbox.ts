@@ -27,8 +27,6 @@ export class Checkbox extends HTMLElement {
   constructor() {
     super();
 
-    console.log('hiiio');
-
     this.attachShadow({ mode: 'open' });
     this.shadowRoot?.appendChild(checkboxTemplate.content.cloneNode(true));
   }
@@ -38,8 +36,6 @@ export class Checkbox extends HTMLElement {
     if (this.disabled) {
       return;
     }
-
-    console.log('clicky');
   }
 
   connectedCallback() {
@@ -59,7 +55,5 @@ export class Checkbox extends HTMLElement {
     console.log(oldVal, newVal);
   }
 }
-
-console.log('boo');
 
 window.customElements.define('ou-checkbox', Checkbox);

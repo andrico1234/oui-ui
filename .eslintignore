@@ -1,1 +1,6 @@
 dist/
+
+docs/.docusaurus
+docs/build
+
+node_modules

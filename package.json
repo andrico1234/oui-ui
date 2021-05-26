@@ -4,17 +4,19 @@
         "packages/*"
     ],
     "scripts": {
-        "build": "echo 'This will be used to build the doc site' && exit 1",
+        "build": "cd ./docs && yarn build",
+        "bundle": "tsc -b ./tsconfig.packages.json",
         "custom-elements-manifest": "echo 'This will build the custom elements manifest' && exit 1",
         "debug": "echo 'run the web-test-runner' && exit 1",
         "develop": "tsc -b ./tsconfig.packages.json --watch",
         "lint": "run-p lint:*",
         "lint:eslint": "yarn eslint --fix .",
         "lint:prettier": "npx prettier --write packages/**",
-        "release": "echo 'run the release script' && exit 1",
         "react:storybook": "yarn workspace @openui/react storybook",
         "react:start": "yarn workspace @openui/react start",
         "react:example": "yarn workspace @openui/react start:example",
+        "publish": "yarn bundle && np",
+        "serve": "yarn build && cd ./docs && yarn serve",
         "start": "cd ./docs && yarn start",
         "test": "echo 'run the test scripts' && exit 1",
         "prepare": "husky install"
@@ -22,6 +24,7 @@
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^4.22.0",
         "@typescript-eslint/parser": "^4.22.0",
+        "@web/test-runner": "^0.13.5",
         "eslint": "~7.25.0",
         "eslint-plugin-jsx-a11y": "6.4.1",
         "eslint-plugin-react": "^7.23.2",
