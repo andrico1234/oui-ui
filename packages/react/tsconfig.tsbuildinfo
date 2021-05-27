@@ -1086,6 +1086,16 @@
         "signature": "cfb42d1c8aa66607ef3b1e2cee85d28148358ba62dc5e5146b317dae7bfd9a96",
         "affectsGlobalScope": false
       },
+      "../../node_modules/@types/chai/index.d.ts": {
+        "version": "f5fcdcb84e1594e419ad42eb62d96491739433c90bb810edbacf4e7d2908865c",
+        "signature": "f5fcdcb84e1594e419ad42eb62d96491739433c90bb810edbacf4e7d2908865c",
+        "affectsGlobalScope": true
+      },
+      "../../node_modules/@types/chai-dom/index.d.ts": {
+        "version": "d95d76d79a0351572ec5b1a6cc1e5c4bce1be82eedeed7278d6f31ea1059fa69",
+        "signature": "d95d76d79a0351572ec5b1a6cc1e5c4bce1be82eedeed7278d6f31ea1059fa69",
+        "affectsGlobalScope": true
+      },
       "../../node_modules/@types/co-body/index.d.ts": {
         "version": "e872323c839365f27297837c8b7001ef1696940f120f4ed22639a75cfcbe0df2",
         "signature": "e872323c839365f27297837c8b7001ef1696940f120f4ed22639a75cfcbe0df2",
@@ -1337,8 +1347,8 @@
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/mocha/index.d.ts": {
-        "version": "0359800d3b440f8515001431cde1500944e156040577425eb3f7b80af0846612",
-        "signature": "0359800d3b440f8515001431cde1500944e156040577425eb3f7b80af0846612",
+        "version": "c4c03cf65951d980ba618ae9601d10438730803fc9c8a1f7b34af8739981e205",
+        "signature": "c4c03cf65951d980ba618ae9601d10438730803fc9c8a1f7b34af8739981e205",
         "affectsGlobalScope": true
       },
       "../../node_modules/form-data/index.d.ts": {
@@ -1420,6 +1430,21 @@
         "version": "3169db033165677f1d414baf0c82ba27801089ca1b66d97af464512a47df31b5",
         "signature": "3169db033165677f1d414baf0c82ba27801089ca1b66d97af464512a47df31b5",
         "affectsGlobalScope": false
+      },
+      "../../node_modules/@sinonjs/fake-timers/types/fake-timers-src.d.ts": {
+        "version": "2ec90a33a922779199b6d91a27535b8829635a40dc87ee578ee0a15cf5c5c2ec",
+        "signature": "2ec90a33a922779199b6d91a27535b8829635a40dc87ee578ee0a15cf5c5c2ec",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/sinon/index.d.ts": {
+        "version": "fc8a86547dc1da127bad3a5c71137b9e8bb9de3c91df12869dd52e3ff2346e61",
+        "signature": "fc8a86547dc1da127bad3a5c71137b9e8bb9de3c91df12869dd52e3ff2346e61",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/sinon-chai/index.d.ts": {
+        "version": "b98f6185455945922c7cfdad772ec1c46e5c169a2d71aca6530e041f77665f03",
+        "signature": "b98f6185455945922c7cfdad772ec1c46e5c169a2d71aca6530e041f77665f03",
+        "affectsGlobalScope": true
       },
       "../../node_modules/@types/source-list-map/index.d.ts": {
         "version": "67fc055eb86a0632e2e072838f889ffe1754083cb13c8c80a06a7d895d877aae",
@@ -1548,7 +1573,7 @@
       }
     },
     "options": {
-      "target": 4,
+      "target": 2,
       "module": 99,
       "moduleResolution": 2,
       "lib": [
@@ -1588,6 +1613,7 @@
       "esModuleInterop": true,
       "noEmit": true,
       "isolatedModules": true,
+      "watch": true,
       "configFilePath": "./tsconfig.json"
     },
     "referencedMap": {
@@ -1879,6 +1905,9 @@
         "../../node_modules/@types/connect/index.d.ts",
         "../../node_modules/@types/node/http.d.ts",
         "../../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/@types/chai-dom/index.d.ts": [
+        "../../node_modules/@types/chai/index.d.ts"
       ],
       "../../node_modules/@types/co-body/index.d.ts": [
         "../../node_modules/@types/node/http.d.ts",
@@ -2236,6 +2265,13 @@
         "../../node_modules/@types/mime/index.d.ts",
         "../../node_modules/@types/node/http.d.ts",
         "../../node_modules/@types/node/index.d.ts"
+      ],
+      "../../node_modules/@types/sinon-chai/index.d.ts": [
+        "../../node_modules/@types/chai/index.d.ts",
+        "../../node_modules/@types/sinon/index.d.ts"
+      ],
+      "../../node_modules/@types/sinon/index.d.ts": [
+        "../../node_modules/@sinonjs/fake-timers/types/fake-timers-src.d.ts"
       ],
       "../../node_modules/@types/uglify-js/index.d.ts": [
         "../../node_modules/source-map/source-map.d.ts"
@@ -2829,6 +2865,9 @@
         "../../node_modules/@types/node/http.d.ts",
         "../../node_modules/@types/node/index.d.ts"
       ],
+      "../../node_modules/@types/chai-dom/index.d.ts": [
+        "../../node_modules/@types/chai/index.d.ts"
+      ],
       "../../node_modules/@types/co-body/index.d.ts": [
         "../../node_modules/@types/node/http.d.ts",
         "../../node_modules/@types/node/index.d.ts",
@@ -3186,6 +3225,13 @@
         "../../node_modules/@types/node/http.d.ts",
         "../../node_modules/@types/node/index.d.ts"
       ],
+      "../../node_modules/@types/sinon-chai/index.d.ts": [
+        "../../node_modules/@types/chai/index.d.ts",
+        "../../node_modules/@types/sinon/index.d.ts"
+      ],
+      "../../node_modules/@types/sinon/index.d.ts": [
+        "../../node_modules/@sinonjs/fake-timers/types/fake-timers-src.d.ts"
+      ],
       "../../node_modules/@types/uglify-js/index.d.ts": [
         "../../node_modules/source-map/source-map.d.ts"
       ],
@@ -3483,6 +3529,7 @@
       "../../node_modules/@emotion/styled/types/index.d.ts",
       "../../node_modules/@emotion/stylis/types/index.d.ts",
       "../../node_modules/@emotion/utils/types/index.d.ts",
+      "../../node_modules/@sinonjs/fake-timers/types/fake-timers-src.d.ts",
       "../../node_modules/@storybook/addons/dist/ts3.9/hooks.d.ts",
       "../../node_modules/@storybook/addons/dist/ts3.9/index.d.ts",
       "../../node_modules/@storybook/addons/dist/ts3.9/make-decorator.d.ts",
@@ -3546,6 +3593,8 @@
       "../../node_modules/@types/babel__traverse/index.d.ts",
       "../../node_modules/@types/body-parser/index.d.ts",
       "../../node_modules/@types/braces/index.d.ts",
+      "../../node_modules/@types/chai-dom/index.d.ts",
+      "../../node_modules/@types/chai/index.d.ts",
       "../../node_modules/@types/co-body/index.d.ts",
       "../../node_modules/@types/color-convert/conversions.d.ts",
       "../../node_modules/@types/color-convert/index.d.ts",
@@ -3654,6 +3703,8 @@
       "../../node_modules/@types/scheduler/index.d.ts",
       "../../node_modules/@types/scheduler/tracing.d.ts",
       "../../node_modules/@types/serve-static/index.d.ts",
+      "../../node_modules/@types/sinon-chai/index.d.ts",
+      "../../node_modules/@types/sinon/index.d.ts",
       "../../node_modules/@types/source-list-map/index.d.ts",
       "../../node_modules/@types/stack-utils/index.d.ts",
       "../../node_modules/@types/tapable/index.d.ts",
@@ -3838,6 +3889,10 @@
       ],
       [
         "../../node_modules/@next/env/types/index.d.ts",
+        1
+      ],
+      [
+        "../../node_modules/@sinonjs/fake-timers/types/fake-timers-src.d.ts",
         1
       ],
       [
@@ -4090,6 +4145,14 @@
       ],
       [
         "../../node_modules/@types/braces/index.d.ts",
+        1
+      ],
+      [
+        "../../node_modules/@types/chai-dom/index.d.ts",
+        1
+      ],
+      [
+        "../../node_modules/@types/chai/index.d.ts",
         1
       ],
       [
@@ -4522,6 +4585,14 @@
       ],
       [
         "../../node_modules/@types/serve-static/index.d.ts",
+        1
+      ],
+      [
+        "../../node_modules/@types/sinon-chai/index.d.ts",
+        1
+      ],
+      [
+        "../../node_modules/@types/sinon/index.d.ts",
         1
       ],
       [

@@ -4,3 +4,6 @@ docs/.docusaurus
 docs/build
 
 node_modules
+
+packages/**/lib
+packages/**/lib-esm

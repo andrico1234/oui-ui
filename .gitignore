@@ -1,2 +1,4 @@
 node_modules/
 .eslintcache
+packages/**/lib
+packages/**/lib-esm

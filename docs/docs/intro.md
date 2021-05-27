@@ -4,13 +4,13 @@ sidebar_position: 1
 
 # Tutorial Intro
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Welcome to the unofficial open ui web components.
 
 ## Getting Started
 
-Get started by **creating a new site**.
+Get started by downloading the components that you need.
 
-Or **try Docusaurus immediately** with **[new.docusaurus.io](https://new.docusaurus.io)**.
+Or use unpkg, I need to compile to UMD build.
 
 ## Generate a new site
 

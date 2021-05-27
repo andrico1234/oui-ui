@@ -5,7 +5,10 @@
       "path": "./packages/react"
     },
     {
-      "path": "./packages/checkbox"
+      "path": "./packages/checkbox/tsconfig.cjs.json"
+    },
+    {
+      "path": "./packages/checkbox/tsconfig.esm.json"
     },
   ]
 }
