@@ -5,5 +5,4 @@ docs/build
 
 node_modules
 
-packages/**/lib
-packages/**/lib-esm
+packages/**/lib*

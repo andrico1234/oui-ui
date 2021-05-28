@@ -24,4 +24,13 @@ module.exports = {
         '@typescript-eslint/no-non-null-assertion': 'off', // temp
         '@typescript-eslint/ban-types': 'off', // temp
     },
+
+    overrides: [
+        {
+            files: ['scripts/*.js'],
+            rules: {
+                '@typescript-eslint/no-var-requires': 'off',
+            },
+        },
+    ],
 }
