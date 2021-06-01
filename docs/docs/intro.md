@@ -1,5 +1,7 @@
 ---
 sidebar_position: 1
+id: intro
+slug: /
 ---
 
 # Tutorial Intro
@@ -10,7 +12,9 @@ Welcome to the unofficial open ui web components.
 
 Get started by downloading the components that you need.
 
-Or use unpkg, I need to compile to UMD build.
+If you want to test out in the browser you can use unpkg
+
+Or install via nyarn if you'd like to develop in a node environment
 
 ## Generate a new site
 

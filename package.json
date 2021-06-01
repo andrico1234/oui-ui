@@ -1,7 +1,9 @@
 {
+    "name": "@oui-ui/root",
     "private": true,
     "workspaces": [
-        "packages/*"
+        "packages/*",
+        "docs"
     ],
     "scripts": {
         "build": "cd ./docs && yarn build",

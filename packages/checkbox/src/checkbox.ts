@@ -1,59 +1,98 @@
-const checkboxTemplate = document.createElement('template');
+const checkboxTemplate = document.createElement('template')
 
 checkboxTemplate.innerHTML = `
     <style>
       :host {
        height: 24px;
        width: 24px;
+       contain: content;
+      }
+
+      :host([disabled=true]) {
+        opacity: 0.5;
       }
     </style>
-    <h1>Hey there</h1>
-  `;
+    <label part="label">
+        <slot name="label"></slot>
+    </label>
+    <div part="indicator">
+        <slot name="indicator"></slot>
+    </div>
+  `
 
 export class Checkbox extends HTMLElement {
-  get disabled() {
-    return this.hasAttribute('disabled');
-  }
-
-  set disabled(val) {
-    // Reflect the value of `disabled` as an attribute.
-    if (val) {
-      this.setAttribute('disabled', '');
-    } else {
-      this.removeAttribute('disabled');
+    static get observedAttributes() {
+        return ['checked', 'disabled']
     }
-  }
 
-  constructor() {
-    super();
-
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot?.appendChild(checkboxTemplate.content.cloneNode(true));
-  }
-
-  click() {
-    // Don't toggle the drawer if it's disabled.
-    if (this.disabled) {
-      return;
+    get disabled() {
+        return this.hasAttribute('disabled')
     }
-  }
 
-  connectedCallback() {
-    console.log('the component has loaded fam');
+    set disabled(val) {
+        console.log('heyyyyy', val)
+        // Reflect the value of `disabled` as an attribute.
+        if (val) {
+            this.setAttribute('disabled', '')
+        } else {
+            this.removeAttribute('disabled')
+        }
+    }
 
-    this.addEventListener('click', this.click);
-  }
+    get checked() {
+        return this.hasAttribute('checked')
+    }
 
-  disconnectedCallback() {
-    console.log('the component has been destroyed fam');
+    set checked(val) {
+        if (val) {
+            this.setAttribute('checked', '')
+        } else {
+            this.removeAttribute('checked')
+        }
+    }
 
-    this.removeEventListener('click', this.click);
-  }
+    get indeterminate() {
+        return this.hasAttribute('indeterminate')
+    }
 
-  attributeChangedCallback(name: string, oldVal: string, newVal: string) {
-    console.log('heya', name);
-    console.log(oldVal, newVal);
-  }
+    set indeterminate(val) {
+        if (val) {
+            this.setAttribute('indeterminate', '')
+        } else {
+            this.removeAttribute('indeterminate')
+        }
+    }
+
+    constructor() {
+        super()
+
+        this.attachShadow({ mode: 'open' })
+        this.shadowRoot?.appendChild(checkboxTemplate.content.cloneNode(true))
+    }
+
+    click() {
+        // Don't toggle the drawer if it's disabled.
+        if (this.disabled) {
+            return
+        }
+    }
+
+    connectedCallback() {
+        console.log('the component has loaded fam')
+
+        this.addEventListener('click', this.click)
+    }
+
+    disconnectedCallback() {
+        console.log('the component has been destroyed fam')
+
+        this.removeEventListener('click', this.click)
+    }
+
+    attributeChangedCallback(name: string, oldVal: string, newVal: string) {
+        console.log('heya', name)
+        console.log(oldVal, newVal)
+    }
 }
 
-window.customElements.define('ou-checkbox', Checkbox);
+window.customElements.define('oui-checkbox', Checkbox)
