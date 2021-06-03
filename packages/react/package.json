@@ -2,7 +2,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "main": "dist/index.js",
-  "name": "@openui/react",
+  "name": "@oui-ui/react",
   "author": "andrico",
   "module": "dist/react.esm.js",
   "typings": "dist/index.d.ts",

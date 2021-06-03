@@ -8,7 +8,7 @@
     "scripts": {
         "build": "cd ./docs && yarn build",
         "bundle": "tsc -b ./tsconfig.packages.json && cd ./scripts && node ./bundleUmd.js && cd ../",
-        "commit": "commit",
+        "commit": "git-cz",
         "custom-elements-manifest": "echo 'This will build the custom elements manifest' && exit 1",
         "debug": "web-test-runner --watch packages/**/*.test.js --node-resolve",
         "develop": "tsc -b ./tsconfig.packages.json --watch",
@@ -27,11 +27,13 @@
     "devDependencies": {
         "@commitlint/cli": "^12.1.4",
         "@commitlint/config-conventional": "^12.1.4",
-        "@commitlint/prompt-cli": "^12.1.4",
+        "@commitlint/cz-commitlint": "^12.1.4",
+        "@commitlint/prompt": "^12.1.4",
         "@open-wc/testing": "^2.5.33",
         "@typescript-eslint/eslint-plugin": "^4.22.0",
         "@typescript-eslint/parser": "^4.22.0",
         "@web/test-runner": "^0.13.5",
+        "commitizen": "^4.2.4",
         "eslint": "~7.25.0",
         "eslint-plugin-jsx-a11y": "6.4.1",
         "eslint-plugin-react": "^7.23.2",
@@ -44,5 +46,10 @@
     "lint-staged": {
         "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
         "*.{js,jsx,ts,tsx,css,md}": "prettier --write"
+    },
+    "config": {
+        "commitizen": {
+            "path": "@commitlint/cz-commitlint"
+        }
     }
 }

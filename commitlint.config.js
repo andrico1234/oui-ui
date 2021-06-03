@@ -1,5 +1,8 @@
+// helper function for scopes
+const getPackages = require('./scripts/getPackages')
+
 module.exports = {
-    extends: ['@commitlint/config-conventional'],
+    utils: { getPackages },
     parserPreset: 'conventional-changelog-conventionalcommits',
     rules: {
         'body-leading-blank': [1, 'always'],
@@ -16,6 +19,12 @@ module.exports = {
         'subject-full-stop': [2, 'never', '.'],
         'type-case': [2, 'always', 'lower-case'],
         'type-empty': [2, 'never'],
+        'scope-enum': (ctx) =>
+            getPackages(ctx).then((packages) => [
+                2,
+                'always',
+                ['docs', 'core', ...packages],
+            ]),
         'type-enum': [
             2,
             'always',
@@ -35,6 +44,14 @@ module.exports = {
         ],
     },
     prompt: {
+        messages: {
+            skip: ':skip',
+            max: 'upper %d chars',
+            min: '%d chars at least',
+            emptyWarning: 'can not be empty',
+            upperLimitWarning: 'over limit',
+            lowerLimitWarning: 'below limit',
+        },
         questions: {
             type: {
                 description:
