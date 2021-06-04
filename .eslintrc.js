@@ -4,11 +4,7 @@ module.exports = {
         es6: true,
         node: true,
     },
-    extends: [
-        'plugin:@typescript-eslint/recommended',
-        'plugin:react/recommended',
-        'plugin:react-hooks/recommended',
-    ],
+    extends: ['plugin:@typescript-eslint/recommended'],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
@@ -17,10 +13,8 @@ module.exports = {
         ecmaVersion: 2018,
         sourceType: 'module',
     },
-    plugins: ['jsx-a11y'],
     rules: {
         '@typescript-eslint/explicit-module-boundary-types': 'off',
-        'react/prop-types': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off', // temp
         '@typescript-eslint/ban-types': 'off', // temp
     },

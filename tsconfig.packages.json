@@ -2,9 +2,6 @@
   "files": [],
   "references": [
     {
-      "path": "./packages/react"
-    },
-    {
       "path": "./packages/checkbox/tsconfig.cjs.json"
     },
     {

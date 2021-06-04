@@ -10,7 +10,7 @@ const glob = require('glob')
             await build({
                 root: path.resolve(__dirname, root),
                 build: {
-                    outDir: 'lib-umd',
+                    outDir: 'umd',
                     lib: {
                         entry: './lib',
                         name: 'checkbox',

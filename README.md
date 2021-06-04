@@ -1,21 +1,14 @@
-Not affiliated with the OpenUI here.
+# OpenUI UI (oui-ui)
 
-To run the examples locally run
+Welcome to the unofficial OpenUI UI library, or oui-ui for short.
 
-`http-server -c-1` and then navigate to the chosen example like `localhost:8080/example/checkbox.html`
+A set of web components that adhere to the research and proposals conducting by the OpenUI working group. According to the [OpenUI site](https://open-ui.org/):
 
-To run the web components in react...
+The purpose of Open UI to the web platform is to allow web developers to style and extend built-in web UI controls, such as `<select>` dropdowns, checkboxes, radio buttons, and date/color pickers.
 
-To use the react components...
+Long term, we hope that Open UI will establish a standard process for developing high-quality UI controls suitable for addition to the web platform.
 
-You can view the documentation here..
-
-or run `yarn build` to build them locally.
-
-# Repo details
-
-Yarn workspaces monorepo.
-Each component will be its own package
+Oui-ui is designed to be used anywhere on the web, regardless of whether you choose to use a framework like React.
 
 ## Building
 
