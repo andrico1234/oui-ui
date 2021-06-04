@@ -4,36 +4,24 @@ id: intro
 slug: /
 ---
 
-# Tutorial Intro
+# OpenUI UI (oui-ui)
 
-Welcome to the unofficial open ui web components.
+Welcome to the unofficial OpenUI UI library, or oui-ui for short.
 
-## Getting Started
+A set of web components that adhere to the research and proposals conducting by the OpenUI working group. According to the [OpenUI site](https://open-ui.org/):
 
-Get started by downloading the components that you need.
+The purpose of Open UI to the web platform is to allow web developers to style and extend built-in web UI controls, such as `<select>` dropdowns, checkboxes, radio buttons, and date/color pickers.
 
-If you want to test out in the browser you can use unpkg
+Long term, we hope that Open UI will establish a standard process for developing high-quality UI controls suitable for addition to the web platform.
 
-Or install via nyarn if you'd like to develop in a node environment
+Oui-ui is designed to be used anywhere on the web, regardless of whether you choose to use a framework like React.
 
-## Generate a new site
+## Installation
 
-Generate a new Docusaurus site using the **classic template**:
+Each web component resides in its own package. If you want to get started using the checkbox, you can either install via npm/yarn
 
-```shell
-npx @docusaurus/init@latest init my-website classic
-```
+`npm install @oui-ui/checkbox`
 
-## Start your site
+or directly into a script tag via CDN
 
-Run the development server:
-
-```shell
-cd my-website
-
-npx docusaurus start
-```
-
-Your site starts at `http://localhost:3000`.
-
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and display your changes.
+`<script src="https://unpkg.com/@oui-ui/checkbox/umd/checkbox.umd.js"></script>`

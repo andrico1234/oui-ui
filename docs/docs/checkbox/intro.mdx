@@ -16,10 +16,8 @@ export function TestComponent() {
         <div>
             <oui-checkbox disabled={disabled}>
                 <p slot="label">Hey there</p>
-                {/* what kind of component would fit in here? */}
             </oui-checkbox>
             <button
-                className="button"
                 onClick={() => {
                     setDisabledState(!disabled)
                 }}
