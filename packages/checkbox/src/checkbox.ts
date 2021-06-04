@@ -94,5 +94,3 @@ export class Checkbox extends HTMLElement {
         console.log(oldVal, newVal)
     }
 }
-
-window.customElements.define('oui-checkbox', Checkbox)

@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "license": "MIT",
     "main": "lib/index.js",
-    "module": "esm/index.js",
+    "module": "lib/index.js",
     "typings": "lib/index.d.ts",
     "files": [
         "lib/*"

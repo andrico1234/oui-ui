@@ -1,3 +1,3 @@
-import { Checkbox } from './src/checkbox'
+import { Checkbox } from './src/Checkbox.js'
 
-export default Checkbox
+customElements.define('oui-checkbox', Checkbox)

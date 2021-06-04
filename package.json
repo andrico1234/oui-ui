@@ -6,18 +6,18 @@
         "docs"
     ],
     "scripts": {
-        "build": "cd ./docs && yarn build",
-        "bundle": "tsc -b ./tsconfig.packages.json && cd ./scripts && node ./bundleUmd.js && cd ../",
+        "build": "tsc -b ./tsconfig.packages.json",
         "commit": "git-cz",
         "custom-elements-manifest": "echo 'This will build the custom elements manifest' && exit 1",
         "debug": "web-test-runner --watch packages/**/*.test.js --node-resolve",
         "develop": "tsc -b ./tsconfig.packages.json --watch",
+        "docs:build": "yarn workspace docs build",
+        "docs:serve": "yarn docs:build && yarn workspace docs serve",
+        "docs:start": "yarn workspace docs start",
         "lint": "run-p lint:*",
         "lint:eslint": "yarn eslint --fix .",
         "lint:prettier": "npx prettier --write packages/**",
         "publish": "echo 'This will publish the bundle' && exit 1",
-        "serve": "yarn build && cd ./docs && yarn serve",
-        "start": "cd ./docs && yarn start",
         "test": "web-test-runner packages/**/*.test.js --node-resolve",
         "prepare": "husky install"
     },

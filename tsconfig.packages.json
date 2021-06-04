@@ -2,10 +2,7 @@
   "files": [],
   "references": [
     {
-      "path": "./packages/checkbox/tsconfig.cjs.json"
-    },
-    {
-      "path": "./packages/checkbox/tsconfig.esm.json"
+      "path": "./packages/checkbox/tsconfig.json"
     },
   ]
 }
