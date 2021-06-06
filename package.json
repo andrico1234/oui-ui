@@ -5,9 +5,19 @@
         "packages/*",
         "docs"
     ],
+    "description": "Welcome to the unofficial OpenUI UI library, or oui-ui for short.",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/andrico1234/open-ui-react.git"
+    },
+    "author": "@andricokaroulla",
+    "bugs": {
+        "url": "https://github.com/andrico1234/open-ui-react/issues"
+    },
+    "homepage": "https://github.com/andrico1234/open-ui-react#readme",
     "scripts": {
         "build": "tsc -b ./tsconfig.packages.json",
-        "changeset": "yarn changeset",
+        "create-changeset": "yarn changeset",
         "commit": "git-cz",
         "custom-elements-manifest": "echo 'This will build the custom elements manifest' && exit 1",
         "debug": "web-test-runner --watch packages/**/*.test.js --node-resolve",
@@ -19,9 +29,9 @@
         "lint": "run-p lint:*",
         "lint:eslint": "yarn eslint --fix .",
         "lint:prettier": "npx prettier --write packages/**",
-        "publish": "changeset publish",
         "test": "web-test-runner packages/**/*.test.js --node-resolve",
         "prepare": "husky install",
+        "publish-changes": "changeset publish --otp",
         "version-changes": "changeset version"
     },
     "devDependencies": {

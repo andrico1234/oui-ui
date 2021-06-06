@@ -1,5 +1,8 @@
 {
     "name": "@oui-ui/checkbox",
+    "publishConfig": {
+        "access": "public"
+    },
     "version": "0.1.1",
     "license": "MIT",
     "main": "lib/index.js",
