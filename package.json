@@ -7,6 +7,7 @@
     ],
     "scripts": {
         "build": "tsc -b ./tsconfig.packages.json",
+        "changeset": "yarn changeset",
         "commit": "git-cz",
         "custom-elements-manifest": "echo 'This will build the custom elements manifest' && exit 1",
         "debug": "web-test-runner --watch packages/**/*.test.js --node-resolve",
@@ -18,9 +19,10 @@
         "lint": "run-p lint:*",
         "lint:eslint": "yarn eslint --fix .",
         "lint:prettier": "npx prettier --write packages/**",
-        "publish": "echo 'This will publish the bundle' && exit 1",
+        "publish": "changeset publish",
         "test": "web-test-runner packages/**/*.test.js --node-resolve",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "version-changes": "yarn changeset version"
     },
     "devDependencies": {
         "@changesets/cli": "^2.16.0",
