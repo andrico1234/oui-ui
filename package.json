@@ -22,7 +22,7 @@
         "publish": "changeset publish",
         "test": "web-test-runner packages/**/*.test.js --node-resolve",
         "prepare": "husky install",
-        "version-changes": "yarn changeset version"
+        "version-changes": "changeset version"
     },
     "devDependencies": {
         "@changesets/cli": "^2.16.0",
