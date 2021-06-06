@@ -23,7 +23,7 @@ module.exports = {
             getPackages(ctx).then((packages) => [
                 2,
                 'always',
-                ['docs', 'core', ...packages],
+                ['docs', 'core', 'changeset', ...packages],
             ]),
         'type-enum': [
             2,
