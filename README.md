@@ -18,6 +18,10 @@ Uses incremental builds to manage typescript monorepo:
 
 ## Developing
 
+Viewing the documentation.
+
+if you get an error aboutthe `.js` entry point not being found, it's worth cleaning the docs cache and running the docs script.
+
 ## Testing
 
 ## Releasing

@@ -12,6 +12,7 @@
         "debug": "web-test-runner --watch packages/**/*.test.js --node-resolve",
         "develop": "tsc -b ./tsconfig.packages.json --watch",
         "docs:build": "yarn workspace docs build",
+        "docs:clean": "yarn workspace docs clear",
         "docs:serve": "yarn docs:build && yarn workspace docs serve",
         "docs:start": "yarn workspace docs start",
         "lint": "run-p lint:*",

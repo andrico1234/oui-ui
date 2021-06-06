@@ -28,3 +28,9 @@
     padding: 10px;
     color: black;
 }
+
+.indicator {
+    background: red;
+    height: 100%;
+    width: 100%;
+}

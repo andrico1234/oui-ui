@@ -15,6 +15,7 @@ export function TestComponent() {
     return (
         <div>
             <oui-checkbox disabled={disabled}>
+                <div slot="indicator" className="indicator" />
                 <p slot="label">Hey there</p>
             </oui-checkbox>
             <button

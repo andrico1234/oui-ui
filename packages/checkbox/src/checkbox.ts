@@ -1,38 +1,67 @@
 const checkboxTemplate = document.createElement('template')
 
+function hasOwnProperty<X extends {}, Y extends PropertyKey>(
+    obj: X,
+    prop: Y
+): obj is X & Record<Y, unknown> {
+    return obj.hasOwnProperty(prop)
+}
+
 checkboxTemplate.innerHTML = `
     <style>
-      :host {
-       height: 24px;
-       width: 24px;
-       contain: content;
-      }
+        :host {
+            display: flex;
+            contain: content;
+            cursor: pointer;
+            width: fit-content;
+        }
+        
+        :host([disabled=true]) {
+            cursor: default;
+        }
+        
+        :host([disabled=true]) #indicator {
+            opacity: 0.5;
+        }
 
-      :host([disabled=true]) {
-        opacity: 0.5;
-      }
+        :host([disabled=false]) slot[name="label"]::slotted(*) {
+            cursor: pointer;
+        }
+
+        :host([aria-checked=false]) slot[name="indicator"]::slotted(*) {
+            display: none;
+        }
+
+        #indicator {
+            border: 1px solid red;
+            border-radius: 2px;
+            height: 24px;
+            width: 24px;
+            margin-right: 8px;
+        }
     </style>
-    <label part="label">
-        <slot name="label"></slot>
-    </label>
-    <div part="indicator">
+
+    <div id="indicator" part="indicator">
         <slot name="indicator"></slot>
     </div>
-  `
+    <label id="label" part="label">
+        <slot name="label"></slot>
+    </label>
+`
 
 export class Checkbox extends HTMLElement {
     static get observedAttributes() {
-        return ['checked', 'disabled']
+        return ['disabled', 'checked', 'intermediate']
     }
 
     get disabled() {
-        return this.hasAttribute('disabled')
+        return this.getAttribute('disabled')
     }
 
     set disabled(val) {
-        console.log('heyyyyy', val)
-        // Reflect the value of `disabled` as an attribute.
-        if (val) {
+        const isDisabled = Boolean(val)
+
+        if (isDisabled) {
             this.setAttribute('disabled', '')
         } else {
             this.removeAttribute('disabled')
@@ -44,22 +73,12 @@ export class Checkbox extends HTMLElement {
     }
 
     set checked(val) {
-        if (val) {
+        const isChecked = Boolean(val)
+
+        if (isChecked) {
             this.setAttribute('checked', '')
         } else {
             this.removeAttribute('checked')
-        }
-    }
-
-    get indeterminate() {
-        return this.hasAttribute('indeterminate')
-    }
-
-    set indeterminate(val) {
-        if (val) {
-            this.setAttribute('indeterminate', '')
-        } else {
-            this.removeAttribute('indeterminate')
         }
     }
 
@@ -68,29 +87,46 @@ export class Checkbox extends HTMLElement {
 
         this.attachShadow({ mode: 'open' })
         this.shadowRoot?.appendChild(checkboxTemplate.content.cloneNode(true))
-    }
-
-    click() {
-        // Don't toggle the drawer if it's disabled.
-        if (this.disabled) {
-            return
-        }
+        this.addEventListener('mouseup', this._click)
     }
 
     connectedCallback() {
-        console.log('the component has loaded fam')
-
-        this.addEventListener('click', this.click)
+        this.setAttribute('role', 'checkbox')
+        this.setAttribute('aria-checked', 'false')
+        this._upgradeProperty('checked')
+        this._upgradeProperty('disabled')
     }
 
     disconnectedCallback() {
         console.log('the component has been destroyed fam')
-
-        this.removeEventListener('click', this.click)
     }
 
-    attributeChangedCallback(name: string, oldVal: string, newVal: string) {
-        console.log('heya', name)
-        console.log(oldVal, newVal)
+    attributeChangedCallback(name: string, _oldVal: string, newVal: string) {
+        console.log('name', name, newVal)
+        const hasVal = newVal !== null
+        switch (name) {
+            case 'checked':
+                this.setAttribute('aria-checked', `${hasVal}`)
+        }
+    }
+
+    _click() {
+        const isDisabled = this.disabled === 'true'
+
+        if (isDisabled) {
+            return
+        }
+
+        this.checked = !this.checked
+    }
+
+    _upgradeProperty(prop: string) {
+        if (hasOwnProperty(this, prop)) {
+            const value = this[prop]
+            delete this[prop]
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            this[prop] = value
+        }
     }
 }
