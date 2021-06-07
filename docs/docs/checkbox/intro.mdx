@@ -5,30 +5,10 @@ label: Intro
 
 # Intro
 
-import { useState } from 'react'
-import '@oui-ui/checkbox'
+import Checkbox from './checkbox.jsx'
 
 ## Checkbox
 
-export function TestComponent() {
-    const [disabled, setDisabledState] = useState(false)
-    return (
-        <div>
-            <oui-checkbox disabled={disabled}>
-                <div slot="indicator" className="indicator" />
-                <p slot="label">Hey there</p>
-            </oui-checkbox>
-            <button
-                onClick={() => {
-                    setDisabledState(!disabled)
-                }}
-            >
-                Disable
-            </button>
-        </div>
-    )
-}
-
-<TestComponent />
+<Checkbox />
 
 <!-- How do I manage attributes, and pass them down to templates? -->
