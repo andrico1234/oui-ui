@@ -1,19 +1,19 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-    title: 'My Site',
-    tagline: 'Dinosaurs are cool',
+    title: 'OpenUI UI',
+    tagline: 'The unofficial OpenUI UI (oui-ui) library',
     url: 'https://your-docusaurus-test-site.com',
     baseUrl: '/',
     onBrokenLinks: 'ignore',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
-    organizationName: 'facebook', // Usually your GitHub org/user name.
-    projectName: 'docusaurus', // Usually your repo name.
+    organizationName: 'andrico1234',
+    projectName: 'oui-ui',
     themeConfig: {
         navbar: {
-            title: 'My Site',
+            title: 'OpenUI UI',
             logo: {
-                alt: 'My Site Logo',
+                alt: 'OpenUI UI Logo',
                 src: 'img/logo.svg',
             },
             items: [
@@ -44,28 +44,15 @@ module.exports = {
                     ],
                 },
                 {
-                    title: 'Community',
+                    title: 'Links',
                     items: [
                         {
-                            label: 'Stack Overflow',
-                            href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-                        },
-                        {
-                            label: 'Discord',
-                            href: 'https://discordapp.com/invite/docusaurus',
+                            label: 'Official OpenUI Website',
+                            href: 'https://open-ui.org/',
                         },
                         {
                             label: 'Twitter',
-                            href: 'https://twitter.com/docusaurus',
-                        },
-                    ],
-                },
-                {
-                    title: 'More',
-                    items: [
-                        {
-                            label: 'GitHub',
-                            href: 'https://github.com/facebook/docusaurus',
+                            href: 'https://twitter.com/AndricoKaroulla',
                         },
                     ],
                 },
@@ -80,9 +67,7 @@ module.exports = {
                 docs: {
                     sidebarPath: require.resolve('./sidebars.js'),
                     routeBasePath: '/',
-                    // Please change this to your repo.
-                    editUrl:
-                        'https://github.com/facebook/docusaurus/edit/master/website/',
+                    editUrl: 'https://github.com/andrico1234/oui-ui',
                 },
 
                 theme: {

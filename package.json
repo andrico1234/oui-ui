@@ -8,13 +8,14 @@
     "description": "Welcome to the unofficial OpenUI UI library, or oui-ui for short.",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/andrico1234/open-ui-react.git"
+        "url": "git+https://github.com/andrico1234/oui-ui.git"
     },
+    "license": "MIT",
     "author": "@andricokaroulla",
     "bugs": {
-        "url": "https://github.com/andrico1234/open-ui-react/issues"
+        "url": "https://github.com/andrico1234/oui-ui/issues"
     },
-    "homepage": "https://github.com/andrico1234/open-ui-react#readme",
+    "homepage": "https://github.com/andrico1234/oui-ui#readme",
     "scripts": {
         "build": "tsc -b ./tsconfig.packages.json",
         "create-changeset": "yarn changeset",
@@ -51,8 +52,7 @@
         "husky": "^6.0.0",
         "npm-run-all": "^4.1.5",
         "prettier": "2.3.0",
-        "typescript": "^4.3.2",
-        "vite": "^2.3.4"
+        "typescript": "^4.3.2"
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
