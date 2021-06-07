@@ -51,7 +51,9 @@ Currently, oui-ui only exports a single checkbox component.
 | ------------------------------------------------------------------------------------- |
 | [`<oui-checkbox>`](https://github.com/andrico1234/oui-ui/tree/main/packages/checkbox) |
 
-## Running oui-ui locally
+## Development
+
+### Running oui-ui locally
 
 Being by forking the repo. Whilst in the root directory:
 
@@ -60,16 +62,17 @@ Being by forking the repo. Whilst in the root directory:
 -   ensure the tests are passing by running `yarn test`.
 -   kick off the dev server by running `yarn develop`.
 -   run the docs site locally using `yarn docs:start`.
--   jump into whichever you
+-   jump into whichever you package you want to change
+-   view your changes in your locally running docs
 
-## Development
+### Tech stack
 
 oui-ui uses:
 
--   💪🏾 [TypeScript](https://www.typescriptlang.org/) as the primary language to keep things strong
--   📝 [Changesets](https://github.com/atlassian/changesets) to manage changelogs, versioning, and publishing
+-   💪🏾 [TypeScript](https://www.typescriptlang.org/) as the primary language to keep things strong(ly typed).
+-   📝 [Changesets](https://github.com/atlassian/changesets) to manage changelogs, versioning, and publishing.
 -   🛠 [Web Test Runner](https://github.com/modernweb-dev/web) for testing
--   🧼 [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) for keeping the code so clean like a money machine
--   🗂 [Docusaurus](https://docusaurus.io/) for handling our documentation
--   🤖 [Commitizen](http://commitizen.github.io/cz-cli/) + [Commitlint](https://commitlint.js.org/#/) for consistent commits
--   🙋🏽‍♂️ [Andrico](https://twitter.com/AndricoKaroulla) for keeping things ticking along
+-   🧼 [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) for keeping code clean like a money machine.
+-   🗂 [Docusaurus](https://docusaurus.io/) for handling our documentation.
+-   🤖 [Commitizen](http://commitizen.github.io/cz-cli/) + [Commitlint](https://commitlint.js.org/#/) for consistent commits.
+-   🙋🏽‍♂️ [Andrico](https://twitter.com/AndricoKaroulla) for keeping things ticking along.

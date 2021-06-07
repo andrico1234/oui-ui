@@ -97,13 +97,9 @@ export class Checkbox extends HTMLElement {
         this._upgradeProperty('disabled')
     }
 
-    disconnectedCallback() {
-        console.log('the component has been destroyed fam')
-    }
-
     attributeChangedCallback(name: string, _oldVal: string, newVal: string) {
-        console.log('name', name, newVal)
         const hasVal = newVal !== null
+
         switch (name) {
             case 'checked':
                 this.setAttribute('aria-checked', `${hasVal}`)
