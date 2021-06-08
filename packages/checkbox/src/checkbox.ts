@@ -55,7 +55,9 @@ export class Checkbox extends HTMLElement {
     }
 
     get disabled() {
-        return this.getAttribute('disabled')
+        if (this.getAttribute('disabled') === 'false') return false
+
+        return this.hasAttribute('disabled')
     }
 
     set disabled(val) {
@@ -69,6 +71,9 @@ export class Checkbox extends HTMLElement {
     }
 
     get checked() {
+        console.log(this.hasAttribute('checked'))
+        if (this.getAttribute('checked') === 'false') return false
+
         return this.hasAttribute('checked')
     }
 
@@ -107,7 +112,9 @@ export class Checkbox extends HTMLElement {
     }
 
     _click() {
-        const isDisabled = this.disabled === 'true'
+        const isDisabled = this.disabled
+
+        console.log(this.disabled)
 
         if (isDisabled) {
             return
