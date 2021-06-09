@@ -67,7 +67,8 @@ module.exports = {
                 docs: {
                     sidebarPath: require.resolve('./sidebars.js'),
                     routeBasePath: '/',
-                    editUrl: 'https://github.com/andrico1234/oui-ui',
+                    editUrl:
+                        'https://github.com/andrico1234/oui-ui/blob/main/docs',
                 },
 
                 theme: {

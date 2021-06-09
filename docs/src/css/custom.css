@@ -34,3 +34,18 @@
     height: 100%;
     width: 100%;
 }
+
+.indeterminate-indicator-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.indeterminate-indicator {
+    background: red;
+    border-radius: 2px;
+    height: 30%;
+    width: 65%;
+}

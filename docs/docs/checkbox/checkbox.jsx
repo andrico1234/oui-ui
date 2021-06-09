@@ -6,11 +6,18 @@ if (global.window) {
 
 function Checkbox() {
     const [disabled, setDisabledState] = useState(false)
+    const [indeterminate, setIndeterminate] = useState(false)
 
     return (
         <div>
-            <oui-checkbox disabled={disabled}>
-                <div slot="indicator" className="indicator" />
+            <oui-checkbox disabled={disabled} indeterminate={indeterminate}>
+                <div slot="checked-indicator" className="indicator"></div>
+                <div
+                    slot="indeterminate-indicator"
+                    className="indeterminate-indicator-wrapper"
+                >
+                    <div className="indeterminate-indicator"></div>
+                </div>
                 <p slot="label">Hey there</p>
             </oui-checkbox>
             <button
@@ -19,6 +26,13 @@ function Checkbox() {
                 }}
             >
                 Disable
+            </button>
+            <button
+                onClick={() => {
+                    setIndeterminate(!indeterminate)
+                }}
+            >
+                Indeterminate
             </button>
         </div>
     )

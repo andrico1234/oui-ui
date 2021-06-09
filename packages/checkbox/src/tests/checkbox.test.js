@@ -6,7 +6,7 @@ describe('<oui-checkbox>', () => {
     it('renders unchecked by default', async () => {
         const el = await fixture(html`
             <oui-checkbox>
-                <div slot="indicator" />
+                <div data-testid="checkbox" slot="checked-indicator"></div>
                 <p slot="label">Checkbox label</p>
             </oui-checkbox>
         `)
@@ -19,7 +19,7 @@ describe('<oui-checkbox>', () => {
     it('should check box on click', async () => {
         const el = await fixture(html`
             <oui-checkbox>
-                <div slot="indicator" />
+                <div data-testid="checkbox" slot="checked-indicator"></div>
                 <p slot="label">Checkbox label</p>
             </oui-checkbox>
         `)
@@ -33,7 +33,6 @@ describe('<oui-checkbox>', () => {
         expect(el.getAttribute('checked')).to.be.equal('')
         expect(el.getAttribute('aria-checked')).to.be.equal('true')
 
-        const newEvent = new Event('mouseup')
         el.dispatchEvent(event)
 
         expect(el.getAttribute('checked')).to.be.equal(null)
@@ -43,7 +42,25 @@ describe('<oui-checkbox>', () => {
     it('should not check box when disabled by default', async () => {
         const el = await fixture(html`
             <oui-checkbox disabled>
-                <div slot="indicator" />
+                <div slot="checked-indicator"></div>
+                <p slot="label">Checkbox label</p>
+            </oui-checkbox>
+        `)
+
+        expect(el.getAttribute('checked')).to.be.equal(null)
+        expect(el.getAttribute('disabled')).to.be.equal('')
+
+        const event = new Event('mouseup')
+        el.dispatchEvent(event)
+
+        expect(el.getAttribute('checked')).to.be.equal(null)
+        expect(el.getAttribute('aria-checked')).to.be.equal('false')
+    })
+
+    it('should display the correct element when in indeterminate state', async () => {
+        const el = await fixture(html`
+            <oui-checkbox>
+                <div slot="checked-indicator"></div>
                 <p slot="label">Checkbox label</p>
             </oui-checkbox>
         `)

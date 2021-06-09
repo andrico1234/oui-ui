@@ -1,7 +1,7 @@
 const fs = require('fs')
 const glob = require('glob')
 
-function getPackages(something) {
+function getPackages() {
     const promise = new Promise((res) => {
         glob(`${__dirname}/../packages/*/package.json`, function (er, paths) {
             const names = paths.map((pkgJsonPath) => {
