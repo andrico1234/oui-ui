@@ -92,7 +92,6 @@ export class Checkbox extends HTMLElement {
     }
 
     get checked() {
-        console.log(this.hasAttribute('checked'))
         if (this.getAttribute('checked') === 'false') return false
 
         return this.hasAttribute('checked')
@@ -118,9 +117,11 @@ export class Checkbox extends HTMLElement {
         const isIndeterminate = Boolean(val)
 
         if (isIndeterminate) {
-            this.setAttribute('indeterminate', '')
+            this.setAttribute('indeterminate', 'true')
+            this.setAttribute('aria-checked', 'mixed')
         } else {
-            this.removeAttribute('indeterminate')
+            this.setAttribute('indeterminate', 'false')
+            this.setAttribute('aria-checked', 'false')
         }
     }
 
@@ -145,6 +146,7 @@ export class Checkbox extends HTMLElement {
 
         switch (name) {
             case 'checked':
+                this.indeterminate = false
                 this.setAttribute('aria-checked', `${hasVal}`)
                 break
             case 'indeterminate':
