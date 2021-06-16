@@ -7,7 +7,7 @@ slug: /
 # OpenUI UI (oui-ui)
 
 <div align="center">
-<img width="300" src="../static/img/yui-speech.png" alt="image of Yui, the OpenUI UI mascot" ></img>
+<img width="300" src="/img/yui-speech.png" alt="image of Yui, the OpenUI UI mascot" ></img>
 </div>
 
 Welcome to the unofficial OpenUI UI library, or oui-ui for short.
