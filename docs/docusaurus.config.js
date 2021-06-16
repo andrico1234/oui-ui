@@ -14,7 +14,7 @@ module.exports = {
             title: 'OpenUI UI',
             logo: {
                 alt: 'OpenUI UI Logo',
-                src: 'img/logo.svg',
+                src: 'img/yui.png',
             },
             items: [
                 {

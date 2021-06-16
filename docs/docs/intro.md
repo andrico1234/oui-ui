@@ -6,9 +6,15 @@ slug: /
 
 # OpenUI UI (oui-ui)
 
+<div align="center">
+<img width="300" src="../static/img/yui-speech.png" alt="image of Yui, the OpenUI UI mascot" ></img>
+</div>
+
 Welcome to the unofficial OpenUI UI library, or oui-ui for short.
 
-A set of web components that adhere to the research and proposals conducting by the OpenUI working group. According to the [OpenUI site](https://open-ui.org/):
+Why the ridiculous name? oui-ui is a set of web components that adheres to the researcxh and proposals conducted by the OpenUI working group, hence the name **OpenUI UI**.
+
+For those unfamiliar with the OpenUI project, according to the [OpenUI site](https://open-ui.org/):
 
 > The purpose of Open UI to the web platform is to allow web developers to style and extend built-in web UI controls, such as `<select>` dropdowns, checkboxes, radio buttons, and date/color pickers.
 >
@@ -48,3 +54,11 @@ Each web component lives in its own package. Here's how you'd get started with a
     </body>
 </html>
 ```
+
+## Components
+
+Currently, oui-ui only exports a single checkbox component.
+
+| Component                                                                             |
+| ------------------------------------------------------------------------------------- |
+| [`<oui-checkbox>`](https://github.com/andrico1234/oui-ui/tree/main/packages/checkbox) |
