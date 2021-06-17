@@ -12,7 +12,7 @@ What's OpenUI? According to the [OpenUI site](https://open-ui.org/):
 >
 > Long term, we hope that Open UI will establish a standard process for developing high-quality UI controls suitable for addition to the web platform.
 
-So oui-ui is the implementation of these proposed UI controls, and as such, is designed to be used anywhere on the web, regardless of whether you choose to use a framework like React or Vue.
+oui-ui is the implementation of these proposed UI controls as web component library, and so can be used with HTML, or with a framework like React or Vue.
 
 ## Quick start
 
