@@ -29,21 +29,25 @@
     color: black;
 }
 
-.indicator {
-    background: red;
-    height: 100%;
-    width: 100%;
-}
-
-.indeterminate-indicator-wrapper {
-    width: 100%;
-    height: 100%;
+oui-checkbox::part(control) {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+    border-radius: 2px;
+    height: 24px;
+    width: 24px;
+    margin-right: 8px;
+    position: relative;
 }
 
-.indeterminate-indicator {
+oui-checkbox[checked]::part(indicator) {
+    background: red;
+    width: 100%;
+    height: 100%;
+}
+
+oui-checkbox[indeterminate='true']::part(indicator) {
     background: red;
     border-radius: 2px;
     height: 30%;

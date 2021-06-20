@@ -11,14 +11,8 @@ function Checkbox() {
     return (
         <div>
             <oui-checkbox disabled={disabled} indeterminate={indeterminate}>
-                <div slot="checked-indicator" className="indicator-wrapper">
-                    <div className="indicator"></div>
-                </div>
-                <div
-                    slot="indeterminate-indicator"
-                    className="indeterminate-indicator-wrapper"
-                >
-                    <div className="indeterminate-indicator"></div>
+                <div slot="control">
+                    <div slot="indicator"></div>
                 </div>
                 <p slot="label">Hey there</p>
             </oui-checkbox>
