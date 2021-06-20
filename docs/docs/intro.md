@@ -12,7 +12,7 @@ slug: /
 
 Welcome to the unofficial OpenUI UI library, or oui-ui for short.
 
-Why the ridiculous name? oui-ui is a set of web components that adheres to the researcxh and proposals conducted by the OpenUI working group, hence the name **OpenUI UI**.
+Why the ridiculous name? oui-ui is a set of web components that adheres to the research and proposals conducted by the OpenUI working group, hence the name **OpenUI UI**.
 
 For those unfamiliar with the OpenUI project, according to the [OpenUI site](https://open-ui.org/):
 
