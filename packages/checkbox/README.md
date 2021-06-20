@@ -21,11 +21,8 @@ Each web component lives in its own package. Here's how you'd get started with a
     <body>
         <!-- Use web components in your HTML like regular built-in elements. -->
         <oui-checkbox>
-            <div slot="checked-indicator">
-                <!-- the markup for your checked indicator -->
-            </div>
-            <div slot="indeterminate-indicator">
-                <!-- the markup for your indeterminate indicator -->
+            <div slot="control">
+                <div slot="indicator"></div>
             </div>
             <p slot="label">Hey there</p>
         </oui-checkbox>

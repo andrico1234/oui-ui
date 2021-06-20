@@ -22,38 +22,9 @@ For those unfamiliar with the OpenUI project, according to the [OpenUI site](htt
 
 oui-ui is the implementation of these proposed UI controls as web component library, and so can be used with HTML, or with a framework like React or Vue.
 
-## Quick start
+## Usage
 
-Each web component lives in its own package. Here's how you'd get started with a checkbox.
-
-1. Begin by installing via your favourite package manager
-
-`npm install @oui-ui/checkbox`
-
-2. Use in your HTML, JSX, or whatever:
-
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Quick Start</title>
-        <meta charset="UTF-8" />
-    </head>
-
-    <body>
-        <!-- Use web components in your HTML like regular built-in elements. -->
-        <oui-checkbox>
-            <div slot="indicator" class="indicator"></div>
-            <p slot="label">Hey there</p>
-        </oui-checkbox>
-
-        <!-- oui-ui web components use standard JavaScript modules. -->
-        <script type="module">
-            import '@oui-ui/checkbox'
-        </script>
-    </body>
-</html>
-```
+If you want to get started, you can follow along to the [checkbox quick start](https://loving-hamilton-660a1a.netlify.app/checkbox/overview/quick-start)
 
 ## Components
 
