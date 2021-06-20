@@ -81,4 +81,30 @@ describe('<oui-checkbox>', () => {
         expect(el.getAttribute('checked')).to.be.equal('')
         expect(el.getAttribute('aria-checked')).to.be.equal('true')
     })
+
+    it('should set the checked value to true if defaultChecked is true', async () => {
+        const el = await fixture(html`
+            <oui-checkbox defaultChecked>
+                <div slot="checked-indicator"></div>
+                <div slot="indeterminate-indicator"></div>
+                <p slot="label">Checkbox label</p>
+            </oui-checkbox>
+        `)
+
+        expect(el.getAttribute('aria-checked')).to.be.equal('true')
+        expect(el.getAttribute('checked')).to.be.equal('true')
+    })
+
+    it('should set the checked value to false if defaultChecked is true and checked is false', async () => {
+        const el = await fixture(html`
+            <oui-checkbox defaultChecked checked="false">
+                <div slot="checked-indicator"></div>
+                <div slot="indeterminate-indicator"></div>
+                <p slot="label">Checkbox label</p>
+            </oui-checkbox>
+        `)
+
+        expect(el.getAttribute('aria-checked')).to.be.equal('false')
+        expect(el.getAttribute('checked')).to.be.equal('false')
+    })
 })

@@ -137,6 +137,15 @@ export class Checkbox extends HTMLElement {
     connectedCallback() {
         this.setAttribute('role', 'checkbox')
         this.setAttribute('aria-checked', 'false')
+
+        if (
+            this.hasAttribute('defaultChecked') &&
+            !this.hasAttribute('checked')
+        ) {
+            this.setAttribute('aria-checked', 'true')
+            this.setAttribute('checked', 'true')
+        }
+
         this._upgradeProperty('checked')
         this._upgradeProperty('disabled')
     }
