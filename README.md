@@ -6,6 +6,8 @@
 
 Welcome to the unofficial OpenUI UI library, or oui-ui for short.
 
+Note: This is currently a library I'm developing to learn web components. It's best not to use this in production.
+
 What's OpenUI? According to the [OpenUI site](https://open-ui.org/):
 
 > The purpose of Open UI to the web platform is to allow web developers to style and extend built-in web UI controls, such as `<select>` dropdowns, checkboxes, radio buttons, and date/color pickers.
