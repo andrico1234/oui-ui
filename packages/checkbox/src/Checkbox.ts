@@ -20,7 +20,7 @@ checkboxTemplate.innerHTML = `
             cursor: default;
         }
         
-        :host([disabled=true]) #indicator {
+        :host([disabled=true]) {
             opacity: 0.5;
         }
 
@@ -35,36 +35,14 @@ checkboxTemplate.innerHTML = `
         :host([indeterminate=false]) slot[name="indeterminate-indicator"] {
             display: none;
         }
-
-        #indicator {
-            border: 1px solid red;
-            border-radius: 2px;
-            height: 24px;
-            width: 24px;
-            margin-right: 8px;
-            position: relative;
-        }
-
-        #indicator > div {
-            width: 100%;
-            height: 100%;
-        }
-
-        #indicator > div[part="indeterminate-indicator"] {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
     </style>
 
-    <div tabindex="0" id="indicator">
-        <div part="checked-indicator">
-            <slot name="checked-indicator"></slot>
-        </div>
-        <div part="indeterminate-indicator">
-            <slot name="indeterminate-indicator"></slot>
+    <div part="control">
+        <div part="indicator">
+            <slot></slot>
         </div>
     </div>
+    
     <label id="label" part="label">
         <slot name="label"></slot>
     </label>
