@@ -18,14 +18,7 @@ module.exports = {
             },
             items: [
                 {
-                    type: 'doc',
-                    docId: 'intro',
-                    position: 'left',
-                    label: 'Tutorial',
-                },
-
-                {
-                    href: 'https://github.com/facebook/docusaurus',
+                    href: 'https://github.com/andrico1234/oui-ui',
                     label: 'GitHub',
                     position: 'right',
                 },
@@ -34,15 +27,6 @@ module.exports = {
         footer: {
             style: 'dark',
             links: [
-                {
-                    title: 'Docs',
-                    items: [
-                        {
-                            label: 'Tutorial',
-                            to: '/docs/intro',
-                        },
-                    ],
-                },
                 {
                     title: 'Links',
                     items: [
