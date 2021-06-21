@@ -3,10 +3,23 @@ import { html, fixture, expect } from '@open-wc/testing'
 import '../../lib/index'
 
 describe('<oui-checkbox>', () => {
+    it('passes a11y test', async () => {
+        const el = await fixture(html`
+            <oui-checkbox>
+                <div slot="indicator"></div>
+                <p slot="label">Checkbox label</p>
+            </oui-checkbox>
+        `)
+
+        await expect(el).to.be.accessible()
+    })
+
     it('renders unchecked by default', async () => {
         const el = await fixture(html`
             <oui-checkbox>
-                <div data-testid="checkbox" slot="checked-indicator"></div>
+                <div slot="control">
+                    <div data-testid="checkbox" slot="indicator"></div>
+                </div>
                 <p slot="label">Checkbox label</p>
             </oui-checkbox>
         `)
@@ -19,7 +32,9 @@ describe('<oui-checkbox>', () => {
     it('should check box on click', async () => {
         const el = await fixture(html`
             <oui-checkbox>
-                <div data-testid="checkbox" slot="checked-indicator"></div>
+                <div slot="control">
+                    <div slot="indicator"></div>
+                </div>
                 <p slot="label">Checkbox label</p>
             </oui-checkbox>
         `)
@@ -42,7 +57,9 @@ describe('<oui-checkbox>', () => {
     it('should not check box when disabled by default', async () => {
         const el = await fixture(html`
             <oui-checkbox disabled>
-                <div slot="checked-indicator"></div>
+                <div slot="control">
+                    <div slot="indicator"></div>
+                </div>
                 <p slot="label">Checkbox label</p>
             </oui-checkbox>
         `)
@@ -60,8 +77,9 @@ describe('<oui-checkbox>', () => {
     it('should display the correct element when in indeterminate state', async () => {
         const el = await fixture(html`
             <oui-checkbox>
-                <div slot="checked-indicator"></div>
-                <div slot="indeterminate-indicator"></div>
+                <div slot="control">
+                    <div data-testid="checkbox" slot="indicator"></div>
+                </div>
                 <p slot="label">Checkbox label</p>
             </oui-checkbox>
         `)
@@ -85,8 +103,9 @@ describe('<oui-checkbox>', () => {
     it('should set the checked value to true if defaultChecked is true', async () => {
         const el = await fixture(html`
             <oui-checkbox defaultChecked>
-                <div slot="checked-indicator"></div>
-                <div slot="indeterminate-indicator"></div>
+                <div slot="control">
+                    <div data-testid="checkbox" slot="indicator"></div>
+                </div>
                 <p slot="label">Checkbox label</p>
             </oui-checkbox>
         `)
@@ -98,8 +117,9 @@ describe('<oui-checkbox>', () => {
     it('should set the checked value to false if defaultChecked is true and checked is false', async () => {
         const el = await fixture(html`
             <oui-checkbox defaultChecked checked="false">
-                <div slot="checked-indicator"></div>
-                <div slot="indeterminate-indicator"></div>
+                <div slot="control">
+                    <div data-testid="checkbox" slot="indicator"></div>
+                </div>
                 <p slot="label">Checkbox label</p>
             </oui-checkbox>
         `)

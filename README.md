@@ -8,7 +8,7 @@ Welcome to the unofficial OpenUI UI library, or oui-ui for short.
 
 Note: This is currently a library I'm developing to learn web components. It's best not to use this in production.
 
-If you'd like to see a demo, you can check out [oui-ui documentation site](https://loving-hamilton-660a1a.netlify.app/)
+If you'd like to see a demo, you can check out the [oui-ui documentation site](https://loving-hamilton-660a1a.netlify.app/)
 
 What's OpenUI? According to the [OpenUI site](https://open-ui.org/):
 
