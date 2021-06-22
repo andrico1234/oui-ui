@@ -50,7 +50,7 @@ checkboxTemplate.innerHTML = `
 
 export class Checkbox extends HTMLElement {
     static get observedAttributes() {
-        return ['disabled', 'checked', 'intermediate']
+        return ['checked', 'intermediate']
     }
 
     get disabled() {
@@ -103,6 +103,18 @@ export class Checkbox extends HTMLElement {
         }
     }
 
+    get value() {
+        return this.getAttribute('value')
+    }
+
+    set value(val) {
+        if (val === null) {
+            this.removeAttribute('value')
+        } else {
+            this.setAttribute('value', val)
+        }
+    }
+
     constructor() {
         super()
 
@@ -124,8 +136,13 @@ export class Checkbox extends HTMLElement {
             this.setAttribute('checked', 'true')
         }
 
+        if (!this.hasAttribute('value')) {
+            this.setAttribute('value', 'on')
+        }
+
         this._upgradeProperty('checked')
         this._upgradeProperty('disabled')
+        this._upgradeProperty('value')
     }
 
     attributeChangedCallback(name: string, _oldVal: string, newVal: string) {
