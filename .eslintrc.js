@@ -4,7 +4,10 @@ module.exports = {
         es6: true,
         node: true,
     },
-    extends: ['plugin:@typescript-eslint/recommended'],
+    extends: [
+        'plugin:@typescript-eslint/recommended',
+        'plugin:wc/best-practice',
+    ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
