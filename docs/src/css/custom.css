@@ -15,6 +15,9 @@
     --ifm-color-primary-lighter: rgb(102, 212, 189);
     --ifm-color-primary-lightest: rgb(146, 224, 208);
     --ifm-code-font-size: 95%;
+
+    --primary-color-light: hsl(150, 50%, 60%);
+    --primary-color-lightest: hsl(150, 50%, 80%);
 }
 
 .docusaurus-highlight-code-line {
@@ -33,7 +36,7 @@ oui-checkbox::part(control) {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid red;
+    border: 2px solid var(--primary-color-lightest);
     border-radius: 2px;
     height: 24px;
     width: 24px;
@@ -41,14 +44,18 @@ oui-checkbox::part(control) {
     position: relative;
 }
 
+oui-checkbox[checked]::part(control) {
+    border: 2px solid var(--primary-color-light);
+}
+
 oui-checkbox[checked]::part(indicator) {
-    background: red;
-    width: 100%;
-    height: 100%;
+    background: var(--primary-color-light);
+    width: 65%;
+    height: 65%;
 }
 
 oui-checkbox[indeterminate='true']::part(indicator) {
-    background: red;
+    background: var(--primary-color-light);
     border-radius: 2px;
     height: 30%;
     width: 65%;
