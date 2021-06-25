@@ -25,7 +25,6 @@
         "develop": "tsc -b ./tsconfig.packages.json --watch",
         "docs:build": "yarn workspace docs build",
         "docs:clean": "yarn workspace docs clear",
-        "docs:install": "yarn workspace docs install",
         "docs:prepare-deploy": "yarn build && yarn docs:build",
         "docs:serve": "yarn docs:build && yarn workspace docs serve",
         "docs:start": "yarn workspace docs start",
