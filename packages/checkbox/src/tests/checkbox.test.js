@@ -163,4 +163,42 @@ describe('<oui-checkbox>', () => {
             expect(el.getAttribute('value')).to.be.equal('oui-ui')
         })
     })
+
+    describe('autofocus', () => {
+        it('should not autofocus the checkbox if the property is set', async () => {
+            const el = await fixture(html`
+                <div>
+                    <button>focusable</button>
+                    <oui-checkbox>
+                        <div slot="control">
+                            <div data-testid="checkbox" slot="indicator"></div>
+                        </div>
+                        <p slot="label">Checkbox label</p>
+                    </oui-checkbox>
+                </div>
+            `)
+
+            const checkboxEl = el.querySelector('oui-checkbox')
+
+            expect(document.activeElement).not.to.be.equal(checkboxEl)
+        })
+
+        it('should autofocus the checkbox if the property is set', async () => {
+            const el = await fixture(html`
+                <div>
+                    <button>focusable</button>
+                    <oui-checkbox autofocus>
+                        <div slot="control">
+                            <div data-testid="checkbox" slot="indicator"></div>
+                        </div>
+                        <p slot="label">Checkbox label</p>
+                    </oui-checkbox>
+                </div>
+            `)
+
+            const checkboxEl = el.querySelector('oui-checkbox')
+
+            expect(document.activeElement).to.be.equal(checkboxEl)
+        })
+    })
 })

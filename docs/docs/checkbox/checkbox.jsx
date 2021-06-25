@@ -10,12 +10,19 @@ function Checkbox() {
 
     return (
         <div>
-            <oui-checkbox disabled={disabled} indeterminate={indeterminate}>
+            <oui-checkbox
+                autofocus
+                disabled={disabled}
+                indeterminate={indeterminate}
+            >
                 <div slot="control">
                     <div slot="indicator"></div>
                 </div>
-                <p slot="label">Hey there</p>
+                <p className="label" slot="label">
+                    Hey there
+                </p>
             </oui-checkbox>
+
             <button
                 onClick={() => {
                     setDisabledState(!disabled)

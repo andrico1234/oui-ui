@@ -32,6 +32,10 @@
     color: black;
 }
 
+oui-checkbox {
+    margin-bottom: 12px;
+}
+
 oui-checkbox::part(control) {
     display: flex;
     align-items: center;
@@ -42,6 +46,10 @@ oui-checkbox::part(control) {
     width: 24px;
     margin-right: 8px;
     position: relative;
+}
+
+.label {
+    margin: 0;
 }
 
 oui-checkbox[checked]::part(control) {

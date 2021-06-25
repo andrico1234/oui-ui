@@ -27,14 +27,6 @@ checkboxTemplate.innerHTML = `
         :host([disabled=false]) slot[name="label"]::slotted(*) {
             cursor: pointer;
         }
-
-        :host([aria-checked=false]) slot[name="checked-indicator"] {
-            display: none;
-        }
-
-        :host([indeterminate=false]) slot[name="indeterminate-indicator"] {
-            display: none;
-        }
     </style>
 
     <div part="control">
@@ -127,6 +119,7 @@ export class Checkbox extends HTMLElement {
     connectedCallback() {
         this.setAttribute('role', 'checkbox')
         this.setAttribute('aria-checked', 'false')
+        this.setAttribute('tabindex', '0')
 
         if (
             this.hasAttribute('defaultChecked') &&
@@ -138,6 +131,10 @@ export class Checkbox extends HTMLElement {
 
         if (!this.hasAttribute('value')) {
             this.setAttribute('value', 'on')
+        }
+
+        if (this.hasAttribute('autofocus')) {
+            this.focus()
         }
 
         this._upgradeProperty('checked')
