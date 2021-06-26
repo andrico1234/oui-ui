@@ -6,12 +6,9 @@
         "docs"
     ],
     "description": "Welcome to the unofficial OpenUI UI library, or oui-ui for short.",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/andrico1234/oui-ui.git"
-    },
+
     "license": "MIT",
-    "author": "@andricokaroulla",
+    "author": "Andrico Karoulla",
     "bugs": {
         "url": "https://github.com/andrico1234/oui-ui/issues"
     },

@@ -3,18 +3,30 @@
     "publishConfig": {
         "access": "public"
     },
+    "homepage": "https://github.com/andrico1234/oui-ui",
     "version": "0.2.1",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/andrico1234/oui-ui.git",
+        "directory": "packages/checkbox"
+    },
     "main": "lib/index.js",
     "module": "lib/index.js",
     "typings": "lib/index.d.ts",
+    "keywords": [
+        "web-components",
+        "open-ui",
+        "ui",
+        "checkbox"
+    ],
     "files": [
         "lib/*"
     ],
     "engines": {
         "node": ">=12"
     },
-    "author": "andrico",
+    "author": "Andrico Karoulla",
     "size-limit": [
         {
             "path": "dist/web.cjs.production.min.js",
