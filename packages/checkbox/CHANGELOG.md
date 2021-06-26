@@ -1,5 +1,12 @@
 # @oui-ui/checkbox
 
+## 0.2.1
+
+### Patch Changes
+
+-   7405237: add autofocus property to checkbox
+-   1f0908d: add value property to checkbox
+
 ## 0.2.0
 
 ### Minor Changes
