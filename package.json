@@ -28,7 +28,7 @@
         "lint": "yarn eslint .",
         "test": "web-test-runner",
         "prepare": "husky install",
-        "publish-changes": "changeset publish --otp",
+        "release": "yarn build && changeset publish",
         "version-changes": "changeset version"
     },
     "devDependencies": {

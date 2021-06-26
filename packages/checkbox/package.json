@@ -8,7 +8,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/andrico1234/oui-ui.git",
+        "url": "https://github.com/andrico1234/oui-ui.git",
         "directory": "packages/checkbox"
     },
     "main": "lib/index.js",
