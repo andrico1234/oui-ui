@@ -1,5 +1,11 @@
 # @oui-ui/checkbox
 
+## 0.2.3
+
+### Patch Changes
+
+-   f63cbc8: update package.json and test release pipeline
+
 ## 0.2.2
 
 ### Patch Changes
