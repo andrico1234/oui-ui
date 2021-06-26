@@ -1,5 +1,11 @@
 # @oui-ui/checkbox
 
+## 0.2.2
+
+### Patch Changes
+
+-   b6f81e0: update package.json file to link npm with github
+
 ## 0.2.1
 
 ### Patch Changes
