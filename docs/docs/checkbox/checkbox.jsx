@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 if (global.window) {
     import('@oui-ui/checkbox')
@@ -6,15 +6,11 @@ if (global.window) {
 
 function Checkbox() {
     const [disabled, setDisabledState] = useState(false)
-    const [indeterminate, setIndeterminate] = useState(false)
+    const ref = useRef(null)
 
     return (
         <div>
-            <oui-checkbox
-                autofocus
-                disabled={disabled}
-                indeterminate={indeterminate}
-            >
+            <oui-checkbox ref={ref} autofocus disabled={disabled}>
                 <div slot="control">
                     <div slot="indicator"></div>
                 </div>
@@ -32,10 +28,10 @@ function Checkbox() {
             </button>
             <button
                 onClick={() => {
-                    setIndeterminate(!indeterminate)
+                    ref.current.indeterminate = true
                 }}
             >
-                Indeterminate
+                Make Indeterminate
             </button>
         </div>
     )

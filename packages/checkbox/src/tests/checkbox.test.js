@@ -76,6 +76,40 @@ describe('<oui-checkbox>', () => {
             expect(el.getAttribute('checked')).to.be.equal(null)
             expect(el.getAttribute('aria-checked')).to.be.equal('false')
         })
+
+        it('should not check box when disabled programmatically', async () => {
+            const el = await fixture(html`
+                <oui-checkbox>
+                    <div slot="control">
+                        <div slot="indicator"></div>
+                    </div>
+                    <p slot="label">Checkbox label</p>
+                </oui-checkbox>
+            `)
+
+            expect(el.getAttribute('checked')).to.be.equal(null)
+            expect(el.getAttribute('disabled')).to.be.equal(null)
+            expect(el.getAttribute('aria-checked')).to.be.equal('false')
+
+            const event = new Event('mouseup')
+            el.dispatchEvent(event)
+
+            expect(el.getAttribute('checked')).to.be.equal('')
+
+            el.disabled = true
+            el.dispatchEvent(event)
+
+            expect(el.getAttribute('disabled')).to.be.equal('')
+            expect(el.getAttribute('checked')).to.be.equal('')
+            expect(el.getAttribute('aria-checked')).to.be.equal('true')
+
+            el.disabled = false
+            el.dispatchEvent(event)
+
+            expect(el.getAttribute('disabled')).to.be.equal(null)
+            expect(el.getAttribute('checked')).to.be.equal(null)
+            expect(el.getAttribute('aria-checked')).to.be.equal('false')
+        })
     })
 
     describe('indeterminate attribute', () => {
@@ -96,11 +130,13 @@ describe('<oui-checkbox>', () => {
 
             expect(el.getAttribute('indeterminate')).to.be.equal('true')
             expect(el.getAttribute('aria-checked')).to.be.equal('mixed')
+            expect(el.indeterminate).to.be.equal(true)
 
-            const event = new Event('mouseup')
+            const event = new KeyboardEvent('keydown', { code: 'Enter' })
             el.dispatchEvent(event)
 
             expect(el.getAttribute('indeterminate')).to.be.equal('false')
+            expect(el.indeterminate).to.be.equal(false)
             expect(el.getAttribute('checked')).to.be.equal('')
             expect(el.getAttribute('aria-checked')).to.be.equal('true')
         })
@@ -161,6 +197,16 @@ describe('<oui-checkbox>', () => {
             `)
 
             expect(el.getAttribute('value')).to.be.equal('oui-ui')
+
+            el.value = 'ui-oui'
+
+            expect(el.value).to.be.equal('ui-oui')
+            expect(el.getAttribute('value')).to.be.equal('ui-oui')
+
+            el.value = null
+
+            expect(el.value).to.be.equal(null)
+            expect(el.getAttribute('value')).to.be.equal(null)
         })
     })
 

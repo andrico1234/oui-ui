@@ -29,7 +29,7 @@
         "docs:serve": "yarn docs:build && yarn workspace docs serve",
         "docs:start": "yarn workspace docs start",
         "lint": "yarn eslint .",
-        "test": "web-test-runner packages/**/*.test.js --node-resolve",
+        "test": "web-test-runner",
         "prepare": "husky install",
         "publish-changes": "changeset publish --otp",
         "version-changes": "changeset version"
@@ -44,6 +44,7 @@
         "@typescript-eslint/eslint-plugin": "^4.22.0",
         "@typescript-eslint/parser": "^4.22.0",
         "@web/test-runner": "^0.13.5",
+        "@web/test-runner-playwright": "^0.8.6",
         "commitizen": "^4.2.4",
         "eslint": "~7.25.0",
         "eslint-plugin-jsx-a11y": "6.4.1",

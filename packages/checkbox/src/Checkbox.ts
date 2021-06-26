@@ -42,7 +42,7 @@ checkboxTemplate.innerHTML = `
 
 export class Checkbox extends HTMLElement {
     static get observedAttributes() {
-        return ['checked', 'intermediate']
+        return ['checked', 'indeterminate']
     }
 
     get disabled() {
@@ -88,10 +88,8 @@ export class Checkbox extends HTMLElement {
 
         if (isIndeterminate) {
             this.setAttribute('indeterminate', 'true')
-            this.setAttribute('aria-checked', 'mixed')
         } else {
             this.setAttribute('indeterminate', 'false')
-            this.setAttribute('aria-checked', 'false')
         }
     }
 
@@ -153,8 +151,6 @@ export class Checkbox extends HTMLElement {
             case 'indeterminate':
                 this.setAttribute('aria-checked', hasVal ? 'mixed' : 'false')
                 break
-            default:
-                return
         }
     }
 
