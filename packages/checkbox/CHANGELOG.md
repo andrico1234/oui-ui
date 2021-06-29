@@ -1,5 +1,11 @@
 # @oui-ui/checkbox
 
+## 0.2.4
+
+### Patch Changes
+
+-   1246798: add name property to checkbox
+
 ## 0.2.3
 
 ### Patch Changes
