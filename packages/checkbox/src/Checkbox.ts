@@ -105,6 +105,18 @@ export class Checkbox extends HTMLElement {
         }
     }
 
+    get name() {
+        return this.getAttribute('name')
+    }
+
+    set name(val) {
+        if (val === null) {
+            this.removeAttribute('name')
+        } else {
+            this.setAttribute('name', val)
+        }
+    }
+
     constructor() {
         super()
 
@@ -133,6 +145,10 @@ export class Checkbox extends HTMLElement {
 
         if (this.hasAttribute('autofocus')) {
             this.focus()
+        }
+
+        if (!this.hasAttribute('name')) {
+            this.setAttribute('name', '')
         }
 
         this._upgradeProperty('checked')
