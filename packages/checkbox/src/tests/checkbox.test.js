@@ -210,6 +210,34 @@ describe('<oui-checkbox>', () => {
         })
     })
 
+    describe('tabindex', () => {
+        it('should add default tabindex if the client does not set one', async () => {
+            const el = await fixture(html`
+                <oui-checkbox>
+                    <div slot="control">
+                        <div data-testid="checkbox" slot="indicator"></div>
+                    </div>
+                    <p slot="label">Checkbox label</p>
+                </oui-checkbox>
+            `)
+
+            expect(el.getAttribute('tabindex')).to.be.equal('0')
+        })
+
+        it("should not override client's tabindex", async () => {
+            const el = await fixture(html`
+                <oui-checkbox tabindex="-1">
+                    <div slot="control">
+                        <div data-testid="checkbox" slot="indicator"></div>
+                    </div>
+                    <p slot="label">Checkbox label</p>
+                </oui-checkbox>
+            `)
+
+            expect(el.getAttribute('tabindex')).to.be.equal('-1')
+        })
+    })
+
     describe('autofocus', () => {
         it('should not autofocus the checkbox if the property is set', async () => {
             const el = await fixture(html`

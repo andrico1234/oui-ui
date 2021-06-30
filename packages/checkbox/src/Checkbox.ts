@@ -129,7 +129,11 @@ export class Checkbox extends HTMLElement {
     connectedCallback() {
         this.setAttribute('role', 'checkbox')
         this.setAttribute('aria-checked', 'false')
-        this.setAttribute('tabindex', '0')
+        // don't override client set values
+
+        if (!this.hasAttribute('tabindex')) {
+            this.setAttribute('tabindex', '0')
+        }
 
         if (
             this.hasAttribute('defaultChecked') &&
