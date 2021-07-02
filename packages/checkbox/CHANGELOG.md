@@ -1,5 +1,11 @@
 # @oui-ui/checkbox
 
+## 0.2.5
+
+### Patch Changes
+
+-   eb69ee6: don't override the tabindex set by the client
+
 ## 0.2.4
 
 ### Patch Changes
