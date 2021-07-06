@@ -48,15 +48,12 @@ oui-checkbox::part(control) {
     position: relative;
 }
 
-.label {
-    margin: 0;
-}
-
 oui-checkbox[checked]::part(control) {
     border: 2px solid var(--primary-color-light);
 }
 
 oui-checkbox[checked]::part(indicator) {
+    border-radius: 2px;
     background: var(--primary-color-light);
     width: 65%;
     height: 65%;

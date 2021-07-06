@@ -15,9 +15,9 @@
     "homepage": "https://github.com/andrico1234/oui-ui#readme",
     "scripts": {
         "build": "tsc -b ./tsconfig.packages.json",
+        "cem:analyze": "node ./scripts/runPackagesScript cem:analyze",
         "create-changeset": "yarn changeset",
         "commit": "git-cz",
-        "custom-elements-manifest": "echo 'This will build the custom elements manifest' && exit 1",
         "debug": "web-test-runner --watch packages/**/*.test.js --node-resolve",
         "develop": "tsc -b ./tsconfig.packages.json --watch",
         "docs:build": "yarn workspace docs build",
@@ -37,6 +37,7 @@
         "@commitlint/config-conventional": "^12.1.4",
         "@commitlint/cz-commitlint": "^12.1.4",
         "@commitlint/prompt": "^12.1.4",
+        "@custom-elements-manifest/analyzer": "^0.4.10",
         "@open-wc/testing": "^2.5.33",
         "@typescript-eslint/eslint-plugin": "^4.22.0",
         "@typescript-eslint/parser": "^4.22.0",

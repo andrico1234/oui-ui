@@ -14,9 +14,7 @@ function Checkbox() {
                 <div slot="control">
                     <div slot="indicator"></div>
                 </div>
-                <p className="label" slot="label">
-                    Hey there
-                </p>
+                <p slot="label">OUI Checkbox Label</p>
             </oui-checkbox>
 
             <button
