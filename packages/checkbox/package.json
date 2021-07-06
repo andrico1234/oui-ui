@@ -5,7 +5,7 @@
     },
     "author": "Andrico Karoulla",
     "scripts": {
-        "cem:analyze": "custom-elements-manifest analyze --outdir 'lib' --globs \"lib/**/Checkbox.js\""
+        "cem:analyze": "custom-elements-manifest analyze --outdir '.' --globs \"lib/**/Checkbox.js\""
     },
     "homepage": "https://github.com/andrico1234/oui-ui",
     "version": "0.2.5",
@@ -25,7 +25,8 @@
         "checkbox"
     ],
     "files": [
-        "lib/*"
+        "lib/*",
+        "custom-elements.json"
     ],
     "engines": {
         "node": ">=12"
@@ -39,5 +40,6 @@
             "path": "dist/web.esm.js",
             "limit": "10 KB"
         }
-    ]
+    ],
+    "customElements": "custom-elements.json"
 }

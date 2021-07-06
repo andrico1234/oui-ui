@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "lib/src/Checkbox.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Checkbox",
+          "cssParts": [
+            {
+              "description": "Sets the structure of the control",
+              "name": "control"
+            },
+            {
+              "description": "Displays the appropriate indicator based on the checkbox's current state",
+              "name": "indicator"
+            },
+            {
+              "description": "Styles the label and associates it to the control",
+              "name": "label"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The default/unnamed slot to create the HTML within the",
+              "name": ""
+            },
+            {
+              "description": "Sets the structure of the element within `<label>`",
+              "name": "label"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "checked"
+            },
+            {
+              "kind": "field",
+              "name": "indeterminate"
+            },
+            {
+              "kind": "field",
+              "name": "value"
+            },
+            {
+              "kind": "field",
+              "name": "name"
+            },
+            {
+              "kind": "method",
+              "name": "_keyDown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_click"
+            },
+            {
+              "kind": "method",
+              "name": "_upgradeProperty",
+              "parameters": [
+                {
+                  "name": "prop"
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "checked"
+            },
+            {
+              "name": "indeterminate"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Checkbox",
+          "declaration": {
+            "name": "Checkbox",
+            "module": "lib/src/Checkbox.js"
+          }
+        }
+      ]
+    }
+  ]
+}
