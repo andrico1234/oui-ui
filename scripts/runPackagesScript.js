@@ -26,14 +26,17 @@ fs.readdirSync(packages).forEach(function (package) {
     )
 
     const scripts = pkgJsonContents.scripts || {}
+    const name = pkgJsonContents.name || ''
 
     if (!scripts[scriptName]) {
         return
     }
 
+    console.log(`Generated manifest for ${name}`)
     cp.spawnSync('yarn', [scriptName], {
         env: process.env,
         cwd: packagePath,
+        stdio: 'inherit',
     })
 })
 
