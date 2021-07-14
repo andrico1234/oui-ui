@@ -7,6 +7,20 @@ function hasOwnProperty<X extends {}, Y extends PropertyKey>(
     return obj.hasOwnProperty(prop)
 }
 
+//
+// form	string	null	Associates the element with a form in the document whose id is this value.
+// required	bool	false	Indicates that the checkbox is invalid unless checked.
+// readonly	bool	readonly	Indicates that the checkbox is not interactive but its value should still be submitted with the form.
+
+// do I want to use form-associated controls, or do I want to use a hidden element?
+
+// Refactor to ElementInternals API when browser compat increases
+// https://caniuse.com/mdn-api_elementinternalsyarn add element-internals-polyfill
+
+// use a polyfill instead, and ensure that it's documented
+
+// polyfill here: https://github.com/calebdwilliams/element-internals-polyfill
+
 checkboxTemplate.innerHTML = `
     <style>
         :host {
@@ -39,16 +53,14 @@ checkboxTemplate.innerHTML = `
         <slot name="label"></slot>
     </label>
 `
-/**
- * @csspart control - Sets the structure of the control
- * @csspart indicator - Displays the appropriate indicator based on the checkbox's current state
- * @csspart label - Styles the label and associates it to the control
- *
- * @slot - The default/unnamed slot to create the HTML within the
- * @slot label - Sets the structure of the element within `<label>`
- *
- */
+
 export class Checkbox extends HTMLElement {
+    // _internals: ElementInternals
+
+    // static get formAssociated() {
+    //     return true
+    // }
+
     static get observedAttributes() {
         return ['checked', 'indeterminate']
     }
@@ -125,10 +137,17 @@ export class Checkbox extends HTMLElement {
         }
     }
 
+    // get form() {
+    //     return this._internals.form
+    // }
+
     constructor() {
         super()
 
+        console.log('hereee')
+
         this.attachShadow({ mode: 'open' })
+        // this._internals = this.attachInternals()
         this.shadowRoot?.appendChild(checkboxTemplate.content.cloneNode(true))
         this.addEventListener('mouseup', this._click)
         this.addEventListener('keydown', this._keyDown)
@@ -174,6 +193,7 @@ export class Checkbox extends HTMLElement {
             case 'checked':
                 this.indeterminate = false
                 this.setAttribute('aria-checked', `${hasVal}`)
+                // this._internals.setFormValue(this.checked ? this.value : null)
                 break
             case 'indeterminate':
                 this.setAttribute('aria-checked', hasVal ? 'mixed' : 'false')
@@ -189,6 +209,8 @@ export class Checkbox extends HTMLElement {
 
     _click() {
         const isDisabled = this.disabled
+
+        console.log('cliiick')
 
         if (isDisabled) {
             return

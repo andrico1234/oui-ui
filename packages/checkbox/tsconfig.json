@@ -1,8 +1,9 @@
 {
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
-        "outDir": "./lib"
+        "outDir": "./lib",
+        "typeRoots": ["../../typings"]
     },
-    "include": ["src/**/*.ts", "index.ts"],
+    "include": ["src/**/*.ts", "index.ts", "typings"],
     "files": []
 }
