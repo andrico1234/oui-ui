@@ -55,11 +55,11 @@ checkboxTemplate.innerHTML = `
 `
 
 export class Checkbox extends HTMLElement {
-    // _internals: ElementInternals
+    _internals: ElementInternals
 
-    // static get formAssociated() {
-    //     return true
-    // }
+    static get formAssociated() {
+        return true
+    }
 
     static get observedAttributes() {
         return ['checked', 'indeterminate']
@@ -137,17 +137,15 @@ export class Checkbox extends HTMLElement {
         }
     }
 
-    // get form() {
-    //     return this._internals.form
-    // }
+    get form() {
+        return this._internals.form
+    }
 
     constructor() {
         super()
 
-        console.log('hereee')
-
         this.attachShadow({ mode: 'open' })
-        // this._internals = this.attachInternals()
+        this._internals = this.attachInternals()
         this.shadowRoot?.appendChild(checkboxTemplate.content.cloneNode(true))
         this.addEventListener('mouseup', this._click)
         this.addEventListener('keydown', this._keyDown)
@@ -193,7 +191,7 @@ export class Checkbox extends HTMLElement {
             case 'checked':
                 this.indeterminate = false
                 this.setAttribute('aria-checked', `${hasVal}`)
-                // this._internals.setFormValue(this.checked ? this.value : null)
+                this._internals.setFormValue(this.checked ? this.value : null)
                 break
             case 'indeterminate':
                 this.setAttribute('aria-checked', hasVal ? 'mixed' : 'false')
