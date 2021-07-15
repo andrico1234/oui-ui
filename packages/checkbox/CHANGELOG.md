@@ -1,5 +1,11 @@
 # @oui-ui/checkbox
 
+## 0.2.6
+
+### Patch Changes
+
+-   8c787c5: add custom element manifest to checkbox component
+
 ## 0.2.5
 
 ### Patch Changes
