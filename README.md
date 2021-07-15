@@ -8,7 +8,7 @@ Welcome to the unofficial OpenUI UI library, or oui-ui for short.
 
 Note: This is currently a library I'm developing to learn web components. It's best not to use this in production.
 
-If you'd like to see a demo, you can check out the [oui-ui documentation site](https://loving-hamilton-660a1a.netlify.app/)
+If you'd like to see a demo, you can check out the [oui-ui documentation site](https://oui-ui.netlify.app/)
 
 What's OpenUI? According to the [OpenUI site](https://open-ui.org/):
 
@@ -20,7 +20,7 @@ oui-ui is the implementation of these proposed UI controls as a web component li
 
 ## Usage
 
-If you want to get started, you can follow along to the [checkbox quick start](https://loving-hamilton-660a1a.netlify.app/checkbox/overview/quick-start)
+If you want to get started, you can follow along to the [checkbox quick start](https://oui-ui.netlify.app/checkbox/overview/quick-start)
 
 ## Components
 

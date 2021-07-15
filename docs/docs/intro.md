@@ -24,7 +24,7 @@ oui-ui is the implementation of these proposed UI controls as web component libr
 
 ## Usage
 
-If you want to get started, you can follow along to the [checkbox quick start](https://loving-hamilton-660a1a.netlify.app/checkbox/overview/quick-start)
+If you want to get started, you can follow along to the [checkbox quick start](https://oui-ui.netlify.app/checkbox/overview/quick-start)
 
 ## Components
 
