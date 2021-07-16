@@ -9,8 +9,8 @@ function Checkbox() {
     const ref = useRef(null)
 
     return (
-        <form>
-            <oui-checkbox ref={ref} autofocus disabled={disabled}>
+        <div>
+            <oui-checkbox ref={ref} autofocus disabled={disabled || undefined}>
                 <div slot></div>
                 <p slot="label">OUI Checkbox Label</p>
             </oui-checkbox>
@@ -29,7 +29,7 @@ function Checkbox() {
             >
                 Make Indeterminate
             </button>
-        </form>
+        </div>
     )
 }
 

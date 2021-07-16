@@ -21,7 +21,8 @@ label: Features
 | -------------- | ------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | checked        | boolean | false   | Whether or not the checkbox's value is checked, if set to `true` the checkbox displays the contents of the `checked-indicator` slot |
 | defaultChecked | boolean | false   | Whether the checkbox is checked by default when added to the DOM. Does nothing if checked is explicitly set                         |
-| disabled       | boolean | false   | When set to `true` the checkbox cannot be interacted                                                                                |
+| disabled       | string  | -       | When set the checkbox cannot be interacted with                                                                                     |
 | indeterminate  | boolean | false   | When set to `true` the checkbox displays the contents of the `intermediate-indicator` slot                                          |
 | value          | string  | "on"    | The value of the checkbox                                                                                                           |
-| name           | string  | ""      | The name of the checkbox for form submission purposes                                                                               |
+| name           | string  | ""      | The name of the checkbox for form submission purposes. Required if submitting values to a form.                                     |
+| form           | string  | -       | Associates the element with a form in the document whose id is this value.                                                                                  |

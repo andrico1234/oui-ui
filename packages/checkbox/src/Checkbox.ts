@@ -7,20 +7,8 @@ function hasOwnProperty<X extends {}, Y extends PropertyKey>(
     return obj.hasOwnProperty(prop)
 }
 
-//
-// form	string	null	Associates the element with a form in the document whose id is this value.
 // required	bool	false	Indicates that the checkbox is invalid unless checked.
 // readonly	bool	readonly	Indicates that the checkbox is not interactive but its value should still be submitted with the form.
-
-// do I want to use form-associated controls, or do I want to use a hidden element?
-
-// Refactor to ElementInternals API when browser compat increases
-// https://caniuse.com/mdn-api_elementinternalsyarn add element-internals-polyfill
-
-// use a polyfill instead, and ensure that it's documented
-
-// polyfill here: https://github.com/calebdwilliams/element-internals-polyfill
-
 checkboxTemplate.innerHTML = `
     <style>
         :host {
@@ -30,15 +18,12 @@ checkboxTemplate.innerHTML = `
             width: fit-content;
         }
         
-        :host([disabled=true]) {
+        :host(:disabled) {
             cursor: default;
-        }
-        
-        :host([disabled=true]) {
             opacity: 0.5;
         }
 
-        :host([disabled=false]) slot[name="label"]::slotted(*) {
+        :host(:not(:disabled)) slot[name="label"]::slotted(*) {
             cursor: pointer;
         }
     </style>
@@ -53,7 +38,7 @@ checkboxTemplate.innerHTML = `
         <slot name="label"></slot>
     </label>
 `
-
+// Note: disabled, readonly, form, and name are managed by browser as it's a FACE
 export class Checkbox extends HTMLElement {
     _internals: ElementInternals
 
@@ -63,22 +48,6 @@ export class Checkbox extends HTMLElement {
 
     static get observedAttributes() {
         return ['checked', 'indeterminate']
-    }
-
-    get disabled() {
-        if (this.getAttribute('disabled') === 'false') return false
-
-        return this.hasAttribute('disabled')
-    }
-
-    set disabled(val) {
-        const isDisabled = Boolean(val)
-
-        if (isDisabled) {
-            this.setAttribute('disabled', '')
-        } else {
-            this.removeAttribute('disabled')
-        }
     }
 
     get checked() {
@@ -125,18 +94,6 @@ export class Checkbox extends HTMLElement {
         }
     }
 
-    get name() {
-        return this.getAttribute('name')
-    }
-
-    set name(val) {
-        if (val === null) {
-            this.removeAttribute('name')
-        } else {
-            this.setAttribute('name', val)
-        }
-    }
-
     get form() {
         return this._internals.form
     }
@@ -175,10 +132,6 @@ export class Checkbox extends HTMLElement {
             this.focus()
         }
 
-        if (!this.hasAttribute('name')) {
-            this.setAttribute('name', '')
-        }
-
         this._upgradeProperty('checked')
         this._upgradeProperty('disabled')
         this._upgradeProperty('value')
@@ -206,14 +159,6 @@ export class Checkbox extends HTMLElement {
     }
 
     _click() {
-        const isDisabled = this.disabled
-
-        console.log('cliiick')
-
-        if (isDisabled) {
-            return
-        }
-
         this.checked = !this.checked
     }
 

@@ -32,6 +32,18 @@
     color: black;
 }
 
+p {
+    padding: 0;
+    margin: 0;
+}
+
+form {
+    margin-bottom: var(--ifm-paragraph-margin-bottom);
+    border: 1px solid var(--primary-color-lightest);
+    border-radius: 2px;
+    padding: var(--ifm-pre-padding);
+}
+
 oui-checkbox {
     margin-bottom: 12px;
 }

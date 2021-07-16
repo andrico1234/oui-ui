@@ -6,6 +6,7 @@ if (global.window) {
 
 function Checkbox() {
     const [submittedState, setSubmittedState] = useState({})
+    const [disabled, setDisabled] = useState(false)
 
     return (
         <div>
@@ -25,10 +26,20 @@ function Checkbox() {
                     setSubmittedState(vals)
                 }}
             >
-                <oui-checkbox name="inside-form" value="enabled">
+                <oui-checkbox
+                    name="inside-form"
+                    value="enabled"
+                    disabled={disabled || undefined}
+                >
                     <p slot="label">Inside form</p>
                 </oui-checkbox>
 
+                <button
+                    style={{ marginRight: '8px' }}
+                    onClick={() => setDisabled(!disabled)}
+                >
+                    Toggle disabled
+                </button>
                 <button type="submit">Submit</button>
             </form>
             <oui-checkbox
