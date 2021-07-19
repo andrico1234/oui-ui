@@ -41,8 +41,5 @@
             "limit": "10 KB"
         }
     ],
-    "customElements": "custom-elements.json",
-    "dependencies": {
-        "element-internals-polyfill": "^0.1.40"
-    }
+    "customElements": "custom-elements.json"
 }

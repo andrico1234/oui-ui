@@ -249,38 +249,4 @@ describe('<oui-checkbox>', () => {
             expect(document.activeElement).to.be.equal(checkboxEl)
         })
     })
-
-    describe('name property', () => {
-        it('should set the name to an empty string if none is provided', async () => {
-            const el = await fixture(html`
-                <oui-checkbox>
-                    <div data-testid="checkbox" slot></div>
-                    <p slot="label">Checkbox label</p>
-                </oui-checkbox>
-            `)
-
-            expect(el.getAttribute('name')).to.be.equal('')
-        })
-
-        it('should set the name to the correct value', async () => {
-            const el = await fixture(html`
-                <oui-checkbox name="oui-ui">
-                    <div data-testid="checkbox" slot></div>
-                    <p slot="label">Checkbox label</p>
-                </oui-checkbox>
-            `)
-
-            expect(el.getAttribute('name')).to.be.equal('oui-ui')
-
-            el.name = 'ui-oui'
-
-            expect(el.name).to.be.equal('ui-oui')
-            expect(el.getAttribute('name')).to.be.equal('ui-oui')
-
-            el.name = null
-
-            expect(el.name).to.be.equal(null)
-            expect(el.getAttribute('name')).to.be.equal(null)
-        })
-    })
 })

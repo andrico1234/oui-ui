@@ -39,6 +39,16 @@ checkboxTemplate.innerHTML = `
     </label>
 `
 // Note: disabled, readonly, form, and name are managed by browser as it's a FACE
+
+/**
+ * @csspart control - Sets the structure of the control
+ * @csspart indicator - Displays the appropriate indicator based on the checkbox's current state
+ * @csspart label - Styles the label and associates it to the control
+ *
+ * @slot - The default/unnamed slot to create the HTML within the
+ * @slot label - Sets the structure of the element within `<label>`
+ *
+ */
 export class Checkbox extends HTMLElement {
     _internals: ElementInternals
 
@@ -48,6 +58,20 @@ export class Checkbox extends HTMLElement {
 
     static get observedAttributes() {
         return ['checked', 'indeterminate']
+    }
+
+    get disabled() {
+        if (this.getAttribute('disabled') === 'false') return false
+
+        return this.hasAttribute('disabled')
+    }
+
+    set disabled(val) {
+        if (val) {
+            this.setAttribute('disabled', '')
+        } else {
+            this.removeAttribute('disabled')
+        }
     }
 
     get checked() {
@@ -159,6 +183,12 @@ export class Checkbox extends HTMLElement {
     }
 
     _click() {
+        const isDisabled = this.disabled
+
+        if (isDisabled) {
+            return
+        }
+
         this.checked = !this.checked
     }
 
