@@ -1,3 +1,5 @@
+import { IElementInternals } from 'element-internals-polyfill'
+
 const checkboxTemplate = document.createElement('template')
 
 function hasOwnProperty<X extends {}, Y extends PropertyKey>(
@@ -50,7 +52,7 @@ checkboxTemplate.innerHTML = `
  *
  */
 export class Checkbox extends HTMLElement {
-    _internals: ElementInternals
+    _internals: IElementInternals
 
     static get formAssociated() {
         return true
