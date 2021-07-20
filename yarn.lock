@@ -5204,6 +5204,11 @@ electron-to-chromium@^1.3.564, electron-to-chromium@^1.3.723:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.748.tgz#16638a8130f407ae5bf2fc168f2173574deb36c5"
   integrity sha512-fmIKfYALVeEybk/L2ucdgt7jN3JsbGtg3K9pmF/MRWgkeADBI1VSAa5IzdG2gZwTxsnsrFtdMpOTSM5mrBRKVQ==
 
+element-internals-polyfill@^0.1.40:
+  version "0.1.40"
+  resolved "https://registry.yarnpkg.com/element-internals-polyfill/-/element-internals-polyfill-0.1.40.tgz#2d16b217b97d72fcd72d6ca2dbf8026b30223892"
+  integrity sha512-/NkpYIzQxgqFBrMMvEEwVleOxK7pA/z7jtWKMOTN2g8h80Bdz8XR6vxmgkDrqlUGNXGTL7dzrXN4tiM1oxOcbQ==
+
 "emoji-regex@>=6.0.0 <=6.1.1":
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-6.1.1.tgz#c6cd0ec1b0642e2a3c67a1137efc5e796da4f88e"

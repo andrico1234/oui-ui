@@ -1,5 +1,5 @@
 import { html, fixture, expect } from '@open-wc/testing'
-
+import 'element-internals-polyfill'
 import '../../lib/index'
 
 describe('<oui-checkbox>', () => {
@@ -62,7 +62,7 @@ describe('<oui-checkbox>', () => {
             `)
 
             expect(el.getAttribute('checked')).to.be.equal(null)
-            expect(el.getAttribute('disabled')).to.be.equal('')
+            expect(el.disabled).to.be.equal(true)
 
             const event = new Event('mouseup')
             el.dispatchEvent(event)
@@ -81,6 +81,7 @@ describe('<oui-checkbox>', () => {
 
             expect(el.getAttribute('checked')).to.be.equal(null)
             expect(el.getAttribute('disabled')).to.be.equal(null)
+            expect(el.disabled).to.be.equal(false)
             expect(el.getAttribute('aria-checked')).to.be.equal('false')
 
             const event = new Event('mouseup')
@@ -99,6 +100,7 @@ describe('<oui-checkbox>', () => {
             el.dispatchEvent(event)
 
             expect(el.getAttribute('disabled')).to.be.equal(null)
+            expect(el.disabled).to.be.equal(false)
             expect(el.getAttribute('checked')).to.be.equal(null)
             expect(el.getAttribute('aria-checked')).to.be.equal('false')
         })
@@ -247,40 +249,6 @@ describe('<oui-checkbox>', () => {
             const checkboxEl = el.querySelector('oui-checkbox')
 
             expect(document.activeElement).to.be.equal(checkboxEl)
-        })
-    })
-
-    describe('name property', () => {
-        it('should set the name to an empty string if none is provided', async () => {
-            const el = await fixture(html`
-                <oui-checkbox>
-                    <div data-testid="checkbox" slot></div>
-                    <p slot="label">Checkbox label</p>
-                </oui-checkbox>
-            `)
-
-            expect(el.getAttribute('name')).to.be.equal('')
-        })
-
-        it('should set the name to the correct value', async () => {
-            const el = await fixture(html`
-                <oui-checkbox name="oui-ui">
-                    <div data-testid="checkbox" slot></div>
-                    <p slot="label">Checkbox label</p>
-                </oui-checkbox>
-            `)
-
-            expect(el.getAttribute('name')).to.be.equal('oui-ui')
-
-            el.name = 'ui-oui'
-
-            expect(el.name).to.be.equal('ui-oui')
-            expect(el.getAttribute('name')).to.be.equal('ui-oui')
-
-            el.name = null
-
-            expect(el.name).to.be.equal(null)
-            expect(el.getAttribute('name')).to.be.equal(null)
         })
     })
 })

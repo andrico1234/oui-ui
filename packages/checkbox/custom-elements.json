@@ -37,6 +37,11 @@
           "members": [
             {
               "kind": "field",
+              "name": "formAssociated",
+              "static": true
+            },
+            {
+              "kind": "field",
               "name": "disabled"
             },
             {
@@ -53,7 +58,7 @@
             },
             {
               "kind": "field",
-              "name": "name"
+              "name": "form"
             },
             {
               "kind": "method",
@@ -76,6 +81,10 @@
                   "name": "prop"
                 }
               ]
+            },
+            {
+              "kind": "field",
+              "name": "_internals"
             }
           ],
           "attributes": [
