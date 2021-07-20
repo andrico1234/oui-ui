@@ -12,7 +12,7 @@ function Checkbox() {
         <div>
             <form
                 id="checkbox-form"
-                onSubmit={e => {
+                onSubmit={(e) => {
                     e.preventDefault()
 
                     const data = new FormData(e.target)
@@ -37,6 +37,7 @@ function Checkbox() {
                 <button
                     style={{ marginRight: '8px' }}
                     onClick={() => setDisabled(!disabled)}
+                    type="button"
                 >
                     Toggle disabled
                 </button>

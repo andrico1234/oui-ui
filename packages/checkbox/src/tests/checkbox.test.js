@@ -1,5 +1,5 @@
 import { html, fixture, expect } from '@open-wc/testing'
-
+import 'element-internals-polyfill'
 import '../../lib/index'
 
 describe('<oui-checkbox>', () => {
@@ -62,7 +62,7 @@ describe('<oui-checkbox>', () => {
             `)
 
             expect(el.getAttribute('checked')).to.be.equal(null)
-            expect(el.getAttribute('disabled')).to.be.equal('')
+            expect(el.disabled).to.be.equal(true)
 
             const event = new Event('mouseup')
             el.dispatchEvent(event)
@@ -81,6 +81,7 @@ describe('<oui-checkbox>', () => {
 
             expect(el.getAttribute('checked')).to.be.equal(null)
             expect(el.getAttribute('disabled')).to.be.equal(null)
+            expect(el.disabled).to.be.equal(false)
             expect(el.getAttribute('aria-checked')).to.be.equal('false')
 
             const event = new Event('mouseup')
@@ -99,6 +100,7 @@ describe('<oui-checkbox>', () => {
             el.dispatchEvent(event)
 
             expect(el.getAttribute('disabled')).to.be.equal(null)
+            expect(el.disabled).to.be.equal(false)
             expect(el.getAttribute('checked')).to.be.equal(null)
             expect(el.getAttribute('aria-checked')).to.be.equal('false')
         })

@@ -61,8 +61,6 @@ export class Checkbox extends HTMLElement {
     }
 
     get disabled() {
-        if (this.getAttribute('disabled') === 'false') return false
-
         return this.hasAttribute('disabled')
     }
 

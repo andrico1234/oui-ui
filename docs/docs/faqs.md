@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 id: FAQs
-slug: /
+slug: /faqs
 ---
 
 # FAQs
@@ -12,4 +12,4 @@ Because `Checkbox` is a [form-associated custom element](https://docs.google.com
 
 ## Why are form components not working in Firefox/Webkit?
 
-The form-associated custom elements spec isn't implemented on these browsers yet. Fortunately there's a [polyfill](https://github.com/calebdwilliams/element-internals-polyfill) that you can use to implement most of this behaviour. We run our tests against Chrome, Firefox, and Webkit, and so the core functionality should work for these browsers when using the polyfill.
+The form-associated custom elements spec isn't implemented on these browsers yet. Fortunately there's a [polyfill](https://github.com/calebdwilliams/element-internals-polyfill) that you can use to implement most of this behaviour. We run our tests against Chrome, Firefox, and Webkit, and for the latter two we test using the polyfill. This means the core functionality should work when using the polyfill.

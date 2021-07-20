@@ -11,7 +11,6 @@ function Checkbox() {
     return (
         <div>
             <oui-checkbox ref={ref} autofocus disabled={disabled || undefined}>
-                <div slot></div>
                 <p slot="label">OUI Checkbox Label</p>
             </oui-checkbox>
 
