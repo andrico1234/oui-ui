@@ -1,5 +1,11 @@
 # @oui-ui/checkbox
 
+## 0.2.7
+
+### Patch Changes
+
+-   9fe44d9: Added form support for checkbox as well examples within the documentation site
+
 ## 0.2.6
 
 ### Patch Changes
