@@ -6,7 +6,6 @@
         "docs"
     ],
     "description": "Welcome to the unofficial OpenUI UI library, or oui-ui for short.",
-
     "license": "MIT",
     "author": "Andrico Karoulla",
     "bugs": {
@@ -15,7 +14,7 @@
     "homepage": "https://github.com/andrico1234/oui-ui#readme",
     "scripts": {
         "build": "tsc -b ./tsconfig.packages.json",
-        "cem:analyze": "node ./scripts/runPackagesScript cem:analyze",
+        "cem:analyze": "yarn wsrun --exclude-missing cem:analyze",
         "create-changeset": "yarn changeset",
         "commit": "git-cz",
         "debug": "web-test-runner --watch packages/**/*.test.js --node-resolve",
@@ -51,7 +50,8 @@
         "glob": "^7.1.7",
         "husky": "^6.0.0",
         "prettier": "2.3.0",
-        "typescript": "^4.3.2"
+        "typescript": "^4.3.2",
+        "wsrun": "^5.2.4"
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
