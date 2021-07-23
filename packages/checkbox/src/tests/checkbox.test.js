@@ -251,4 +251,18 @@ describe('<oui-checkbox>', () => {
             expect(document.activeElement).to.be.equal(checkboxEl)
         })
     })
+
+    describe('validation', () => {
+        it('should not submit the form if checkbox is required and checked', () => {
+            //
+        })
+
+        it('should submit the form if checkbox is required and checked', () => {
+            //
+        })
+
+        it('should ignore validation if the checkbox is disabled', () => {
+            //
+        })
+    })
 })

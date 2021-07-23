@@ -29,6 +29,7 @@ function Checkbox() {
                 <oui-checkbox
                     name="inside-form"
                     value="enabled"
+                    required
                     disabled={disabled || undefined}
                 >
                     <p slot="label">Inside form</p>

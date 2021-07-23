@@ -59,7 +59,7 @@ export class Checkbox extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['checked', 'indeterminate']
+        return ['checked', 'indeterminate', 'required']
     }
 
     get disabled() {
@@ -156,6 +156,10 @@ export class Checkbox extends HTMLElement {
             this.focus()
         }
 
+        if (this.hasAttribute('required')) {
+            this._updateValidation()
+        }
+
         this._upgradeProperty('checked')
         this._upgradeProperty('disabled')
         this._upgradeProperty('value')
@@ -164,11 +168,14 @@ export class Checkbox extends HTMLElement {
     attributeChangedCallback(name: string, _oldVal: string, newVal: string) {
         const hasVal = newVal !== null
 
+        console.log(this._internals)
+
         switch (name) {
             case 'checked':
                 this.indeterminate = false
                 this.setAttribute('aria-checked', `${hasVal}`)
                 this._internals.setFormValue(this.checked ? this.value : null)
+                this._updateValidation()
                 break
             case 'indeterminate':
                 this.setAttribute('aria-checked', hasVal ? 'mixed' : 'false')
@@ -190,6 +197,22 @@ export class Checkbox extends HTMLElement {
         }
 
         this.checked = !this.checked
+    }
+
+    _updateValidation() {
+        const isChecked = this.hasAttribute('checked')
+        const isDisabled = this.matches(':disabled')
+        const isRequired = this.hasAttribute('required')
+        if (!isDisabled && isRequired && !isChecked) {
+            this._internals.setValidity(
+                {
+                    customError: true,
+                },
+                'Please check this box if you want to proceed'
+            )
+        } else {
+            this._internals.setValidity({})
+        }
     }
 
     _upgradeProperty(prop: string) {
