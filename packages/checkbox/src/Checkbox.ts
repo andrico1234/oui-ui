@@ -168,8 +168,6 @@ export class Checkbox extends HTMLElement {
     attributeChangedCallback(name: string, _oldVal: string, newVal: string) {
         const hasVal = newVal !== null
 
-        console.log(this._internals)
-
         switch (name) {
             case 'checked':
                 this.indeterminate = false

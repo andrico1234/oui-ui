@@ -75,6 +75,10 @@
             },
             {
               "kind": "method",
+              "name": "_updateValidation"
+            },
+            {
+              "kind": "method",
               "name": "_upgradeProperty",
               "parameters": [
                 {
@@ -93,6 +97,9 @@
             },
             {
               "name": "indeterminate"
+            },
+            {
+              "name": "required"
             }
           ],
           "superclass": {
