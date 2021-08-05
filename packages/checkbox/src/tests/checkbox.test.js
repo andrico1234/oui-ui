@@ -1,4 +1,5 @@
 import { html, fixture, expect } from '@open-wc/testing'
+import sinon from 'sinon'
 import 'element-internals-polyfill'
 import '../../lib/index'
 
@@ -253,15 +254,86 @@ describe('<oui-checkbox>', () => {
     })
 
     describe('validation', () => {
-        it('should not submit the form if checkbox is required and checked', () => {
-            //
+        it('should not submit the form if checkbox is required and not checked', async () => {
+            const fake = sinon.fake()
+            const onSubmitMock = (e) => {
+                e.preventDefault()
+                fake()
+            }
+
+            const el = await fixture(html`
+                <form @submit=${onSubmitMock}>
+                    <oui-checkbox required>
+                        <p slot="label">Checkbox label</p>
+                        <button>Click</button>
+                    </oui-checkbox>
+                </form>
+            `)
+
+            const checkboxEl = el.querySelector('oui-checkbox')
+
+            const buttonEl = el.querySelector('button')
+
+            buttonEl.click()
+
+            expect(checkboxEl.getAttribute('aria-invalid')).to.be.equal('true')
+            expect(fake.callCount).to.be.equal(0)
         })
 
-        it('should submit the form if checkbox is required and checked', () => {
-            //
+        it('should submit the form if checkbox is required and checked', async () => {
+            const fake = sinon.fake()
+            const onSubmitMock = (e) => {
+                e.preventDefault()
+                fake()
+            }
+
+            const el = await fixture(html`
+                <form @submit=${onSubmitMock}>
+                    <oui-checkbox>
+                        <p slot="label">Checkbox label</p>
+                    </oui-checkbox>
+                    <button type="submit">Click</button>
+                </form>
+            `)
+
+            const checkboxEl = el.querySelector('oui-checkbox')
+            const buttonEl = el.querySelector('button')
+
+            console.log(buttonEl)
+
+            expect(fake.callCount).to.be.equal(0)
+
+            buttonEl.click()
+
+            expect(checkboxEl.hasAttribute('aria-invalid')).to.be.false
+            expect(fake.callCount).to.be.equal(1)
         })
 
-        it('should ignore validation if the checkbox is disabled', () => {
+        it('should submit the form if checkbox is not required and not checked', async () => {
+            const fake = sinon.fake()
+            const onSubmitMock = (e) => {
+                e.preventDefault()
+                fake()
+            }
+
+            const el = await fixture(html`
+                <form @submit=${onSubmitMock}>
+                    <oui-checkbox>
+                        <p slot="label">Checkbox label</p>
+                    </oui-checkbox>
+                </form>
+            `)
+
+            const checkboxEl = el.querySelector('oui-checkbox')
+
+            const event = new Event('submit', { cancelable: true })
+            el.dispatchEvent(event)
+
+            expect(checkboxEl.hasAttribute('aria-invalid')).to.be.false
+            expect(fake.callCount).to.be.equal(1)
+        })
+
+        it('should ignore validation if the checkbox is disabled', async () => {
             //
         })
     })

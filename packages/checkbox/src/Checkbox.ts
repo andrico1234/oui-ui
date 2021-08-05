@@ -202,6 +202,7 @@ export class Checkbox extends HTMLElement {
         const isDisabled = this.matches(':disabled')
         const isRequired = this.hasAttribute('required')
         if (!isDisabled && isRequired && !isChecked) {
+            this.setAttribute('aria-invalid', 'true')
             this._internals.setValidity(
                 {
                     customError: true,
@@ -209,6 +210,7 @@ export class Checkbox extends HTMLElement {
                 'Please check this box if you want to proceed'
             )
         } else {
+            this.setAttribute('aria-invalid', 'false')
             this._internals.setValidity({})
         }
     }
