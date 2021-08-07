@@ -1,5 +1,11 @@
 # @oui-ui/checkbox
 
+## 0.2.8
+
+### Patch Changes
+
+-   a3fe48e: Adds the required attribute to the checkbox
+
 ## 0.2.7
 
 ### Patch Changes
