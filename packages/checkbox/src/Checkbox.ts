@@ -11,6 +11,8 @@ function hasOwnProperty<X extends {}, Y extends PropertyKey>(
 
 // required	bool	false	Indicates that the checkbox is invalid unless checked.
 // readonly	bool	readonly	Indicates that the checkbox is not interactive but its value should still be submitted with the form.
+
+// change to :disabled on PR fix
 checkboxTemplate.innerHTML = `
     <style>
         :host {
@@ -19,13 +21,12 @@ checkboxTemplate.innerHTML = `
             cursor: pointer;
             width: fit-content;
         }
-        
-        :host(:disabled) {
+        :host([disabled]) {
             cursor: default;
             opacity: 0.5;
         }
 
-        :host(:not(:disabled)) slot[name="label"]::slotted(*) {
+        :host(:not([disabled])) slot[name="label"]::slotted(*) {
             cursor: pointer;
         }
     </style>
