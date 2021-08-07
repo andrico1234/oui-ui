@@ -1,5 +1,12 @@
 # docs
 
+## 0.1.10
+
+### Patch Changes
+
+-   Updated dependencies [a3fe48e]
+    -   @oui-ui/checkbox@0.2.8
+
 ## 0.1.9
 
 ### Patch Changes
