@@ -299,13 +299,15 @@ describe('<oui-checkbox>', () => {
             const checkboxEl = el.querySelector('oui-checkbox')
             const buttonEl = el.querySelector('button')
 
-            console.log(buttonEl)
-
             expect(fake.callCount).to.be.equal(0)
+
+            const event = new Event('mouseup')
+            checkboxEl.dispatchEvent(event)
 
             buttonEl.click()
 
-            expect(checkboxEl.hasAttribute('aria-invalid')).to.be.false
+            expect(checkboxEl.getAttribute('aria-checked')).to.be.equal('true')
+            expect(checkboxEl.getAttribute('aria-invalid')).to.be.equal('false')
             expect(fake.callCount).to.be.equal(1)
         })
 
@@ -329,12 +331,36 @@ describe('<oui-checkbox>', () => {
             const event = new Event('submit', { cancelable: true })
             el.dispatchEvent(event)
 
-            expect(checkboxEl.hasAttribute('aria-invalid')).to.be.false
+            expect(checkboxEl.getAttribute('aria-invalid')).to.be.equal('false')
             expect(fake.callCount).to.be.equal(1)
         })
 
         it('should ignore validation if the checkbox is disabled', async () => {
-            //
+            const fake = sinon.fake()
+            const onSubmitMock = (e) => {
+                e.preventDefault()
+                fake()
+            }
+
+            const el = await fixture(html`
+                <form @submit=${onSubmitMock}>
+                    <oui-checkbox required disabled>
+                        <p slot="label">Checkbox label</p>
+                        <button>Click</button>
+                    </oui-checkbox>
+                </form>
+            `)
+
+            const checkboxEl = el.querySelector('oui-checkbox')
+            const buttonEl = el.querySelector('button')
+            checkboxEl.removeAttribute('disabled')
+            checkboxEl.setAttribute('disabled', '')
+
+            buttonEl.click()
+
+            expect(checkboxEl.getAttribute('disabled')).to.be.equal('')
+            // expect(checkboxEl.getAttribute('aria-invalid')).to.be.equal('false')
+            expect(fake.callCount).to.be.equal(1)
         })
     })
 })

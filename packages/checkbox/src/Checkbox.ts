@@ -156,9 +156,7 @@ export class Checkbox extends HTMLElement {
             this.focus()
         }
 
-        if (this.hasAttribute('required')) {
-            this._updateValidation()
-        }
+        this._updateValidation()
 
         this._upgradeProperty('checked')
         this._upgradeProperty('disabled')
@@ -199,8 +197,10 @@ export class Checkbox extends HTMLElement {
 
     _updateValidation() {
         const isChecked = this.hasAttribute('checked')
-        const isDisabled = this.matches(':disabled')
+        // const isDisabled = this.matches(':disabled')
+        const isDisabled = this.hasAttribute('disabled')
         const isRequired = this.hasAttribute('required')
+
         if (!isDisabled && isRequired && !isChecked) {
             this.setAttribute('aria-invalid', 'true')
             this._internals.setValidity(

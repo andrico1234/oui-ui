@@ -9,6 +9,7 @@ module.exports = {
     favicon: 'img/favicon.ico',
     organizationName: 'andrico1234',
     projectName: 'oui-ui',
+    clientModules: [require.resolve('element-internals-polyfill')],
     themeConfig: {
         navbar: {
             title: 'OpenUI UI',

@@ -17,7 +17,7 @@
         "cem:analyze": "yarn wsrun --exclude-missing cem:analyze",
         "create-changeset": "yarn changeset",
         "commit": "git-cz",
-        "debug": "web-test-runner --watch packages/**/*.test.js --node-resolve",
+        "debug": "yarn build && web-test-runner --watch packages/**/*.test.js --node-resolve",
         "develop": "tsc -b ./tsconfig.packages.json --watch",
         "docs:build": "yarn workspace docs build",
         "docs:clean": "yarn workspace docs clear",
@@ -25,7 +25,7 @@
         "docs:serve": "yarn docs:build && yarn workspace docs serve",
         "docs:start": "yarn workspace docs start",
         "lint": "yarn eslint .",
-        "test": "web-test-runner",
+        "test": "yarn build && web-test-runner",
         "prepare": "husky install",
         "release": "yarn build && changeset publish",
         "version-changes": "changeset version"
