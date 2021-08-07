@@ -1,4 +1,5 @@
 import { html, fixture, expect } from '@open-wc/testing'
+import sinon from 'sinon'
 import 'element-internals-polyfill'
 import '../../lib/index'
 
@@ -249,6 +250,117 @@ describe('<oui-checkbox>', () => {
             const checkboxEl = el.querySelector('oui-checkbox')
 
             expect(document.activeElement).to.be.equal(checkboxEl)
+        })
+    })
+
+    describe('validation', () => {
+        it('should not submit the form if checkbox is required and not checked', async () => {
+            const fake = sinon.fake()
+            const onSubmitMock = (e) => {
+                e.preventDefault()
+                fake()
+            }
+
+            const el = await fixture(html`
+                <form @submit=${onSubmitMock}>
+                    <oui-checkbox required>
+                        <p slot="label">Checkbox label</p>
+                        <button>Click</button>
+                    </oui-checkbox>
+                </form>
+            `)
+
+            const checkboxEl = el.querySelector('oui-checkbox')
+
+            const buttonEl = el.querySelector('button')
+
+            buttonEl.click()
+
+            expect(checkboxEl.getAttribute('aria-invalid')).to.be.equal('true')
+            expect(fake.callCount).to.be.equal(0)
+        })
+
+        it('should submit the form if checkbox is required and checked', async () => {
+            const fake = sinon.fake()
+            const onSubmitMock = (e) => {
+                e.preventDefault()
+                fake()
+            }
+
+            const el = await fixture(html`
+                <form @submit=${onSubmitMock}>
+                    <oui-checkbox>
+                        <p slot="label">Checkbox label</p>
+                    </oui-checkbox>
+                    <button type="submit">Click</button>
+                </form>
+            `)
+
+            const checkboxEl = el.querySelector('oui-checkbox')
+            const buttonEl = el.querySelector('button')
+
+            expect(fake.callCount).to.be.equal(0)
+
+            const event = new Event('mouseup')
+            checkboxEl.dispatchEvent(event)
+
+            buttonEl.click()
+
+            expect(checkboxEl.getAttribute('aria-checked')).to.be.equal('true')
+            expect(checkboxEl.getAttribute('aria-invalid')).to.be.equal('false')
+            expect(fake.callCount).to.be.equal(1)
+        })
+
+        it('should submit the form if checkbox is not required and not checked', async () => {
+            const fake = sinon.fake()
+            const onSubmitMock = (e) => {
+                e.preventDefault()
+                fake()
+            }
+
+            const el = await fixture(html`
+                <form @submit=${onSubmitMock}>
+                    <oui-checkbox>
+                        <p slot="label">Checkbox label</p>
+                    </oui-checkbox>
+                </form>
+            `)
+
+            const checkboxEl = el.querySelector('oui-checkbox')
+
+            const event = new Event('submit', { cancelable: true })
+            el.dispatchEvent(event)
+
+            expect(checkboxEl.getAttribute('aria-invalid')).to.be.equal('false')
+            expect(fake.callCount).to.be.equal(1)
+        })
+
+        it('should ignore validation if the checkbox is disabled', async () => {
+            const fake = sinon.fake()
+            const onSubmitMock = (e) => {
+                e.preventDefault()
+                fake()
+            }
+
+            const el = await fixture(html`
+                <form @submit=${onSubmitMock}>
+                    <oui-checkbox required disabled>
+                        <p slot="label">Checkbox label</p>
+                        <button>Click</button>
+                    </oui-checkbox>
+                </form>
+            `)
+
+            const checkboxEl = el.querySelector('oui-checkbox')
+            const buttonEl = el.querySelector('button')
+            checkboxEl.removeAttribute('disabled')
+            checkboxEl.setAttribute('disabled', '')
+
+            buttonEl.click()
+
+            expect(checkboxEl.getAttribute('disabled')).to.be.equal('')
+            // expect(checkboxEl.getAttribute('aria-invalid')).to.be.equal('false')
+            expect(fake.callCount).to.be.equal(1)
         })
     })
 })

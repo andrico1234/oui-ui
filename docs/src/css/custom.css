@@ -77,3 +77,8 @@ oui-checkbox[indeterminate='true']::part(indicator) {
     height: 30%;
     width: 65%;
 }
+
+oui-checkbox[required]:after {
+    content: '*';
+    padding: 0 4px;
+}
