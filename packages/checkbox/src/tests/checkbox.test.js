@@ -19,7 +19,7 @@ describe('<oui-checkbox>', () => {
         it('renders unchecked by default', async () => {
             const el = await fixture(html`
                 <oui-checkbox>
-                    <div data-testid="checkbox" slot></div>
+                    <div slot="indicator"></div>
                     <p slot="label">Checkbox label</p>
                 </oui-checkbox>
             `)
@@ -32,7 +32,7 @@ describe('<oui-checkbox>', () => {
         it('should check box on click', async () => {
             const el = await fixture(html`
                 <oui-checkbox>
-                    <div></div>
+                    <div slot="indicator"></div>
                     <p slot="label">Checkbox label</p>
                 </oui-checkbox>
             `)
@@ -57,7 +57,7 @@ describe('<oui-checkbox>', () => {
         it('should not check box when disabled by default', async () => {
             const el = await fixture(html`
                 <oui-checkbox disabled>
-                    <div slot></div>
+                    <div slot="indicator"></div>
                     <p slot="label">Checkbox label</p>
                 </oui-checkbox>
             `)
@@ -75,7 +75,7 @@ describe('<oui-checkbox>', () => {
         it('should not check box when disabled programmatically', async () => {
             const el = await fixture(html`
                 <oui-checkbox>
-                    <div slot></div>
+                    <div slot="indicator"></div>
                     <p slot="label">Checkbox label</p>
                 </oui-checkbox>
             `)
@@ -111,7 +111,7 @@ describe('<oui-checkbox>', () => {
         it('should display the correct element when in indeterminate state', async () => {
             const el = await fixture(html`
                 <oui-checkbox>
-                    <div data-testid="checkbox" slot></div>
+                    <div slot="indicator"></div>
                     <p slot="label">Checkbox label</p>
                 </oui-checkbox>
             `)
@@ -139,7 +139,7 @@ describe('<oui-checkbox>', () => {
         it('should set the checked value to true if defaultChecked is true', async () => {
             const el = await fixture(html`
                 <oui-checkbox defaultChecked>
-                    <div data-testid="checkbox" slot></div>
+                    <div slot="indicator"></div>
                     <p slot="label">Checkbox label</p>
                 </oui-checkbox>
             `)
@@ -152,7 +152,7 @@ describe('<oui-checkbox>', () => {
     it('should set checked to false if defaultChecked is true and checked is false', async () => {
         const el = await fixture(html`
             <oui-checkbox defaultChecked checked="false">
-                <div data-testid="checkbox" slot></div>
+                <div slot="indicator"></div>
                 <p slot="label">Checkbox label</p>
             </oui-checkbox>
         `)
@@ -165,7 +165,7 @@ describe('<oui-checkbox>', () => {
         it('should set the value to on if none is provided', async () => {
             const el = await fixture(html`
                 <oui-checkbox>
-                    <div data-testid="checkbox" slot></div>
+                    <div slot="indicator"></div>
                     <p slot="label">Checkbox label</p>
                 </oui-checkbox>
             `)
@@ -176,7 +176,7 @@ describe('<oui-checkbox>', () => {
         it('should set the value to the correct value', async () => {
             const el = await fixture(html`
                 <oui-checkbox value="oui-ui">
-                    <div data-testid="checkbox" slot></div>
+                    <div slot="indicator"></div>
                     <p slot="label">Checkbox label</p>
                 </oui-checkbox>
             `)
@@ -199,7 +199,7 @@ describe('<oui-checkbox>', () => {
         it('should add default tabindex if the client does not set one', async () => {
             const el = await fixture(html`
                 <oui-checkbox>
-                    <div data-testid="checkbox" slot></div>
+                    <div slot="indicator"></div>
                     <p slot="label">Checkbox label</p>
                 </oui-checkbox>
             `)
@@ -210,7 +210,7 @@ describe('<oui-checkbox>', () => {
         it("should not override client's tabindex", async () => {
             const el = await fixture(html`
                 <oui-checkbox tabindex="-1">
-                    <div data-testid="checkbox" slot></div>
+                    <div slot="indicator"></div>
                     <p slot="label">Checkbox label</p>
                 </oui-checkbox>
             `)
@@ -225,7 +225,7 @@ describe('<oui-checkbox>', () => {
                 <div>
                     <button>focusable</button>
                     <oui-checkbox>
-                        <div data-testid="checkbox" slot></div>
+                        <div slot="indicator"></div>
                         <p slot="label">Checkbox label</p>
                     </oui-checkbox>
                 </div>
@@ -241,7 +241,7 @@ describe('<oui-checkbox>', () => {
                 <div>
                     <button>focusable</button>
                     <oui-checkbox autofocus>
-                        <div data-testid="checkbox" slot></div>
+                        <div slot="indicator"></div>
                         <p slot="label">Checkbox label</p>
                     </oui-checkbox>
                 </div>
@@ -264,9 +264,10 @@ describe('<oui-checkbox>', () => {
             const el = await fixture(html`
                 <form @submit=${onSubmitMock}>
                     <oui-checkbox required>
+                        <div slot="indicator"></div>
                         <p slot="label">Checkbox label</p>
-                        <button>Click</button>
                     </oui-checkbox>
+                    <button>Click</button>
                 </form>
             `)
 
@@ -290,6 +291,7 @@ describe('<oui-checkbox>', () => {
             const el = await fixture(html`
                 <form @submit=${onSubmitMock}>
                     <oui-checkbox>
+                        <div slot="indicator"></div>
                         <p slot="label">Checkbox label</p>
                     </oui-checkbox>
                     <button type="submit">Click</button>
@@ -321,6 +323,7 @@ describe('<oui-checkbox>', () => {
             const el = await fixture(html`
                 <form @submit=${onSubmitMock}>
                     <oui-checkbox>
+                        <div slot="indicator"></div>
                         <p slot="label">Checkbox label</p>
                     </oui-checkbox>
                 </form>
@@ -345,9 +348,10 @@ describe('<oui-checkbox>', () => {
             const el = await fixture(html`
                 <form @submit=${onSubmitMock}>
                     <oui-checkbox required disabled>
+                        <div slot="indicator"></div>
                         <p slot="label">Checkbox label</p>
-                        <button>Click</button>
                     </oui-checkbox>
+                    <button>Click</button>
                 </form>
             `)
 

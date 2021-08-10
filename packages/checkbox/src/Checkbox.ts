@@ -31,15 +31,13 @@ checkboxTemplate.innerHTML = `
         }
     </style>
 
-    <div part="control">
-        <div part="indicator">
-            <slot></slot>
-        </div>
-    </div>
-    
-    <label id="label" part="label">
+    <label part="label">
         <slot name="label"></slot>
     </label>
+
+    <div part="indicator">
+        <slot name="indicator"></slot>
+    </div>
 `
 // Note: disabled, readonly, form, and name are managed by browser as it's a FACE
 
