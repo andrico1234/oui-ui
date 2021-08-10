@@ -33,6 +33,7 @@ function Checkbox() {
                     disabled={disabled || undefined}
                 >
                     <p slot="label">Inside form</p>
+                    <div slot="indicator" className="indicator" />
                 </oui-checkbox>
 
                 <button
@@ -50,6 +51,7 @@ function Checkbox() {
                 value="enabled"
             >
                 <p slot="label">Outside form</p>
+                <div slot="indicator" className="indicator" />
             </oui-checkbox>
             <h3>Submitted values</h3>
             <div>
