@@ -1,5 +1,11 @@
 # @oui-ui/checkbox
 
+## 0.2.9
+
+### Patch Changes
+
+-   2ea77f3: Change the api so that it matches the DOM structure set up in the Open UI proposal page
+
 ## 0.2.8
 
 ### Patch Changes
