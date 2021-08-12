@@ -15,6 +15,10 @@ describe('<oui-checkbox>', () => {
         await expect(el).to.be.accessible()
     })
 
+    afterEach(() => {
+        sinon.restore()
+    })
+
     describe('checked property', () => {
         it('renders unchecked by default', async () => {
             const el = await fixture(html`
@@ -365,6 +369,40 @@ describe('<oui-checkbox>', () => {
             expect(checkboxEl.getAttribute('disabled')).to.be.equal('')
             // expect(checkboxEl.getAttribute('aria-invalid')).to.be.equal('false')
             expect(fake.callCount).to.be.equal(1)
+        })
+    })
+
+    describe('events', () => {
+        it('should correctly fire the change event on check', async () => {
+            const onChangeMock = sinon.fake()
+
+            const el = await fixture(html`
+                <oui-checkbox @change=${onChangeMock}>
+                    <div slot="indicator"></div>
+                    <p slot="label">Checkbox label</p>
+                </oui-checkbox>
+            `)
+
+            const event = new Event('mouseup')
+            el.dispatchEvent(event)
+
+            expect(onChangeMock.callCount).to.be.equal(1)
+        })
+
+        it('should correctly fire the input event on check', async () => {
+            const onInputMock = sinon.fake()
+
+            const el = await fixture(html`
+                <oui-checkbox @input=${onInputMock}>
+                    <div slot="indicator"></div>
+                    <p slot="label">Checkbox label</p>
+                </oui-checkbox>
+            `)
+
+            const event = new Event('mouseup')
+            el.dispatchEvent(event)
+
+            expect(onInputMock.callCount).to.be.equal(1)
         })
     })
 })

@@ -2,6 +2,12 @@ import { IElementInternals } from 'element-internals-polyfill'
 
 const checkboxTemplate = document.createElement('template')
 
+const eventDetails: EventInit = {
+    bubbles: true,
+    composed: true,
+    cancelable: false,
+}
+
 function hasOwnProperty<X extends {}, Y extends PropertyKey>(
     obj: X,
     prop: Y
@@ -9,7 +15,6 @@ function hasOwnProperty<X extends {}, Y extends PropertyKey>(
     return obj.hasOwnProperty(prop)
 }
 
-// required	bool	false	Indicates that the checkbox is invalid unless checked.
 // readonly	bool	readonly	Indicates that the checkbox is not interactive but its value should still be submitted with the form.
 
 // change to :disabled on PR fix
@@ -42,13 +47,14 @@ checkboxTemplate.innerHTML = `
 // Note: disabled, readonly, form, and name are managed by browser as it's a FACE
 
 /**
- * @csspart control - Sets the structure of the control
- * @csspart indicator - Displays the appropriate indicator based on the checkbox's current state
- * @csspart label - Styles the label and associates it to the control
+ * @csspart indicator - An outer wrapper around the indicator
+ * @csspart label - An outer wrapper around the label
  *
- * @slot - The default/unnamed slot to create the HTML within the
- * @slot label - Sets the structure of the element within `<label>`
+ * @slot indicator - Creates the indicator, and can be styles based on the checkbox's current state
+ * @slot label - Creates the label and associates it to the control
  *
+ * @event change - Fires on check
+ * @event input - Fires on check
  */
 export class Checkbox extends HTMLElement {
     _internals: IElementInternals
@@ -171,6 +177,13 @@ export class Checkbox extends HTMLElement {
                 this.setAttribute('aria-checked', `${hasVal}`)
                 this._internals.setFormValue(this.checked ? this.value : null)
                 this._updateValidation()
+
+                const inputEvent = new Event('input', eventDetails)
+                this.dispatchEvent(inputEvent)
+
+                const changeEvent = new Event('change', eventDetails)
+                this.dispatchEvent(changeEvent)
+
                 break
             case 'indeterminate':
                 this.setAttribute('aria-checked', hasVal ? 'mixed' : 'false')

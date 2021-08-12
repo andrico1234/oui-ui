@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 
 if (global.window) {
     import('@oui-ui/checkbox')
@@ -7,6 +7,12 @@ if (global.window) {
 function Checkbox() {
     const [disabled, setDisabledState] = useState(false)
     const ref = useRef(null)
+
+    useLayoutEffect(() => {
+        ref.current.addEventListener('change', (e) => {
+            console.log(e)
+        })
+    })
 
     return (
         <div>
