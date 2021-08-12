@@ -1,5 +1,11 @@
 # @oui-ui/checkbox
 
+## 0.2.10
+
+### Patch Changes
+
+-   df497a0: add oninput and onchange functionality for the checkbox component
+
 ## 0.2.9
 
 ### Patch Changes
