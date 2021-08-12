@@ -31,3 +31,10 @@ label: Features
 | name           | string  | -       | The name of the checkbox for form submission purposes. Required if submitting values to a form.                                     |
 | required       | boolean | false   | Whether or not the checkbox is required for form submission. This value is ignored if the checkbox is disabled                      |
 | form           | string  | -       | Associates the element with a form in the document whose id is this value.                                                          |
+
+### Events
+
+| Event Name | Bubbles | Composed | Cancellable | Dispatch Behavior                        |
+| ---------- | ------- | -------- | ----------- | ---------------------------------------- |
+| change     | true    | true     | false       | Fired when the checkbox's state changes. |
+| input      | true    | true     | false       | Fired when the checkbox's state changes. |

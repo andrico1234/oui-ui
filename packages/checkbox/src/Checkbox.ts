@@ -2,6 +2,12 @@ import { IElementInternals } from 'element-internals-polyfill'
 
 const checkboxTemplate = document.createElement('template')
 
+const eventDetails: EventInit = {
+    bubbles: true,
+    composed: true,
+    cancelable: false,
+}
+
 function hasOwnProperty<X extends {}, Y extends PropertyKey>(
     obj: X,
     prop: Y
@@ -172,10 +178,10 @@ export class Checkbox extends HTMLElement {
                 this._internals.setFormValue(this.checked ? this.value : null)
                 this._updateValidation()
 
-                const inputEvent = new Event('input')
+                const inputEvent = new Event('input', eventDetails)
                 this.dispatchEvent(inputEvent)
 
-                const changeEvent = new Event('change')
+                const changeEvent = new Event('change', eventDetails)
                 this.dispatchEvent(changeEvent)
 
                 break
