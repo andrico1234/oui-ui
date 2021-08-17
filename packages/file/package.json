@@ -1,0 +1,46 @@
+{
+    "name": "@oui-ui/file",
+    "publishConfig": {
+        "access": "public"
+    },
+    "author": "Andrico Karoulla",
+    "scripts": {
+        "cem:analyze": "custom-elements-manifest analyze --outdir '.' --globs \"lib/**/File.js\""
+    },
+    "homepage": "https://github.com/andrico1234/oui-ui",
+    "version": "0.2.10",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/andrico1234/oui-ui.git",
+        "directory": "packages/file"
+    },
+    "main": "lib/index.js",
+    "module": "lib/index.js",
+    "typings": "lib/index.d.ts",
+    "keywords": [
+        "web-components",
+        "open-ui",
+        "ui",
+        "file",
+        "input"
+    ],
+    "files": [
+        "lib/*",
+        "custom-elements.json"
+    ],
+    "engines": {
+        "node": ">=12"
+    },
+    "size-limit": [
+        {
+            "path": "dist/web.cjs.production.min.js",
+            "limit": "10 KB"
+        },
+        {
+            "path": "dist/web.esm.js",
+            "limit": "10 KB"
+        }
+    ],
+    "customElements": "custom-elements.json"
+}

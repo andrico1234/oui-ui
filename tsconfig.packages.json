@@ -1,8 +1,11 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./packages/checkbox/tsconfig.json"
-    },
-  ]
+    "files": [],
+    "references": [
+        {
+            "path": "./packages/checkbox/tsconfig.json"
+        },
+        {
+            "path": "./packages/file/tsconfig.json"
+        }
+    ]
 }
