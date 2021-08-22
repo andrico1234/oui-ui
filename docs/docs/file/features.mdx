@@ -9,24 +9,23 @@ label: Features
 
 ### DOM Structure
 
-| Slot      | Description                                                                    |
-| --------- | ------------------------------------------------------------------------------ |
-| indicator | Creates the indicator, and can be styles based on the checkbox's current state |
-| label     | Creates the label and associates it to the control                             |
+| Slot                 | Description                                                                           |
+| -------------------- | ------------------------------------------------------------------------------------- |
+| file-selector-button | Invokes the file selection prompt                                                     |
+| label                | Indicates if a file input is waiting for file selection, or if it has selected files. |
 
 | Part      | Description                           |
 | --------- | ------------------------------------- |
-| indicator | An outer wrapper around the indicator |
+| indicator | An outer wrapper around the button |
 | label     | An outer wrapper around the label     |
 
 ### Attributes
 
 | Name           | Type    | Default | Description                                                                                                                         |
 | -------------- | ------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| checked        | boolean | false   | Whether the checkbox's value is checked, if set to `true` the checkbox displays the contents of the `checked-indicator` slot |
+| checked        | boolean | false   | Whether or not the checkbox's value is checked, if set to `true` the checkbox displays the contents of the `checked-indicator` slot |
 | defaultChecked | boolean | false   | Whether the checkbox is checked by default when added to the DOM. Does nothing if checked is explicitly set                         |
 | disabled       | string  | -       | When set the checkbox cannot be interacted with                                                                                     |
-| indeterminate  | boolean | false   | Whether the checkbox's state is not `true` or `false`.                                                                              |
 | value          | string  | "on"    | The value of the checkbox                                                                                                           |
 | name           | string  | -       | The name of the checkbox for form submission purposes. Required if submitting values to a form.                                     |
 | required       | boolean | false   | Whether or not the checkbox is required for form submission. This value is ignored if the checkbox is disabled                      |

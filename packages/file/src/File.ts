@@ -10,9 +10,21 @@ const fileInputTemplate = document.createElement('template')
 //     cancelable: false,
 // }
 
+// when button is clicked, file selection prompt will display
+// - user can choose single or multiple files
+// - label updates to show the filename
+// - unless multiple;
+// - then number of files are displayed
+
 // drag and drop
 // focusable via keyboard navigation
 // integrates with forms
+
+// The openui-file component should appear as a button (ARIA role)
+
+// if I need to assign attributes to a child component, how do I do that with a custom element?
+
+// on click trigger the hidden input
 
 function hasOwnProperty<X extends {}, Y extends PropertyKey>(
     obj: X,
@@ -21,7 +33,6 @@ function hasOwnProperty<X extends {}, Y extends PropertyKey>(
     return obj.hasOwnProperty(prop)
 }
 
-// readonly	bool	readonly	Indicates that the checkbox is not interactive but its value should still be submitted with the form.
 fileInputTemplate.innerHTML = `
     <style>
 
@@ -31,9 +42,9 @@ fileInputTemplate.innerHTML = `
         <slot name="file-selector-button"></slot>
     </div>
 
-    <div part="label">
+    <label part="label">
         <slot name="label"></slot>
-    </div>
+    </label>
 `
 // Note: disabled, readonly, form, and name are managed by browser as it's a FACE
 
@@ -44,11 +55,12 @@ fileInputTemplate.innerHTML = `
  * @slot file-selector-button - Creates the indicator, and can be styles based on the checkbox's current state
  * @slot label - Creates the label and associates it to the control
  *
- * @event change - Fires on check
- * @event input - Fires on check
+ * @event change - Fires when the input's value is commited by the user
+ * @event input - Fires when the input's value changes
  */
 export class File extends HTMLElement {
     _internals: IElementInternals
+    // _input: HTMLInputElement
 
     static get formAssociated() {
         return true
@@ -75,6 +87,8 @@ export class File extends HTMLElement {
     }
 
     set value(val) {
+        console.log(val)
+
         if (val === null) {
             this.removeAttribute('value')
         } else {
@@ -93,6 +107,8 @@ export class File extends HTMLElement {
         this._internals = this.attachInternals()
         this.shadowRoot?.appendChild(fileInputTemplate.content.cloneNode(true))
         this.addEventListener('mouseup', this._click)
+
+        console.log(this.shadowRoot)
     }
 
     connectedCallback() {
@@ -104,9 +120,6 @@ export class File extends HTMLElement {
             this.focus()
         }
 
-        // this._updateValidation()
-
-        this._upgradeProperty('checked')
         this._upgradeProperty('disabled')
         this._upgradeProperty('value')
     }
