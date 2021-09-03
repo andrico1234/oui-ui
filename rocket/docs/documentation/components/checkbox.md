@@ -1,0 +1,63 @@
+# Components >> Checkbox
+
+## Demo
+
+## Quick Start
+
+1. Begin by installing via your favourite package manager
+
+`npm install @oui-ui/checkbox`
+
+2. Use in your HTML, JSX, or whatever:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quick Start</title>
+        <meta charset="UTF-8" />
+    </head>
+
+    <body>
+        <!-- Use web components in your HTML like regular built-in elements. -->
+        <oui-checkbox>
+            <p slot="label">Hey there</p>
+            <div slot="indicator" class="indicator"></div>
+        </oui-checkbox>
+
+        <!-- oui-ui web components use standard JavaScript modules. -->
+        <script type="module">
+            import '@oui-ui/checkbox'
+        </script>
+    </body>
+</html>
+```
+
+3. Add some custom css to your checkbox
+
+```css
+oui-checkbox::part(indicator) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+    border-radius: 2px;
+    height: 24px;
+    width: 24px;
+    margin-right: 8px;
+    position: relative;
+}
+
+oui-checkbox[checked] .indicator {
+    background: red;
+    width: 100%;
+    height: 100%;
+}
+
+oui-checkbox[indeterminate='true'] .indicator {
+    background: red;
+    border-radius: 2px;
+    height: 30%;
+    width: 65%;
+}
+```
