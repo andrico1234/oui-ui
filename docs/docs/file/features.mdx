@@ -14,26 +14,24 @@ label: Features
 | file-selector-button | Invokes the file selection prompt                                                     |
 | label                | Indicates if a file input is waiting for file selection, or if it has selected files. |
 
-| Part      | Description                           |
-| --------- | ------------------------------------- |
-| indicator | An outer wrapper around the button |
-| label     | An outer wrapper around the label     |
+| Part                 | Description                        |
+| -------------------- | ---------------------------------- |
+| file-selector-button | An outer wrapper around the button |
+| label                | An outer wrapper around the label  |
 
 ### Attributes
 
-| Name           | Type    | Default | Description                                                                                                                         |
-| -------------- | ------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| checked        | boolean | false   | Whether or not the checkbox's value is checked, if set to `true` the checkbox displays the contents of the `checked-indicator` slot |
-| defaultChecked | boolean | false   | Whether the checkbox is checked by default when added to the DOM. Does nothing if checked is explicitly set                         |
-| disabled       | string  | -       | When set the checkbox cannot be interacted with                                                                                     |
-| value          | string  | "on"    | The value of the checkbox                                                                                                           |
-| name           | string  | -       | The name of the checkbox for form submission purposes. Required if submitting values to a form.                                     |
-| required       | boolean | false   | Whether or not the checkbox is required for form submission. This value is ignored if the checkbox is disabled                      |
-| form           | string  | -       | Associates the element with a form in the document whose id is this value.                                                          |
+| Name     | Type    | Default | Description                                                                                                                                                               |
+| -------- | ------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| multiple | boolean | false   | A boolean which, if present, indicates that the user may choose more than one file                                                                                        |
+| accept   | boolean | false   | One or more unique file type specifiers describing file types to allow                                                                                                    |
+| capture  | string  | -       | What source to use for capturing image or video data (user or environment)                                                                                                |
+| value    | string  | "on"    | A DOMString that represents the path to the selected file(s). If the user selected multiple files, the value represents the first file in the list of files they selected |
+| files    | string  | -       | A FileList listing the chosen files                                                                                                                                       |
 
 ### Events
 
-| Event Name | Bubbles | Composed | Cancellable | Dispatch Behavior                        |
-| ---------- | ------- | -------- | ----------- | ---------------------------------------- |
-| change     | true    | true     | false       | Fired when the checkbox's state changes. |
-| input      | true    | true     | false       | Fired when the checkbox's state changes. |
+| Event Name | Bubbles | Composed | Cancellable | Dispatch Behavior                    |
+| ---------- | ------- | -------- | ----------- | ------------------------------------ |
+| change     | true    | true     | false       | Fired when the file's state changes. |
+| input      | true    | true     | false       | Fired when the file's state changes. |

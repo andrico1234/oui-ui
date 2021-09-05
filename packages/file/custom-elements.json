@@ -38,6 +38,10 @@
             },
             {
               "kind": "field",
+              "name": "multiple"
+            },
+            {
+              "kind": "field",
               "name": "disabled"
             },
             {
@@ -77,11 +81,11 @@
           ],
           "events": [
             {
-              "description": "Fires on check",
+              "description": "Fires when the input's value is commited by the user",
               "name": "change"
             },
             {
-              "description": "Fires on check",
+              "description": "Fires when the input's value changes",
               "name": "input"
             }
           ],

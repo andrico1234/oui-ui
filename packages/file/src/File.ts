@@ -54,7 +54,7 @@ fileInputTemplate.innerHTML = `
 // Note: disabled, readonly, form, and name are managed by browser as it's a FACE
 
 /**
- * @csspart file-selector-button - An outer wrapper around the indicator
+ * @csspart file-selector-button - An outer wrapper around the button
  * @csspart label - An outer wrapper around the label
  *
  * @slot file-selector-button - Creates the indicator, and can be styles based on the checkbox's current state
