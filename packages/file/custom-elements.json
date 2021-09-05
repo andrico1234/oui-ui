@@ -12,7 +12,7 @@
           "name": "File",
           "cssParts": [
             {
-              "description": "An outer wrapper around the indicator",
+              "description": "An outer wrapper around the button",
               "name": "file-selector-button"
             },
             {
