@@ -1,4 +1,8 @@
 import { IElementInternals } from 'element-internals-polyfill'
+import {
+    FileSystemHandle,
+    ShowOpenFilePickerOptions,
+} from '../typings/file-system-access'
 
 // Ponyfill https://github.com/GoogleChromeLabs/browser-fs-access
 
@@ -17,8 +21,6 @@ const fileInputTemplate = document.createElement('template')
 // - then number of files are displayed
 
 // drag and drop
-// focusable via keyboard navigation
-// integrates with forms
 
 // The openui-file component should appear as a button (ARIA role)
 
@@ -45,7 +47,10 @@ fileInputTemplate.innerHTML = `
     <label part="label">
         <slot name="label"></slot>
     </label>
+
+    <p aria-live="polite" role="status"></p>
 `
+
 // Note: disabled, readonly, form, and name are managed by browser as it's a FACE
 
 /**
@@ -62,12 +67,26 @@ export class File extends HTMLElement {
     _internals: IElementInternals
     // _input: HTMLInputElement
 
+    handles?: FileSystemHandle[]
+
     static get formAssociated() {
         return true
     }
 
     static get observedAttributes() {
         return []
+    }
+
+    get multiple() {
+        return this.hasAttribute('multiple')
+    }
+
+    set multiple(val) {
+        if (val) {
+            this.setAttribute('multiple', '')
+        } else {
+            this.removeAttribute('multiple')
+        }
     }
 
     get disabled() {
@@ -107,19 +126,17 @@ export class File extends HTMLElement {
         this._internals = this.attachInternals()
         this.shadowRoot?.appendChild(fileInputTemplate.content.cloneNode(true))
         this.addEventListener('mouseup', this._click)
+        this.addEventListener('keydown', this._keyDown)
 
         console.log(this.shadowRoot)
     }
 
     connectedCallback() {
-        if (!this.hasAttribute('tabindex')) {
-            this.setAttribute('tabindex', '0')
-        }
-
         if (this.hasAttribute('autofocus')) {
             this.focus()
         }
 
+        this._upgradeProperty('multiple')
         this._upgradeProperty('disabled')
         this._upgradeProperty('value')
     }
@@ -132,8 +149,28 @@ export class File extends HTMLElement {
         }
     }
 
-    _click() {
-        console.log('hshshshs')
+    async _click() {
+        const options: ShowOpenFilePickerOptions = {
+            multiple: this.multiple,
+        }
+
+        this.handles = await window.showOpenFilePicker(options)
+        const status = this.shadowRoot?.querySelector('[role=status]')
+
+        if (!this.handles) {
+            const textNode = document.createTextNode('')
+            return status?.appendChild(textNode)
+        }
+
+        if (this.handles.length === 1) {
+            const fileName = this.handles[0].name
+            const textNode = document.createTextNode(fileName)
+            return status?.appendChild(textNode)
+        }
+
+        const fileCount = this.handles.length
+        const textNode = document.createTextNode(`${fileCount} files selected`)
+        return status?.appendChild(textNode)
     }
 
     // _updateValidation() {}

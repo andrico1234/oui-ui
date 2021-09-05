@@ -21,7 +21,8 @@
         "allowJs": true,
         "resolveJsonModule": true,
         "paths": {
-            "@oui-ui/checkbox": ["packages/checkbox/src"]
+            "@oui-ui/checkbox": ["packages/checkbox/src"],
+            "@oui-ui/file": ["packages/file/src"],
         }
     },
     "exclude": ["node_modules", "packages/**/tests", "./packages/**/lib/**/*"]
