@@ -42,6 +42,18 @@
             },
             {
               "kind": "field",
+              "name": "accept"
+            },
+            {
+              "kind": "field",
+              "name": "capture"
+            },
+            {
+              "kind": "field",
+              "name": "files"
+            },
+            {
+              "kind": "field",
               "name": "disabled"
             },
             {
@@ -63,6 +75,19 @@
             },
             {
               "kind": "method",
+              "name": "_hasButtonRole"
+            },
+            {
+              "kind": "method",
+              "name": "_showOpenFilePicker",
+              "parameters": [
+                {
+                  "name": "options"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_click"
             },
             {
@@ -77,6 +102,10 @@
             {
               "kind": "field",
               "name": "_internals"
+            },
+            {
+              "kind": "field",
+              "name": "isFSAccessSupported"
             }
           ],
           "events": [

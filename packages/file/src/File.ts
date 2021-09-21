@@ -1,32 +1,10 @@
 import { IElementInternals } from 'element-internals-polyfill'
-import {
-    FileSystemHandle,
-    ShowOpenFilePickerOptions,
-} from '../typings/file-system-access'
-
-// Ponyfill https://github.com/GoogleChromeLabs/browser-fs-access
-
 const fileInputTemplate = document.createElement('template')
 
-// const eventDetails: EventInit = {
-//     bubbles: true,
-//     composed: true,
-//     cancelable: false,
-// }
-
-// when button is clicked, file selection prompt will display
-// - user can choose single or multiple files
-// - label updates to show the filename
-// - unless multiple;
-// - then number of files are displayed
-
+// TODO:
 // drag and drop
-
-// The openui-file component should appear as a button (ARIA role)
-
-// if I need to assign attributes to a child component, how do I do that with a custom element?
-
-// on click trigger the hidden input
+// manage required attribute, since it's associated with forms
+// clicking label open picker
 
 function hasOwnProperty<X extends {}, Y extends PropertyKey>(
     obj: X,
@@ -35,9 +13,18 @@ function hasOwnProperty<X extends {}, Y extends PropertyKey>(
     return obj.hasOwnProperty(prop)
 }
 
+interface FileParams {
+    accept: string | null
+    capture: string | null
+    multiple: boolean
+}
+
 fileInputTemplate.innerHTML = `
     <style>
-
+        :host([disabled]) {
+            cursor: default;
+            opacity: 0.5;
+        }
     </style>
 
     <div part="file-selector-button">
@@ -65,9 +52,8 @@ fileInputTemplate.innerHTML = `
  */
 export class File extends HTMLElement {
     _internals: IElementInternals
-    // _input: HTMLInputElement
-
-    handles?: FileSystemHandle[]
+    handles?: FileList | null
+    isFSAccessSupported: boolean
 
     static get formAssociated() {
         return true
@@ -89,6 +75,46 @@ export class File extends HTMLElement {
         }
     }
 
+    get accept() {
+        return this.getAttribute('multiple')
+    }
+
+    set accept(val) {
+        if (val) {
+            this.setAttribute('accept', val)
+        } else {
+            this.removeAttribute('accept')
+        }
+    }
+
+    get capture() {
+        return this.getAttribute('capture')
+    }
+
+    set capture(val) {
+        // How should we manage an invalid value?
+        // do nothing
+        // log a warning to the console
+        // throw an error?
+        if (val) {
+            this.setAttribute('capture', val)
+        } else {
+            this.removeAttribute('capture')
+        }
+    }
+
+    get files() {
+        return this.getAttribute('files')
+    }
+
+    set files(val) {
+        if (val) {
+            this.setAttribute('files', val)
+        } else {
+            this.removeAttribute('files')
+        }
+    }
+
     get disabled() {
         return this.hasAttribute('disabled')
     }
@@ -106,8 +132,6 @@ export class File extends HTMLElement {
     }
 
     set value(val) {
-        console.log(val)
-
         if (val === null) {
             this.removeAttribute('value')
         } else {
@@ -128,13 +152,15 @@ export class File extends HTMLElement {
         this.addEventListener('mouseup', this._click)
         this.addEventListener('keydown', this._keyDown)
 
-        console.log(this.shadowRoot)
+        this.isFSAccessSupported = 'showOpenFilePicker' in self
     }
 
     connectedCallback() {
         if (this.hasAttribute('autofocus')) {
             this.focus()
         }
+
+        this._hasButtonRole()
 
         this._upgradeProperty('multiple')
         this._upgradeProperty('disabled')
@@ -149,12 +175,67 @@ export class File extends HTMLElement {
         }
     }
 
+    _hasButtonRole() {
+        const node = this.querySelector('[slot="file-selector-button"]')!
+
+        const role = node.getAttribute('role')
+
+        if (node.tagName.toLowerCase() !== 'button' && role !== 'button') {
+            console.warn(
+                'Please ensure that the element provided in the `file-selector-button` slot is a <button> element'
+            )
+        }
+    }
+
+    async _showOpenFilePicker(options: FileParams): Promise<FileList | null> {
+        return new Promise((res) => {
+            // can I add an element to the shadow DOM?
+            const { multiple, capture, accept } = options
+            const tempFileInput = document.createElement('input')
+            tempFileInput.setAttribute('type', 'file')
+            this.shadowRoot?.appendChild(tempFileInput)
+
+            if (multiple) {
+                tempFileInput.setAttribute('multiple', `${multiple}`)
+            }
+
+            if (capture) {
+                tempFileInput.setAttribute('capture', `${capture}`)
+            }
+
+            if (accept) {
+                tempFileInput.setAttribute('accept', `${accept}`)
+            }
+
+            if (this.files) {
+                tempFileInput.setAttribute('files', `${this.files}`)
+            }
+
+            tempFileInput.addEventListener('change', (e) => {
+                const inputEvent = new Event('input', e)
+                this.dispatchEvent(inputEvent)
+
+                const changeEvent = new Event('change', e)
+                this.dispatchEvent(changeEvent)
+
+                return res(tempFileInput.files)
+            })
+
+            tempFileInput.click()
+
+            this.shadowRoot?.removeChild(tempFileInput)
+        })
+    }
+
     async _click() {
-        const options: ShowOpenFilePickerOptions = {
+        const options: FileParams = {
             multiple: this.multiple,
+            accept: this.accept,
+            capture: this.capture,
         }
 
-        this.handles = await window.showOpenFilePicker(options)
+        // https://wicg.github.io/file-system-access/#api-filesystemhandle
+        this.handles = await this._showOpenFilePicker(options)
         const status = this.shadowRoot?.querySelector('[role=status]')
 
         if (!this.handles) {
