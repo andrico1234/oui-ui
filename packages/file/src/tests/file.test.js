@@ -1,6 +1,7 @@
 import { html, fixture, expect } from '@open-wc/testing'
+import sinon from 'sinon'
 import 'element-internals-polyfill'
-// import '../../lib/index'
+import '../../lib/index'
 
 describe('<oui-file>', () => {
     it('passes a11y test', async () => {
@@ -13,27 +14,50 @@ describe('<oui-file>', () => {
         await expect(el).to.be.accessible()
     })
 
-    // afterEach(() => {
-    //     sinon.restore()
-    // })
+    afterEach(() => {
+        sinon.restore()
+    })
 
-    // describe('should add a single file to the file picker', async () => {
-    //     const el = await fixture(html`
-    //         <oui-file>
-    //             <button slot="file-selector-button">Upload file</button>
-    //             <p slot="label">Checkbox label</p>
-    //         </oui-file>
-    //     `)
+    describe('Test stubs', () => {
+        it('should fire off a change event', async () => {
+            const el = await fixture(html`
+                <oui-file>
+                    <button slot="file-selector-button">Upload file</button>
+                    <p slot="label">Checkbox label</p>
+                </oui-file>
+            `)
 
-    //     let fileString =
-    //         'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/C/HgAGgwJ/lK3Q6wAAAABJRU5ErkJggg=='
+            const replacedFunction = () => {
+                return new Promise((res) => {
+                    console.log('heytooio')
+                    let fileString =
+                        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/C/HgAGgwJ/lK3Q6wAAAABJRU5ErkJggg=='
+                    let file = new File([fileString], 'sample.jpg', {
+                        type: 'image/png',
+                    })
 
-    //     let file = new File([fileString], 'sample.jpg', { type: 'image/png' })
-    //     const fileList = new DataTransfer()
-    //     fileList.items.add(file)
-    //     el.files = fileList
+                    const inputEvent = new Event('input')
+                    el.dispatchEvent(inputEvent)
 
-    //     let changeEvent = new Event('change')
-    //     el.dispatchEvent(changeEvent)
-    // })
+                    const changeEvent = new Event('change')
+                    el.dispatchEvent(changeEvent)
+
+                    return res([file])
+                })
+            }
+
+            sinon.replace(
+                el,
+                '_showOpenFilePicker',
+                sinon.fake(replacedFunction)
+            )
+
+            const clickEvent = new Event('mouseup')
+            el.dispatchEvent(clickEvent)
+
+            const textNode = el.shadowRoot.querySelector('[role=status]')
+
+            expect(textNode).to.equal('sample.jpg')
+        })
+    })
 })
