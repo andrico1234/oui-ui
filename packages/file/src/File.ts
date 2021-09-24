@@ -59,10 +59,6 @@ export class File extends HTMLElement {
         return true
     }
 
-    static get observedAttributes() {
-        return []
-    }
-
     get multiple() {
         return this.hasAttribute('multiple')
     }
@@ -76,7 +72,7 @@ export class File extends HTMLElement {
     }
 
     get accept() {
-        return this.getAttribute('multiple')
+        return this.getAttribute('accept')
     }
 
     set accept(val) {
@@ -189,7 +185,6 @@ export class File extends HTMLElement {
 
     async _showOpenFilePicker(options: FileParams): Promise<FileList | null> {
         return new Promise((res) => {
-            // can I add an element to the shadow DOM?
             const { multiple, capture, accept } = options
             const tempFileInput = document.createElement('input')
             tempFileInput.setAttribute('type', 'file')
@@ -228,6 +223,12 @@ export class File extends HTMLElement {
     }
 
     async _click() {
+        const isDisabled = this.disabled
+
+        if (isDisabled) {
+            return
+        }
+
         const options: FileParams = {
             multiple: this.multiple,
             accept: this.accept,
@@ -238,7 +239,7 @@ export class File extends HTMLElement {
         this.handles = await this._showOpenFilePicker(options)
         const status = this.shadowRoot?.querySelector('[role=status]')
 
-        if (!this.handles) {
+        if (!this.handles || !this.handles.length) {
             const textNode = document.createTextNode('')
             return status?.appendChild(textNode)
         }
@@ -246,7 +247,10 @@ export class File extends HTMLElement {
         if (this.handles.length === 1) {
             const fileName = this.handles[0].name
             const textNode = document.createTextNode(fileName)
-            return status?.appendChild(textNode)
+            status?.appendChild(textNode)
+
+            console.log(this.shadowRoot)
+            return
         }
 
         const fileCount = this.handles.length
