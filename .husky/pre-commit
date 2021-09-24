@@ -1,6 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+yarn cem:analyze
+git add "**/custom-elements.json"
 npx lint-staged
 yarn test
-yarn cem:analyze

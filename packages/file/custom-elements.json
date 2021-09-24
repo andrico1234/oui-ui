@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "lib/src/File.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "File",
+          "cssParts": [
+            {
+              "description": "An outer wrapper around the button",
+              "name": "file-selector-button"
+            },
+            {
+              "description": "An outer wrapper around the label",
+              "name": "label"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Creates the indicator, and can be styles based on the checkbox's current state",
+              "name": "file-selector-button"
+            },
+            {
+              "description": "Creates the label and associates it to the control",
+              "name": "label"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "formAssociated",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "multiple"
+            },
+            {
+              "kind": "field",
+              "name": "accept"
+            },
+            {
+              "kind": "field",
+              "name": "capture"
+            },
+            {
+              "kind": "field",
+              "name": "files"
+            },
+            {
+              "kind": "field",
+              "name": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "value"
+            },
+            {
+              "kind": "field",
+              "name": "form"
+            },
+            {
+              "kind": "method",
+              "name": "_keyDown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_hasButtonRole"
+            },
+            {
+              "kind": "method",
+              "name": "_showOpenFilePicker",
+              "parameters": [
+                {
+                  "name": "options"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_click"
+            },
+            {
+              "kind": "method",
+              "name": "_upgradeProperty",
+              "parameters": [
+                {
+                  "name": "prop"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_internals"
+            },
+            {
+              "kind": "field",
+              "name": "isFSAccessSupported"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when the input's value is commited by the user",
+              "name": "change"
+            },
+            {
+              "description": "Fires when the input's value changes",
+              "name": "input"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "File",
+          "declaration": {
+            "name": "File",
+            "module": "lib/src/File.js"
+          }
+        }
+      ]
+    }
+  ]
+}

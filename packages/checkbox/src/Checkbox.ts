@@ -15,8 +15,6 @@ function hasOwnProperty<X extends {}, Y extends PropertyKey>(
     return obj.hasOwnProperty(prop)
 }
 
-// readonly	bool	readonly	Indicates that the checkbox is not interactive but its value should still be submitted with the form.
-
 // change to :disabled on PR fix
 checkboxTemplate.innerHTML = `
     <style>
